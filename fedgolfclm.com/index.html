@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federación de Golf de Castilla-La Mancha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #0a3d2e;
+  --green-mid: #1a6645;
+  --green-accent: #2d9e6b;
+  --green-light: #e8f5ef;
+  --gold: #c9a84c;
+  --gold-light: #f5e9c8;
+  --white: #ffffff;
+  --gray-50: #f8f8f6;
+  --gray-100: #ededea;
+  --gray-300: #b8b8b4;
+  --gray-600: #5a5a56;
+  --gray-900: #1a1a18;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--gray-900);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--green-dark);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  height: 70px;
+  transition: box-shadow 0.3s;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 44px; height: 44px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 16px;
+  color: var(--green-dark);
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  display: flex; flex-direction: column;
+}
+
+.nav-logo-text span:first-child {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  color: var(--white); line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.nav-logo-text span:last-child {
+  font-size: 10px; font-weight: 400;
+  color: var(--gold); letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 0;
+  list-style: none;
+}
+
+.nav-links li a {
+  display: block; padding: 0 16px;
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 70px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links li a:hover { color: var(--gold); }
+
+.nav-actions {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.btn-nav {
+  padding: 8px 20px;
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.2s;
+  cursor: pointer; border: none;
+}
+
+.btn-nav-outline {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: var(--white);
+}
+
+.btn-nav-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn-nav-gold {
+  background: var(--gold);
+  color: var(--green-dark);
+}
+
+.btn-nav-gold:hover {
+  background: #d4b36a;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--green-dark);
+  position: relative;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: 
+    linear-gradient(135deg, rgba(10,61,46,0.97) 0%, rgba(26,102,69,0.85) 50%, rgba(45,158,107,0.6) 100%),
+    url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover no-repeat;
+}
+
+.hero-pattern {
+  position: absolute; inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(45,158,107,0.1) 0%, transparent 50%);
+}
+
+.hero-top-bar {
+  position: relative; z-index: 2;
+  padding: 110px 6rem 0;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 2px;
+  font-size: 10px; font-weight: 600;
+  color: var(--gold); letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  flex: 1;
+  padding: 3rem 6rem 5rem;
+  display: flex; align-items: flex-end;
+}
+
+.hero-text { max-width: 700px; }
+
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600;
+  color: var(--gold); letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900; line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7; max-width: 480px;
+  margin-bottom: 3rem;
+}
+
+.hero-ctas {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  border-radius: 3px;
+  transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+.btn-primary:hover {
+  background: #d4b36a;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 13px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1px;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 3px;
+  transition: all 0.25s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-stats {
+  position: absolute; bottom: 0; right: 6rem;
+  display: flex; gap: 0;
+  z-index: 2;
+}
+
+.hero-stat {
+  padding: 24px 36px;
+  background: rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.hero-stat:first-child { border-left: none; }
+
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-stat-label {
+  font-size: 10px; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 1.5px;
+}
+
+/* ── QUICK ACCESS BAR ── */
+.quick-bar {
+  background: var(--green-mid);
+  padding: 0 6rem;
+  display: flex; align-items: center;
+  border-bottom: 2px solid var(--gold);
+}
+
+.quick-bar a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 18px 24px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.quick-bar a:first-child { padding-left: 0; }
+.quick-bar a:hover { color: var(--gold); background: rgba(255,255,255,0.04); }
+
+.quick-bar-icon {
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── SECTIONS ── */
+section { padding: 90px 6rem; }
+
+.section-header { margin-bottom: 3rem; }
+
+.section-label {
+  font-size: 10px; font-weight: 600;
+  color: var(--green-accent); letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: var(--green-accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--green-dark);
+}
+
+/* ── NOTICIAS ── */
+.noticias-section { background: var(--gray-50); }
+
+.noticias-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5px;
+  background: var(--gray-100);
+  border: 1.5px solid var(--gray-100);
+  overflow: hidden;
+}
+
+.noticia-card {
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+  display: flex; flex-direction: column;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.noticia-card:hover { z-index: 1; }
+
+.noticia-card-featured {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.noticia-thumb {
+  aspect-ratio: 16/10;
+  background: var(--green-mid);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.noticia-card-featured .noticia-thumb {
+  aspect-ratio: 4/5;
+}
+
+.noticia-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.noticia-card:hover .noticia-thumb img {
+  transform: scale(1.04);
+}
+
+.noticia-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+  color: rgba(255,255,255,0.2);
+  font-family: var(--font-display);
+  font-weight: 900;
+}
+
+.noticia-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+
+.noticia-cat {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--green-light);
+  color: var(--green-mid);
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.noticia-fecha {
+  font-size: 11px;
+  color: var(--gray-300);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.noticia-titulo {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 700;
+  line-height: 1.3;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.noticia-card-featured .noticia-titulo {
+  font-size: 22px;
+}
+
+.noticia-excerpt {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.noticia-card:hover .noticia-titulo { color: var(--green-accent); }
+
+.ver-mas {
+  margin-top: 3rem;
+  display: flex; justify-content: flex-start;
+}
+
+/* ── ÁREAS DE INTERÉS ── */
+.areas-section { background: var(--white); }
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-100);
+}
+
+.area-card {
+  background: var(--white);
+  text-decoration: none;
+  padding: 40px 32px;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.area-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.area-card:hover::after { transform: scaleX(1); }
+.area-card:hover { background: var(--gray-50); }
+
+.area-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: var(--green-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.area-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--green-dark); line-height: 1.3;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+.area-desc {
+  font-size: 12px;
+  color: var(--gray-600); line-height: 1.6;
+  flex: 1;
+}
+
+.area-link {
+  font-size: 11px; font-weight: 700;
+  color: var(--green-accent);
+  text-transform: uppercase; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.area-link::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.area-card:hover .area-link::after { transform: translateX(4px); }
+
+/* ── CALENDARIO ── */
+.calendario-section {
+  background: var(--green-dark);
+  padding: 90px 6rem;
+}
+
+.calendario-section .section-label { color: var(--gold); }
+.calendario-section .section-label::before { background: var(--gold); }
+.calendario-section .section-title { color: var(--white); }
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 3rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.evento-card {
+  background: rgba(255,255,255,0.03);
+  padding: 32px 28px;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: flex; flex-direction: column; gap: 12px;
+  border-left: 3px solid transparent;
+}
+
+.evento-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-left-color: var(--gold);
+}
+
+.evento-fecha {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.evento-dia {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+
+.evento-mes-info { display: flex; flex-direction: column; }
+
+.evento-mes {
+  font-size: 12px; font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1.5px;
+}
+
+.evento-anyo {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+}
+
+.evento-cat {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold);
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+.evento-nombre {
+  font-size: 15px; font-weight: 600;
+  color: var(--white); line-height: 1.3;
+}
+
+.evento-lugar {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ── RANKINGS ── */
+.rankings-section {
+  background: var(--gray-50);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+}
+
+.rankings-col {
+  padding: 90px 5rem;
+}
+
+.rankings-col:first-child {
+  background: var(--white);
+  border-right: 1px solid var(--gray-100);
+}
+
+.ranking-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.ranking-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-100);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.ranking-item:hover { padding-left: 8px; }
+
+.ranking-pos {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--green-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  color: var(--green-dark);
+  flex-shrink: 0;
+}
+
+.ranking-pos.gold { background: var(--gold-light); color: #7a5f1a; }
+.ranking-pos.silver { background: #e8e8e4; color: #5a5a50; }
+.ranking-pos.bronze { background: #f5e8dc; color: #7a4a20; }
+
+.ranking-info { flex: 1; }
+.ranking-nombre {
+  font-size: 14px; font-weight: 600;
+  color: var(--green-dark);
+}
+.ranking-club {
+  font-size: 11px; color: var(--gray-300);
+  margin-top: 2px;
+}
+.ranking-pts {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--green-dark);
+}
+
+/* ── PATROCINADORES ── */
+.patrocinadores-section {
+  background: var(--white);
+  padding: 60px 6rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.pat-label {
+  font-size: 10px; font-weight: 600;
+  color: var(--gray-300); letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center; margin-bottom: 2.5rem;
+}
+
+.pat-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 60px; flex-wrap: wrap;
+}
+
+.pat-logo {
+  height: 40px;
+  opacity: 0.4;
+  filter: grayscale(1);
+  transition: all 0.3s;
+  display: flex; align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.pat-logo:hover { opacity: 0.75; filter: grayscale(0); color: var(--green-accent); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--gray-900);
+  color: var(--white);
+}
+
+.footer-top {
+  padding: 70px 6rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-brand {}
+
+.footer-logo {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-icon {
+  width: 42px; height: 42px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 15px;
+  color: var(--green-dark);
+  flex-shrink: 0;
+}
+
+.footer-logo-name {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.footer-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7; max-width: 300px;
+  margin-bottom: 24px;
+}
+
+.footer-contact p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.8;
+}
+
+.footer-col-title {
+  font-size: 11px; font-weight: 700;
+  color: var(--gold); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-bottom {
+  padding: 24px 6rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.footer-bottom p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+}
+
+.footer-social {
+  display: flex; gap: 12px;
+}
+
+.footer-social a {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  section, .calendario-section, .patrocinadores-section { padding-left: 2.5rem; padding-right: 2.5rem; }
+  nav { padding: 0 2rem; }
+  .hero-top-bar, .hero-content { padding-left: 2.5rem; padding-right: 2.5rem; }
+  .hero-stats { right: 2.5rem; }
+  .quick-bar { padding: 0 2.5rem; }
+  .footer-top { padding: 50px 2.5rem; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-bottom { padding: 20px 2.5rem; }
+  .nav-links { display: none; }
+  .areas-grid { grid-template-columns: 1fr 1fr; }
+  .calendario-grid { grid-template-columns: 1fr; }
+  .noticias-grid { grid-template-columns: 1fr 1fr; }
+  .noticia-card-featured { grid-column: 1/-1; grid-row: auto; }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.8rem; }
+  .hero-stats { position: static; flex-direction: row; flex-wrap: wrap; margin: 0 2.5rem 3rem; }
+  .hero-content { padding-bottom: 2rem; }
+  .areas-grid { grid-template-columns: 1fr; }
+  .noticias-grid { grid-template-columns: 1fr; }
+  .rankings-section { grid-template-columns: 1fr; }
+  .rankings-col { padding: 60px 2.5rem; }
+  .footer-top { grid-template-columns: 1fr; }
+  .pat-logos { gap: 30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">FG</div>
+    <div class="nav-logo-text">
+      <span>Federación de Golf</span>
+      <span>Castilla-La Mancha</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#sobre">Federación</a></li>
+    <li><a href="#torneos">Torneos</a></li>
+    <li><a href="#rankings">Rankings</a></li>
+    <li><a href="#clubes">Clubes</a></li>
+    <li><a href="#reglamentos">Reglamentos</a></li>
+    <li><a href="#escuela">Escuela</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <a href="#" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
+    <a href="#" class="btn-nav btn-nav-gold">Área Federados</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+
+  <div class="hero-top-bar">
+    <div class="hero-tag">Temporada 2026 en marcha</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Federación Oficial</div>
+      <h1 class="hero-title">
+        Golf en el<br>
+        <em>corazón de España</em>
+      </h1>
+      <p class="hero-sub">
+        Promovemos y regulamos el golf en Castilla-La Mancha. Descubre competiciones, clubes, rankings y todo lo que necesitas para disfrutar del golf en nuestra región.
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Ver Torneos 2026 →</a>
+        <a href="#" class="btn-secondary">Obtener Licencia</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">6.000</div>
+      <div class="hero-stat-label">Federados</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">40+</div>
+      <div class="hero-stat-label">Clubes</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">80+</div>
+      <div class="hero-stat-label">Torneos / año</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Provincias</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACCESS BAR -->
+<div class="quick-bar">
+  <a href="#">
+    <div class="quick-bar-icon">🏆</div>
+    Competiciones
+  </a>
+  <a href="#">
+    <div class="quick-bar-icon">📋</div>
+    Inscripciones
+  </a>
+  <a href="#">
+    <div class="quick-bar-icon">📊</div>
+    Rankings CLM
+  </a>
+  <a href="#">
+    <div class="quick-bar-icon">📅</div>
+    Calendario
+  </a>
+  <a href="#">
+    <div class="quick-bar-icon">🎓</div>
+    Escuela de Golf
+  </a>
+  <a href="#">
+    <div class="quick-bar-icon">📱</div>
+    App FGCLM
+  </a>
+</div>
+
+<!-- NOTICIAS -->
+<section class="noticias-section" id="noticias">
+  <div class="section-header">
+    <div class="section-label">Actualidad</div>
+    <h2 class="section-title">Últimas noticias</h2>
+  </div>
+
+  <div class="noticias-grid">
+
+    <!-- Noticia destacada -->
+    <a href="#" class="noticia-card noticia-card-featured">
+      <div class="noticia-thumb">
+        <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #0a3d2e 0%, #2d9e6b 100%);">
+          ⛳
+        </div>
+      </div>
+      <div class="noticia-body">
+        <span class="noticia-cat">Masculino y Femenino</span>
+        <div class="noticia-fecha">05 mayo 2026</div>
+        <h3 class="noticia-titulo">La Vereda vuelve a albergar el Campeonato de Castilla-La Mancha de Campos Cortos</h3>
+        <p class="noticia-excerpt">Otro año más, el campo serrano del Club de Golf La Vereda, junto con la colaboración de la Federación de Castilla La Mancha de Golf, organiza el Campeonato regional...</p>
+      </div>
+    </a>
+
+    <!-- Noticias secundarias -->
+    <a href="#" class="noticia-card">
+      <div class="noticia-thumb">
+        <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #1a3a5c 0%, #378add 100%); font-size: 32px;">🏅</div>
+      </div>
+      <div class="noticia-body">
+        <span class="noticia-cat">Masculino</span>
+        <div class="noticia-fecha">04 mayo 2026</div>
+        <h3 class="noticia-titulo">Listado definitivo del XVII Campeonato Absoluto Masculino de CLM 2026</h3>
+        <p class="noticia-excerpt">Se celebra en el recorrido toledano de Layos entre el 8 y el 10 de mayo de 2026.</p>
+      </div>
+    </a>
+
+    <a href="#" class="noticia-card">
+      <div class="noticia-thumb">
+        <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #3d1a0a 0%, #9e5a2d 100%); font-size: 32px;">🎖️</div>
+      </div>
+      <div class="noticia-body">
+        <span class="noticia-cat">Senior</span>
+        <div class="noticia-fecha">04 mayo 2026</div>
+        <h3 class="noticia-titulo">Castilla-La Mancha representada en el Campeonato de España Senior Masculino</h3>
+        <p class="noticia-excerpt">El recorrido sevillano de Pineda acoge la gran semana del golf senior masculino español.</p>
+      </div>
+    </a>
+
+    <a href="#" class="noticia-card">
+      <div class="noticia-thumb">
+        <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #1a2a0a 0%, #639922 100%); font-size: 32px;">⛳</div>
+      </div>
+      <div class="noticia-body">
+        <span class="noticia-cat">Profesional</span>
+        <div class="noticia-fecha">04 mayo 2026</div>
+        <h3 class="noticia-titulo">Gran cuarta plaza de José Manuel Pardo en el Circuito de Madrid de Profesionales</h3>
+        <p class="noticia-excerpt">El recorrido de El Robledal ha acogido la cuarta prueba del Circuito bajo la modalidad Dobles.</p>
+      </div>
+    </a>
+
+    <a href="#" class="noticia-card">
+      <div class="noticia-thumb">
+        <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #2a1a3d 0%, #7f77dd 100%); font-size: 32px;">🏌️</div>
+      </div>
+      <div class="noticia-body">
+        <span class="noticia-cat">Pitch &amp; Putt</span>
+        <div class="noticia-fecha">03 mayo 2026</div>
+        <h3 class="noticia-titulo">José María Pardo, puesto 37 en el II Puntuable Nacional de Pitch &amp; Putt</h3>
+        <p class="noticia-excerpt">Participación en la I Copa de Pitch &amp; Putt de Castilla y León celebrada en Burgos.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="ver-mas">
+    <a href="#" class="btn-primary" style="background: var(--green-dark); color: var(--white);">Ver todas las noticias →</a>
+  </div>
+</section>
+
+<!-- ÁREAS DE INTERÉS -->
+<section class="areas-section" id="sobre">
+  <div class="section-header">
+    <div class="section-label">Navega por la federación</div>
+    <h2 class="section-title">Áreas de interés</h2>
+  </div>
+
+  <div class="areas-grid">
+    <a href="#" class="area-card">
+      <div class="area-icon">🏆</div>
+      <div class="area-title">Competiciones y Torneos</div>
+      <div class="area-desc">Consulta el calendario completo de torneos FGCLM y la RFEG, inscripciones y resultados en tiempo real.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">📊</div>
+      <div class="area-title">Rankings CLM 2026</div>
+      <div class="area-desc">Posiciones actualizadas en las distintas categorías del circuito autonómico de Castilla-La Mancha.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">🏌️</div>
+      <div class="area-title">Selección Regional</div>
+      <div class="area-desc">Sigue la trayectoria de los representantes castellanomanchegos en campeonatos de España.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">📋</div>
+      <div class="area-title">Licencia y Hándicap</div>
+      <div class="area-desc">Trámites, cuotas, obtención del hándicap y gestión de tu licencia federativa.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">📍</div>
+      <div class="area-title">Clubes y Campos</div>
+      <div class="area-desc">Directorio completo de clubes y campos de golf federados en las cinco provincias de CLM.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">📖</div>
+      <div class="area-title">Reglamentos y Circulares</div>
+      <div class="area-desc">Reglas de golf, circulares FGCLM y RFEG, reglamentos y condiciones de la competición.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">🎓</div>
+      <div class="area-title">Escuela de Golf FGCLM</div>
+      <div class="area-desc">La escuela oficial de la federación y la cancha de prácticas pública para nuevos jugadores.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+
+    <a href="#" class="area-card">
+      <div class="area-icon">♿</div>
+      <div class="area-title">Golf Adaptado</div>
+      <div class="area-desc">Programas y competiciones de golf adaptado para jugadores con diversidad funcional.</div>
+      <div class="area-link">Acceder</div>
+    </a>
+  </div>
+</section>
+
+<!-- CALENDARIO PRÓXIMOS TORNEOS -->
+<section class="calendario-section" id="torneos">
+  <div class="section-header">
+    <div class="section-label">Agenda 2026</div>
+    <h2 class="section-title">Próximos torneos</h2>
+  </div>
+
+  <div class="calendario-grid">
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">8</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Mayo</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Masculino</span>
+      <div class="evento-nombre">XVII Campeonato Absoluto Masculino de Castilla-La Mancha</div>
+      <div class="evento-lugar">📍 Club de Golf Layos, Toledo</div>
+    </a>
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">15</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Mayo</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Femenino</span>
+      <div class="evento-nombre">Campeonato Autonómico Femenino de Castilla-La Mancha 2026</div>
+      <div class="evento-lugar">📍 Por confirmar</div>
+    </a>
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">22</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Mayo</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Juvenil</span>
+      <div class="evento-nombre">Campeonato Regional Juvenil - Circuito Sub-18 CLM</div>
+      <div class="evento-lugar">📍 Club de Golf Las Pinaíllas, Albacete</div>
+    </a>
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">1</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Jun</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Senior</span>
+      <div class="evento-nombre">I Prueba Ranking Senior Castilla-La Mancha 2026</div>
+      <div class="evento-lugar">📍 Club de Golf Torrijos, Toledo</div>
+    </a>
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">14</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Jun</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Pitch &amp; Putt</span>
+      <div class="evento-nombre">Campeonato de España Pitch &amp; Putt - Selección CLM</div>
+      <div class="evento-lugar">📍 Por confirmar</div>
+    </a>
+
+    <a href="#" class="evento-card">
+      <div class="evento-fecha">
+        <div class="evento-dia">20</div>
+        <div class="evento-mes-info">
+          <span class="evento-mes">Jun</span>
+          <span class="evento-anyo">2026</span>
+        </div>
+      </div>
+      <span class="evento-cat">Masculino</span>
+      <div class="evento-nombre">Torneo Provincial Guadalajara - Open de Cifuentes</div>
+      <div class="evento-lugar">📍 Golf Cifuentes, Guadalajara</div>
+    </a>
+
+  </div>
+
+  <div style="margin-top: 2.5rem;">
+    <a href="#" class="btn-primary">Ver calendario completo →</a>
+  </div>
+</section>
+
+<!-- RANKINGS -->
+<section class="rankings-section" id="rankings">
+  <div class="rankings-col">
+    <div class="section-label">Clasificaciones</div>
+    <h2 class="section-title" style="font-size: 2rem;">Ranking Masculino CLM 2026</h2>
+
+    <ul class="ranking-list">
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos gold">1</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Álvaro Pastor García</div>
+          <div class="ranking-club">Club de Golf Layos</div>
+        </div>
+        <div class="ranking-pts">320 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos silver">2</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Luis Miguel Sánchez</div>
+          <div class="ranking-club">Torrijos Golf</div>
+        </div>
+        <div class="ranking-pts">285 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos bronze">3</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">José Manuel Pardo</div>
+          <div class="ranking-club">Club de Golf Las Pinaíllas</div>
+        </div>
+        <div class="ranking-pts">260 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos">4</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Manuel Fajardo López</div>
+          <div class="ranking-club">Club de Golf Las Pinaíllas</div>
+        </div>
+        <div class="ranking-pts">215 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos">5</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Carlos Jiménez Muñoz</div>
+          <div class="ranking-club">Golf Cuenca</div>
+        </div>
+        <div class="ranking-pts">198 pts</div>
+      </a></li>
+    </ul>
+
+    <div style="margin-top: 1.5rem;">
+      <a href="#" class="btn-primary" style="font-size: 12px; padding: 10px 22px; background: var(--green-dark); color: white;">Ranking completo →</a>
+    </div>
+  </div>
+
+  <div class="rankings-col" style="background: var(--gray-50);">
+    <div class="section-label">Clasificaciones</div>
+    <h2 class="section-title" style="font-size: 2rem;">Ranking Femenino CLM 2026</h2>
+
+    <ul class="ranking-list">
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos gold">1</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Ana Belén Martínez</div>
+          <div class="ranking-club">Club de Golf Layos</div>
+        </div>
+        <div class="ranking-pts">295 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos silver">2</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Sofía Romero Vega</div>
+          <div class="ranking-club">Golf Albacete</div>
+        </div>
+        <div class="ranking-pts">270 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos bronze">3</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Laura García Pérez</div>
+          <div class="ranking-club">Las Pinaíllas Golf</div>
+        </div>
+        <div class="ranking-pts">248 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos">4</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Isabel Fernández Torres</div>
+          <div class="ranking-club">Torrijos Golf</div>
+        </div>
+        <div class="ranking-pts">200 pts</div>
+      </a></li>
+
+      <li><a href="#" class="ranking-item">
+        <div class="ranking-pos">5</div>
+        <div class="ranking-info">
+          <div class="ranking-nombre">Carmen López Sánchez</div>
+          <div class="ranking-club">Club de Golf Cifuentes</div>
+        </div>
+        <div class="ranking-pts">180 pts</div>
+      </a></li>
+    </ul>
+
+    <div style="margin-top: 1.5rem;">
+      <a href="#" class="btn-primary" style="font-size: 12px; padding: 10px 22px; background: var(--green-dark); color: white;">Ranking completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PATROCINADORES -->
+<div class="patrocinadores-section">
+  <div class="pat-label">Patrocinadores y colaboradores</div>
+  <div class="pat-logos">
+    <a href="#" class="pat-logo">RENAULT<br><span style="font-size:12px; font-weight:300;">Automaor</span></a>
+    <a href="#" class="pat-logo">JOMA</a>
+    <a href="#" class="pat-logo">TOA<br><span style="font-size:10px; font-weight:300;">Shoes</span></a>
+    <a href="#" class="pat-logo">Junta de<br><span style="font-size:10px; font-weight:300;">Castilla-La Mancha</span></a>
+    <a href="#" class="pat-logo">Golf<br><span style="font-size:10px; font-weight:300;">Estudio</span></a>
+    <a href="#" class="pat-logo">RFEG</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">FG</div>
+        <div class="footer-logo-name">Federación de Golf<br>de Castilla-La Mancha</div>
+      </div>
+      <p class="footer-desc">
+        Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte del golf en las cinco provincias de la región.
+      </p>
+      <div class="footer-contact">
+        <p>Plaza de España 1, Primera Planta, Local 8</p>
+        <p>19200 Azuqueca de Henares (Guadalajara)</p>
+        <p>Teléfono: 949-262300</p>
+        <p>federacion@fedgolfclm.com</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">La federación</div>
+      <ul class="footer-links">
+        <li><a href="#">Bienvenida del Presidente</a></li>
+        <li><a href="#">Junta Directiva</a></li>
+        <li><a href="#">Comités y Delegaciones</a></li>
+        <li><a href="#">Transparencia</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="#">Licencia y Hándicap</a></li>
+        <li><a href="#">Trámites y Cuotas</a></li>
+        <li><a href="#">Seguro de Accidente</a></li>
+        <li><a href="#">Subvenciones</a></li>
+        <li><a href="#">APP FGCLM</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Aviso Legal</a></li>
+        <li><a href="#">Política de Privacidad</a></li>
+        <li><a href="#">Política de Cookies</a></li>
+        <li><a href="#">Reglas de Golf</a></li>
+        <li><a href="#">Circulares FGCLM</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/fedgolfclm/" target="_blank" title="Facebook">f</a>
+      <a href="https://www.instagram.com/fedgolfclm" target="_blank" title="Instagram">ig</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 40) {
+    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+</body>
+</html>
