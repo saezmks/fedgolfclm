@@ -1,855 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Federación de Golf de Castilla-La Mancha</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --green-dark: #0a3d2e;
-  --green-mid: #1a6645;
-  --green-accent: #2d9e6b;
-  --green-light: #e8f5ef;
-  --gold: #c9a84c;
-  --gold-light: #f5e9c8;
-  --white: #ffffff;
-  --gray-50: #f8f8f6;
-  --gray-100: #ededea;
-  --gray-300: #b8b8b4;
-  --gray-600: #5a5a56;
-  --gray-900: #1a1a18;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  color: var(--gray-900);
-  background: var(--white);
-  overflow-x: hidden;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: var(--green-dark);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3rem;
-  height: 70px;
-  transition: box-shadow 0.3s;
-}
-
-.nav-logo {
-  display: flex; align-items: center; gap: 14px;
-  text-decoration: none;
-}
-
-.nav-logo-icon {
-  width: 44px; height: 44px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700; font-size: 16px;
-  color: var(--green-dark);
-  flex-shrink: 0;
-}
-
-.nav-logo-text {
-  display: flex; flex-direction: column;
-}
-
-.nav-logo-text span:first-child {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 700;
-  color: var(--white); line-height: 1.2;
-  letter-spacing: 0.3px;
-}
-
-.nav-logo-text span:last-child {
-  font-size: 10px; font-weight: 400;
-  color: var(--gold); letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex; align-items: center; gap: 0;
-  list-style: none;
-}
-
-.nav-links li a {
-  display: block; padding: 0 16px;
-  font-size: 12px; font-weight: 500;
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  line-height: 70px;
-  transition: color 0.2s;
-  white-space: nowrap;
-}
-
-.nav-links li a:hover { color: var(--gold); }
-
-.nav-actions {
-  display: flex; align-items: center; gap: 10px;
-}
-
-.btn-nav {
-  padding: 8px 20px;
-  font-family: var(--font-body);
-  font-size: 12px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.8px;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: all 0.2s;
-  cursor: pointer; border: none;
-}
-
-.btn-nav-outline {
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  color: var(--white);
-}
-
-.btn-nav-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-.btn-nav-gold {
-  background: var(--gold);
-  color: var(--green-dark);
-}
-
-.btn-nav-gold:hover {
-  background: #d4b36a;
-}
-
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  background: var(--green-dark);
-  position: relative;
-  display: flex; flex-direction: column;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute; inset: 0;
-  background: 
-    linear-gradient(135deg, rgba(10,61,46,0.97) 0%, rgba(26,102,69,0.85) 50%, rgba(45,158,107,0.6) 100%),
-    url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover no-repeat;
-}
-
-.hero-pattern {
-  position: absolute; inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(45,158,107,0.1) 0%, transparent 50%);
-}
-
-.hero-top-bar {
-  position: relative; z-index: 2;
-  padding: 110px 6rem 0;
-  display: flex; align-items: center; gap: 12px;
-}
-
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.35);
-  border-radius: 2px;
-  font-size: 10px; font-weight: 600;
-  color: var(--gold); letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.hero-tag::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
-}
-
-.hero-content {
-  position: relative; z-index: 2;
-  flex: 1;
-  padding: 3rem 6rem 5rem;
-  display: flex; align-items: flex-end;
-}
-
-.hero-text { max-width: 700px; }
-
-.hero-eyebrow {
-  font-size: 11px; font-weight: 600;
-  color: var(--gold); letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 12px;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  width: 32px; height: 1px;
-  background: var(--gold);
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 900; line-height: 0.95;
-  color: var(--white);
-  margin-bottom: 2rem;
-  letter-spacing: -1px;
-}
-
-.hero-title em {
-  font-style: normal;
-  color: var(--gold);
-  display: block;
-}
-
-.hero-sub {
-  font-size: 16px; font-weight: 300;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7; max-width: 480px;
-  margin-bottom: 3rem;
-}
-
-.hero-ctas {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-}
-
-.btn-primary {
-  padding: 14px 32px;
-  background: var(--gold);
-  color: var(--green-dark);
-  text-decoration: none;
-  font-size: 13px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px;
-  border-radius: 3px;
-  transition: all 0.25s;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-
-.btn-primary:hover {
-  background: #d4b36a;
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  padding: 14px 32px;
-  background: transparent;
-  color: var(--white);
-  text-decoration: none;
-  font-size: 13px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 1px;
-  border: 1.5px solid rgba(255,255,255,0.35);
-  border-radius: 3px;
-  transition: all 0.25s;
-}
-
-.btn-secondary:hover {
-  border-color: var(--white);
-  background: rgba(255,255,255,0.05);
-}
-
-.hero-stats {
-  position: absolute; bottom: 0; right: 6rem;
-  display: flex; gap: 0;
-  z-index: 2;
-}
-
-.hero-stat {
-  padding: 24px 36px;
-  background: rgba(255,255,255,0.06);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-left: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-
-.hero-stat:first-child { border-left: none; }
-
-.hero-stat-num {
-  font-family: var(--font-display);
-  font-size: 2.2rem; font-weight: 700;
-  color: var(--gold); line-height: 1;
-  margin-bottom: 4px;
-}
-
-.hero-stat-label {
-  font-size: 10px; font-weight: 500;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase; letter-spacing: 1.5px;
-}
-
-/* ── QUICK ACCESS BAR ── */
-.quick-bar {
-  background: var(--green-mid);
-  padding: 0 6rem;
-  display: flex; align-items: center;
-  border-bottom: 2px solid var(--gold);
-}
-
-.quick-bar a {
-  display: flex; align-items: center; gap: 8px;
-  padding: 18px 24px;
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  font-size: 12px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.8px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.quick-bar a:first-child { padding-left: 0; }
-.quick-bar a:hover { color: var(--gold); background: rgba(255,255,255,0.04); }
-
-.quick-bar-icon {
-  width: 18px; height: 18px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-
-/* ── SECTIONS ── */
-section { padding: 90px 6rem; }
-
-.section-header { margin-bottom: 3rem; }
-
-.section-label {
-  font-size: 10px; font-weight: 600;
-  color: var(--green-accent); letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-
-.section-label::before {
-  content: '';
-  width: 24px; height: 2px;
-  background: var(--green-accent);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700; line-height: 1.1;
-  color: var(--green-dark);
-}
-
-/* ── NOTICIAS ── */
-.noticias-section { background: var(--gray-50); }
-
-.noticias-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1.5px;
-  background: var(--gray-100);
-  border: 1.5px solid var(--gray-100);
-  overflow: hidden;
-}
-
-.noticia-card {
-  background: var(--white);
-  text-decoration: none;
-  color: inherit;
-  display: flex; flex-direction: column;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.noticia-card:hover { z-index: 1; }
-
-.noticia-card-featured {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
-}
-
-.noticia-thumb {
-  aspect-ratio: 16/10;
-  background: var(--green-mid);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.noticia-card-featured .noticia-thumb {
-  aspect-ratio: 4/5;
-}
-
-.noticia-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.noticia-card:hover .noticia-thumb img {
-  transform: scale(1.04);
-}
-
-.noticia-thumb-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 48px;
-  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-  color: rgba(255,255,255,0.2);
-  font-family: var(--font-display);
-  font-weight: 900;
-}
-
-.noticia-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
-
-.noticia-cat {
-  display: inline-block;
-  padding: 3px 10px;
-  background: var(--green-light);
-  color: var(--green-mid);
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px;
-  border-radius: 2px;
-  margin-bottom: 12px;
-  align-self: flex-start;
-}
-
-.noticia-fecha {
-  font-size: 11px;
-  color: var(--gray-300);
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
-}
-
-.noticia-titulo {
-  font-family: var(--font-display);
-  font-size: 17px; font-weight: 700;
-  line-height: 1.3;
-  color: var(--green-dark);
-  margin-bottom: 10px;
-  flex: 1;
-}
-
-.noticia-card-featured .noticia-titulo {
-  font-size: 22px;
-}
-
-.noticia-excerpt {
-  font-size: 13px;
-  color: var(--gray-600);
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.noticia-card:hover .noticia-titulo { color: var(--green-accent); }
-
-.ver-mas {
-  margin-top: 3rem;
-  display: flex; justify-content: flex-start;
-}
-
-/* ── ÁREAS DE INTERÉS ── */
-.areas-section { background: var(--white); }
-
-.areas-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--gray-100);
-  border: 1px solid var(--gray-100);
-}
-
-.area-card {
-  background: var(--white);
-  text-decoration: none;
-  padding: 40px 32px;
-  display: flex; flex-direction: column; gap: 16px;
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-
-.area-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.area-card:hover::after { transform: scaleX(1); }
-.area-card:hover { background: var(--gray-50); }
-
-.area-icon {
-  width: 52px; height: 52px;
-  border-radius: 12px;
-  background: var(--green-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
-  flex-shrink: 0;
-}
-
-.area-title {
-  font-size: 15px; font-weight: 700;
-  color: var(--green-dark); line-height: 1.3;
-  text-transform: uppercase; letter-spacing: 0.5px;
-}
-
-.area-desc {
-  font-size: 12px;
-  color: var(--gray-600); line-height: 1.6;
-  flex: 1;
-}
-
-.area-link {
-  font-size: 11px; font-weight: 700;
-  color: var(--green-accent);
-  text-transform: uppercase; letter-spacing: 1px;
-  display: flex; align-items: center; gap: 6px;
-}
-
-.area-link::after {
-  content: '→';
-  transition: transform 0.2s;
-}
-
-.area-card:hover .area-link::after { transform: translateX(4px); }
-
-/* ── CALENDARIO ── */
-.calendario-section {
-  background: var(--green-dark);
-  padding: 90px 6rem;
-}
-
-.calendario-section .section-label { color: var(--gold); }
-.calendario-section .section-label::before { background: var(--gold); }
-.calendario-section .section-title { color: var(--white); }
-
-.calendario-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  margin-top: 3rem;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.evento-card {
-  background: rgba(255,255,255,0.03);
-  padding: 32px 28px;
-  text-decoration: none;
-  transition: all 0.25s;
-  display: flex; flex-direction: column; gap: 12px;
-  border-left: 3px solid transparent;
-}
-
-.evento-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-left-color: var(--gold);
-}
-
-.evento-fecha {
-  display: flex; align-items: center; gap: 10px;
-}
-
-.evento-dia {
-  font-family: var(--font-display);
-  font-size: 2.5rem; font-weight: 700;
-  color: var(--gold); line-height: 1;
-}
-
-.evento-mes-info { display: flex; flex-direction: column; }
-
-.evento-mes {
-  font-size: 12px; font-weight: 700;
-  color: var(--gold);
-  text-transform: uppercase; letter-spacing: 1.5px;
-}
-
-.evento-anyo {
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.5px;
-}
-
-.evento-cat {
-  display: inline-block;
-  padding: 3px 10px;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.25);
-  color: var(--gold);
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px;
-  border-radius: 2px;
-  align-self: flex-start;
-}
-
-.evento-nombre {
-  font-size: 15px; font-weight: 600;
-  color: var(--white); line-height: 1.3;
-}
-
-.evento-lugar {
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  display: flex; align-items: center; gap: 6px;
-}
-
-/* ── RANKINGS ── */
-.rankings-section {
-  background: var(--gray-50);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  padding: 0;
-}
-
-.rankings-col {
-  padding: 90px 5rem;
-}
-
-.rankings-col:first-child {
-  background: var(--white);
-  border-right: 1px solid var(--gray-100);
-}
-
-.ranking-list {
-  list-style: none;
-  margin-top: 2rem;
-}
-
-.ranking-item {
-  display: flex; align-items: center; gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--gray-100);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s;
-}
-
-.ranking-item:hover { padding-left: 8px; }
-
-.ranking-pos {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--green-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700;
-  color: var(--green-dark);
-  flex-shrink: 0;
-}
-
-.ranking-pos.gold { background: var(--gold-light); color: #7a5f1a; }
-.ranking-pos.silver { background: #e8e8e4; color: #5a5a50; }
-.ranking-pos.bronze { background: #f5e8dc; color: #7a4a20; }
-
-.ranking-info { flex: 1; }
-.ranking-nombre {
-  font-size: 14px; font-weight: 600;
-  color: var(--green-dark);
-}
-.ranking-club {
-  font-size: 11px; color: var(--gray-300);
-  margin-top: 2px;
-}
-.ranking-pts {
-  font-family: var(--font-display);
-  font-size: 18px; font-weight: 700;
-  color: var(--green-dark);
-}
-
-/* ── PATROCINADORES ── */
-.patrocinadores-section {
-  background: var(--white);
-  padding: 60px 6rem;
-  border-top: 1px solid var(--gray-100);
-}
-
-.pat-label {
-  font-size: 10px; font-weight: 600;
-  color: var(--gray-300); letter-spacing: 3px;
-  text-transform: uppercase;
-  text-align: center; margin-bottom: 2.5rem;
-}
-
-.pat-logos {
-  display: flex; align-items: center; justify-content: center;
-  gap: 60px; flex-wrap: wrap;
-}
-
-.pat-logo {
-  height: 40px;
-  opacity: 0.4;
-  filter: grayscale(1);
-  transition: all 0.3s;
-  display: flex; align-items: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--green-dark);
-  text-decoration: none;
-}
-
-.pat-logo:hover { opacity: 0.75; filter: grayscale(0); color: var(--green-accent); }
-
-/* ── FOOTER ── */
-footer {
-  background: var(--gray-900);
-  color: var(--white);
-}
-
-.footer-top {
-  padding: 70px 6rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 60px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.footer-brand {}
-
-.footer-logo {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 20px;
-}
-
-.footer-logo-icon {
-  width: 42px; height: 42px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700; font-size: 15px;
-  color: var(--green-dark);
-  flex-shrink: 0;
-}
-
-.footer-logo-name {
-  font-family: var(--font-display);
-  font-size: 14px; font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-}
-
-.footer-desc {
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.7; max-width: 300px;
-  margin-bottom: 24px;
-}
-
-.footer-contact p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.8;
-}
-
-.footer-col-title {
-  font-size: 11px; font-weight: 700;
-  color: var(--gold); letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 20px;
-}
-
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-
-.footer-links a {
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--white); }
-
-.footer-bottom {
-  padding: 24px 6rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-
-.footer-bottom p {
-  font-size: 11px;
-  color: rgba(255,255,255,0.25);
-}
-
-.footer-social {
-  display: flex; gap: 12px;
-}
-
-.footer-social a {
-  width: 34px; height: 34px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  color: rgba(255,255,255,0.4);
-  font-size: 13px;
-  transition: all 0.2s;
-}
-
-.footer-social a:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 1100px) {
-  section, .calendario-section, .patrocinadores-section { padding-left: 2.5rem; padding-right: 2.5rem; }
-  nav { padding: 0 2rem; }
-  .hero-top-bar, .hero-content { padding-left: 2.5rem; padding-right: 2.5rem; }
-  .hero-stats { right: 2.5rem; }
-  .quick-bar { padding: 0 2.5rem; }
-  .footer-top { padding: 50px 2.5rem; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .footer-bottom { padding: 20px 2.5rem; }
-  .nav-links { display: none; }
-  .areas-grid { grid-template-columns: 1fr 1fr; }
-  .calendario-grid { grid-template-columns: 1fr; }
-  .noticias-grid { grid-template-columns: 1fr 1fr; }
-  .noticia-card-featured { grid-column: 1/-1; grid-row: auto; }
-}
-
-@media (max-width: 768px) {
-  .hero-title { font-size: 2.8rem; }
-  .hero-stats { position: static; flex-direction: row; flex-wrap: wrap; margin: 0 2.5rem 3rem; }
-  .hero-content { padding-bottom: 2rem; }
-  .areas-grid { grid-template-columns: 1fr; }
-  .noticias-grid { grid-template-columns: 1fr; }
-  .rankings-section { grid-template-columns: 1fr; }
-  .rankings-col { padding: 60px 2.5rem; }
-  .footer-top { grid-template-columns: 1fr; }
-  .pat-logos { gap: 30px; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federación de Golf de Castilla-La Mancha</title>
+
+<link rel="icon" type="image/png" href="img/favicon_pagina.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">FG</div>
-    <div class="nav-logo-text">
-      <span>Federación de Golf</span>
-      <span>Castilla-La Mancha</span>
-    </div>
-  </a>
+  <div class="nav-logo-icon">
+    <img src="img/favicon_pagina.png" alt="Logo FGCLM" style="height: 40px; width: auto;">
+  </div>
+  <div class="nav-logo-text">
+    <span>Federación de Golf</span>
+    <span>Castilla-La Mancha</span>
+  </div>
+</a>
 
   <ul class="nav-links">
     <li><a href="#sobre">Federación</a></li>
@@ -866,7 +39,6 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
@@ -876,21 +48,21 @@ footer {
   </div>
 
   <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-eyebrow">Federación Oficial</div>
-      <h1 class="hero-title">
-        Golf en el<br>
-        <em>corazón de España</em>
-      </h1>
-      <p class="hero-sub">
-        Promovemos y regulamos el golf en Castilla-La Mancha. Descubre competiciones, clubes, rankings y todo lo que necesitas para disfrutar del golf en nuestra región.
-      </p>
-      <div class="hero-ctas">
-        <a href="#" class="btn-primary">Ver Torneos 2026 →</a>
-        <a href="#" class="btn-secondary">Obtener Licencia</a>
-      </div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Federación Oficial</div>
+    <h1 class="hero-title">
+      Federación de Golf<br>
+      <em>Castilla-La Mancha</em>
+    </h1>
+    <p class="hero-sub">
+      Promovemos y regulamos el golf en Castilla-La Mancha. Descubre competiciones, clubes, rankings y todo lo que necesitas para disfrutar del golf en nuestra región.
+    </p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Ver Torneos 2026 →</a>
+      <a href="#" class="btn-secondary">Obtener Licencia</a>
     </div>
   </div>
+</div>
 
   <div class="hero-stats">
     <div class="hero-stat">
@@ -912,7 +84,6 @@ footer {
   </div>
 </section>
 
-<!-- QUICK ACCESS BAR -->
 <div class="quick-bar">
   <a href="#">
     <div class="quick-bar-icon">🏆</div>
@@ -940,7 +111,6 @@ footer {
   </a>
 </div>
 
-<!-- NOTICIAS -->
 <section class="noticias-section" id="noticias">
   <div class="section-header">
     <div class="section-label">Actualidad</div>
@@ -949,7 +119,6 @@ footer {
 
   <div class="noticias-grid">
 
-    <!-- Noticia destacada -->
     <a href="#" class="noticia-card noticia-card-featured">
       <div class="noticia-thumb">
         <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #0a3d2e 0%, #2d9e6b 100%);">
@@ -964,7 +133,6 @@ footer {
       </div>
     </a>
 
-    <!-- Noticias secundarias -->
     <a href="#" class="noticia-card">
       <div class="noticia-thumb">
         <div class="noticia-thumb-placeholder" style="background: linear-gradient(135deg, #1a3a5c 0%, #378add 100%); font-size: 32px;">🏅</div>
@@ -1020,7 +188,6 @@ footer {
   </div>
 </section>
 
-<!-- ÁREAS DE INTERÉS -->
 <section class="areas-section" id="sobre">
   <div class="section-header">
     <div class="section-label">Navega por la federación</div>
@@ -1086,7 +253,6 @@ footer {
   </div>
 </section>
 
-<!-- CALENDARIO PRÓXIMOS TORNEOS -->
 <section class="calendario-section" id="torneos">
   <div class="section-header">
     <div class="section-label">Agenda 2026</div>
@@ -1180,7 +346,6 @@ footer {
   </div>
 </section>
 
-<!-- RANKINGS -->
 <section class="rankings-section" id="rankings">
   <div class="rankings-col">
     <div class="section-label">Clasificaciones</div>
@@ -1295,20 +460,75 @@ footer {
   </div>
 </section>
 
-<!-- PATROCINADORES -->
 <div class="patrocinadores-section">
-  <div class="pat-label">Patrocinadores y colaboradores</div>
+  <div class="pat-label">Patrocinadores y colaboradores institucionales</div>
+
+ <div class="pat-featured">
+  <a href="https://www.castillalamancha.es/" target="_blank" class="pat-featured-card">
+    <div class="pat-featured-badge">Patrocinador Oficial</div>
+    <img src="img/logo_castilla_la_mancha.png" alt="Junta de Castilla-La Mancha" class="pat-featured-img" style="height:64px; width:auto;" />
+    <div class="pat-featured-name">Junta de Castilla-La Mancha</div>
+  </a>
+    </a>
+
+    <a href="https://www.turismocastillalamancha.es/" target="_blank" class="pat-featured-card">
+      <div class="pat-featured-badge">Colaborador Principal</div>
+      <img src="https://turismo.castillalamancha.es/sites/all/themes/turismocastillalamancha/images/logo.png" alt="Turismo Castilla-La Mancha"
+        class="pat-featured-img" style="height:52px; width:auto;"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="pat-featured-fallback" style="display:none; align-items:center; justify-content:center; height:52px;">
+        <div style="font-family:var(--font-display); font-size:15px; font-weight:700; color:var(--green-dark); text-align:center; line-height:1.2;">
+          🏰 Turismo<br>Castilla-La Mancha
+        </div>
+      </div>
+      <div class="pat-featured-name">Turismo Castilla-La Mancha</div>
+    </a>
+
+    <a href="https://deportes.castillalamancha.es/" target="_blank" class="pat-featured-card">
+      <div class="pat-featured-badge">Colaborador Principal</div>
+      <img src="https://www.fedgolfclm.com/wp-content/uploads/2025/11/IMAGEN_SOMOSDEPORTE3-18-BLANCO-300x212.png" alt="Somos Deporte"
+        class="pat-featured-img" style="height:56px; width:auto;"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="pat-featured-fallback" style="display:none; align-items:center; justify-content:center; height:56px;">
+        <div style="font-family:var(--font-display); font-size:15px; font-weight:700; color:var(--green-dark); text-align:center; line-height:1.2;">
+          🏅 Somos Deporte<br><span style="font-size:11px; font-weight:400;">CLM</span>
+        </div>
+      </div>
+      <div class="pat-featured-name">Somos Deporte CLM</div>
+    </a>
+  </div>
+
+  <div class="pat-divider"></div>
+
   <div class="pat-logos">
-    <a href="#" class="pat-logo">RENAULT<br><span style="font-size:12px; font-weight:300;">Automaor</span></a>
-    <a href="#" class="pat-logo">JOMA</a>
-    <a href="#" class="pat-logo">TOA<br><span style="font-size:10px; font-weight:300;">Shoes</span></a>
-    <a href="#" class="pat-logo">Junta de<br><span style="font-size:10px; font-weight:300;">Castilla-La Mancha</span></a>
-    <a href="#" class="pat-logo">Golf<br><span style="font-size:10px; font-weight:300;">Estudio</span></a>
-    <a href="#" class="pat-logo">RFEG</a>
+    <a href="https://automaor.com.es/" target="_blank" class="pat-logo">
+      <img src="https://www.fedgolfclm.com/wp-content/uploads/2025/04/Automaor-RENAULT-Golf-CLM-banners-05-1.jpg"
+        alt="Renault Automaor"
+        onerror="this.outerHTML='<span style=\'font-family:var(--font-display);font-weight:700;font-size:15px;\'>Renault Automaor</span>'" />
+    </a>
+    <a href="https://www.joma-sport.com/" target="_blank" class="pat-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Joma_logo.svg/200px-Joma_logo.svg.png"
+        alt="Joma"
+        onerror="this.outerHTML='<span style=\'font-family:var(--font-display);font-weight:700;font-size:18px;\'>JOMA</span>'" />
+    </a>
+    <a href="https://toashoes.com/es/" target="_blank" class="pat-logo">
+      <img src="https://www.fedgolfclm.com/wp-content/uploads/2023/10/TOA_logotipo1_200.jpg"
+        alt="TOA Shoes"
+        onerror="this.outerHTML='<span style=\'font-family:var(--font-display);font-weight:700;font-size:18px;\'>TOA</span>'" />
+    </a>
+    <a href="http://www.rfegolf.es/" target="_blank" class="pat-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg/200px-Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg.png"
+        alt="RFEG"
+        onerror="this.outerHTML='<span style=\'font-family:var(--font-display);font-weight:700;font-size:15px;\'>RFEG</span>'" />
+    </a>
+    <a href="http://www.fedgolfclm.com/acuerdo-suscrito-por-la-federacion-de-golf-de-castilla-la-mancha-con-golf-estudio/" class="pat-logo">
+      <img src="http://www.fedgolfclm.com/wp-content/uploads/2021/09/Golf-Estudio-1.jpg"
+        alt="Golf Estudio"
+        onerror="this.outerHTML='<span style=\'font-family:var(--font-body);font-weight:600;font-size:14px;\'>Golf Estudio</span>'" />
+    </a>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1370,15 +590,6 @@ footer {
   </div>
 </footer>
 
-<script>
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 40) {
-    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
