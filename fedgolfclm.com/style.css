@@ -293,7 +293,8 @@ nav {
 .quick-bar {
   background: var(--green-mid);
   padding: 0 6rem;
-  display: flex; align-items: center;
+  display: flex; 
+  align-items: center;
   border-bottom: 2px solid var(--gold);
 }
 
@@ -304,18 +305,94 @@ nav {
   text-decoration: none;
   font-size: 12px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.8px;
-  border-right: 1px solid rgba(255,255,255,0.1);
   transition: all 0.2s;
   white-space: nowrap;
 }
 
-.quick-bar a:first-child { padding-left: 0; }
-.quick-bar a:hover { color: var(--gold); background: rgba(255,255,255,0.04); }
+.quick-bar a:first-child { 
+  padding-left: 0; 
+}
+
+.quick-bar a:hover { 
+  color: var(--gold); 
+  background: rgba(255,255,255,0.04); 
+}
 
 .quick-bar-icon {
-  width: 18px; height: 18px;
-  display: flex; align-items: center; justify-content: center;
+  width: 18px; 
+  height: 18px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   flex-shrink: 0;
+}
+
+
+/* 1. El contenedor actúa como ancla */
+.dropdown-app {
+  position: relative;
+  display: inline-block;
+}
+
+/* 2. Estilos de tu botón actual (adaptados a la imagen) */
+.boton-app-fgclm {
+  background-color: transparent; /* O el color exacto de tu barra */
+  color: white;
+  padding: 15px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+}
+
+/* 3. El cuadro del menú desplegable (Oculto por defecto) */
+.dropdown-contenido {
+  display: none; /* Oculta el menú */
+  position: absolute;
+  background-color: #ffffff; /* Fondo blanco para contraste */
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(246, 244, 244, 0.2);
+  z-index: 100; /* Asegura que el menú quede por encima de las noticias */
+  top: 103%; /* Lo posiciona justo debajo del botón */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+/* 4. Los enlaces dentro del menú */
+.dropdown-contenido a {
+  color: #1a472a; /* Texto verde oscuro institucional */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: center;
+}
+
+/* Quitar el borde del último enlace */
+.dropdown-contenido a:last-child {
+  border-bottom: none;
+}
+
+/* Efecto hover en los enlaces del desplegable */
+.dropdown-contenido a:hover {
+  background-color: #f4f6f5; /* Un gris/verde muy clarito */
+  color: #000;
+}
+
+/* 5. ¡LA MAGIA! Mostrar el menú al pasar el ratón por el contenedor */
+.dropdown-app:hover .dropdown-contenido {
+  display: block;
+}
+
+/* Cambiar el fondo del botón principal al hacer hover para dar feedback */
+.dropdown-app:hover .boton-app-fgclm {
+  color: var(--gold);
+  background: rgba(255,255,255,0.04);
 }
 
 /* ── SECTIONS ── */
