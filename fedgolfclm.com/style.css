@@ -91,7 +91,49 @@ nav {
 .nav-actions {
   display: flex; align-items: center; gap: 10px;
 }
+/* Escondemos el submenú por defecto */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Aparece justo debajo del nav */
+  left: 0;
+  background: var(--green-dark);
+  list-style: none;
+  min-width: 220px;
+  padding: 10px 0;
+  display: none; /* Oculto */
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  border-top: 2px solid var(--gold); /* Detalle elegante como el logo */
+  z-index: 1000;
+}
 
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-menu li a {
+  line-height: 1.4 !important; /* Reseteamos el line-height del nav */
+  padding: 12px 20px !important;
+  font-size: 11px !important;
+  text-transform: none !important; /* Texto normal para submenús largos */
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.85);
+  display: block;
+}
+
+/* Hover en las opciones del submenú */
+.dropdown-menu li a:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--gold) !important;
+}
+
+/* MOSTRAR AL PASAR EL RATÓN */
+.nav-links li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Flecha indicadora opcional para los menús con hijos */
+.nav-links li.dropdown > a::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: 0.5;
+}
 .btn-nav {
   padding: 8px 20px;
   font-family: var(--font-body);
