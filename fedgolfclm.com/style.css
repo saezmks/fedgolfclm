@@ -88,21 +88,23 @@ nav {
 
 .nav-links li a:hover { color: var(--gold); }
 
-.nav-actions {
-  display: flex; align-items: center; gap: 10px;
+/* 1. Asegura que el submenú se posicione respecto al <li> que lo contiene */
+.nav-links li.dropdown {
+  position: relative;
 }
-/* Escondemos el submenú por defecto */
+
+/* 2. Ajusta el menú desplegable */
 .dropdown-menu {
   position: absolute;
-  top: 100%; /* Aparece justo debajo del nav */
-  left: 0;
+  top: 100%; /* Se mantiene justo debajo del nav */
+  left: 0;   /* Ahora se alineará al borde izquierdo del nombre del menú */
   background: var(--green-dark);
   list-style: none;
   min-width: 220px;
   padding: 10px 0;
-  display: none; /* Oculto */
+  display: none; 
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  border-top: 2px solid var(--gold); /* Detalle elegante como el logo */
+  border-top: 2px solid var(--gold); 
   z-index: 1000;
 }
 
