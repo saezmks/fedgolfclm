@@ -7,234 +7,283 @@
   <link rel="icon" type="image/png" href="img/favicon_pagina.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+
+    /* Filtros */
+    .filtros-clubes {
+      background: var(--gray-50);
+      padding: 28px 6rem;
+      border-bottom: 1px solid var(--gray-100);
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    }
+
+    .filtro-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--gray-300); margin-right: 6px;
+    }
+
+    .filtro-btn {
+      padding: 8px 20px;
+      border: 1.5px solid var(--gray-100);
+      background: var(--white);
+      cursor: pointer; font-weight: 600;
+      font-family: var(--font-body);
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gray-600);
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+
+    .filtro-btn.active,
+    .filtro-btn:hover {
+      background: var(--green-dark);
+      color: var(--white);
+      border-color: var(--green-dark);
+    }
+
+    /* Stats cards */
+    .stats-clubes {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .stat-provincia {
+      padding: 24px;
+      text-align: center;
+      border-right: 1px solid var(--gray-100);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .stat-provincia:last-child { border-right: none; }
+    .stat-provincia:hover { background: var(--gray-50); }
+
+    .stat-prov-num {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700;
+      color: var(--green-dark); line-height: 1;
+    }
+
+    .stat-prov-name {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--gray-300); margin-top: 4px;
+    }
+
+    /* Grid de clubes */
+    .clubes-section { background: var(--white); padding: 60px 6rem; }
+
+    .clubes-count {
+      font-size: 12px; color: var(--gray-300);
+      margin-bottom: 2rem;
+    }
+
+    .clubes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .club-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      padding: 28px 24px;
+      transition: all 0.25s;
+      position: relative;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    .club-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(10,61,46,0.08);
+      transform: translateY(-3px);
+    }
+
+    .club-prov-tag {
+      position: absolute; top: 0; right: 0;
+      background: var(--gold);
+      color: var(--green-dark);
+      font-size: 9px; font-weight: 700;
+      padding: 4px 14px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .club-id {
+      font-size: 11px; font-weight: 700;
+      color: var(--gray-300); letter-spacing: 1px;
+    }
+
+    .club-name {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 700;
+      color: var(--green-dark); line-height: 1.2;
+      margin: 0;
+    }
+
+    .club-hoyos {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px;
+      background: var(--green-light);
+      color: var(--green-mid);
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      border-radius: 2px;
+      align-self: flex-start;
+    }
+
+    .club-detail {
+      font-size: 12px; color: var(--gray-600); line-height: 1.5;
+    }
+
+    .club-detail strong { color: var(--gray-900); }
+
+    .club-actions {
+      display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap;
+    }
+
+    .club-btn {
+      padding: 6px 14px;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px;
+    }
+
+    .club-btn-tel {
+      background: var(--green-light); color: var(--green-dark);
+    }
+    .club-btn-tel:hover { background: var(--green-accent); color: var(--white); }
+
+    .club-btn-web {
+      background: var(--gray-50); color: var(--gray-600);
+      border: 1px solid var(--gray-100);
+    }
+    .club-btn-web:hover { background: var(--green-dark); color: var(--white); border-color: var(--green-dark); }
+
+    @media (max-width: 1100px) {
+      .stats-clubes { grid-template-columns: repeat(5, 1fr); }
+      .filtros-clubes { padding: 20px 2.5rem; }
+      .clubes-section { padding: 40px 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .stats-clubes { grid-template-columns: repeat(3, 1fr); }
+      .clubes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">
-      <img src="img/favicon_pagina.png" alt="Logo FGCLM" style="height: 48px; width: auto;">
-    </div>
-    <div class="nav-logo-text">
-      <span>Federación de Golf</span>
-      <span>Castilla-La Mancha</span>
-    </div>
-  </a>
-  <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li class="dropdown">
-      <a href="index.html#sobre">Federación</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Bienvenida del Presidente</a></li>
-        <li><a href="#">Junta Directiva y Asamblea</a></li>
-        <li><a href="#">Comités y Delegaciones</a></li>
-        <li><a href="#">Licencia y Hándicap</a></li>
-        <li><a href="#">Subvenciones</a></li>
-        <li><a href="#">Transparencia</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#">Reglamentos</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Reglas de Golf</a></li>
-        <li><a href="#">Circulares RFEG</a></li>
-        <li><a href="#">Circulares FGCLM</a></li>
-        <li><a href="#">Reglas Locales</a></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#">Rankings</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Rankings Castilla-La Mancha</a></li>
-        <li><a href="#">Circuito 5ª Categoría</a></li>
-      </ul>
-    </li>
-    <li><a href="clubes.html" style="color: var(--gold);">Clubes</a></li>
-    <li class="dropdown">
-      <a href="#">Torneos</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Calendario e Inscripciones</a></li>
-        <li><a href="#">Calendario RFEG</a></li>
-        <li><a href="#">Castilla-La Mancha en Cptos. España</a></li>
-      </ul>
-    </li>
-    <li><a href="escuela.html">Escuela</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="#" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <a href="#" class="btn-nav btn-nav-gold">Área Federados</a>
-  </div>
-</nav>
-
-<!-- HERO -->
 <div class="page-hero">
   <div class="page-hero-content">
     <div class="page-hero-label">Directorio oficial</div>
-    <h1>Clubes y Campos <em>Federados</em></h1>
-  
+    <h1>Clubes <em>Federados</em></h1>
+    <p>Todos los clubes y campos de golf federados en las cinco provincias de Castilla-La Mancha.</p>
   </div>
 </div>
 
-<!-- ESTADÍSTICAS -->
-<section style="background: var(--green-mid); padding: 40px 6rem;">
-  <div style="display: flex; gap: 0; justify-content: center; flex-wrap: wrap;">
-    <div style="padding: 20px 48px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15);">
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold);">12</div>
-      <div style="font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px;">Toledo</div>
-    </div>
-    <div style="padding: 20px 48px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15);">
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold);">9</div>
-      <div style="font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px;">Albacete</div>
-    </div>
-    <div style="padding: 20px 48px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15);">
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold);">8</div>
-      <div style="font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px;">Ciudad Real</div>
-    </div>
-    <div style="padding: 20px 48px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15);">
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold);">7</div>
-      <div style="font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px;">Guadalajara</div>
-    </div>
-    <div style="padding: 20px 48px; text-align: center;">
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold);">6</div>
-      <div style="font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px;">Cuenca</div>
-    </div>
+<!-- STATS POR PROVINCIA -->
+<div class="stats-clubes">
+  <div class="stat-provincia" onclick="filterBy('ALBACETE')">
+    <div class="stat-prov-num" id="cnt-AB">—</div>
+    <div class="stat-prov-name">Albacete</div>
   </div>
-</section>
-
-<!-- LISTADO POR PROVINCIA -->
-<section style="background: var(--white);">
-  <!-- Filtros -->
-  <div style="display: flex; gap: 10px; margin-bottom: 2.5rem; flex-wrap: wrap;">
-    <button class="filtro-btn active" data-prov="todas">Todas las provincias</button>
-    <button class="filtro-btn" data-prov="Toledo">Toledo</button>
-    <button class="filtro-btn" data-prov="Albacete">Albacete</button>
-    <button class="filtro-btn" data-prov="Ciudad Real">Ciudad Real</button>
-    <button class="filtro-btn" data-prov="Guadalajara">Guadalajara</button>
-    <button class="filtro-btn" data-prov="Cuenca">Cuenca</button>
+  <div class="stat-provincia" onclick="filterBy('CIUDAD REAL')">
+    <div class="stat-prov-num" id="cnt-CR">—</div>
+    <div class="stat-prov-name">Ciudad Real</div>
   </div>
-
-  <div class="clubes-grid" id="clubesGrid">
-    <!-- Generado por JS -->
+  <div class="stat-provincia" onclick="filterBy('CUENCA')">
+    <div class="stat-prov-num" id="cnt-CU">—</div>
+    <div class="stat-prov-name">Cuenca</div>
   </div>
-</section>
-
-<footer>
-  <div class="footer-top footer-top-3col">
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <div class="footer-logo-icon">FG</div>
-        <div class="footer-logo-name">Federación de Golf<br>de Castilla-La Mancha</div>
-      </div>
-      <p class="footer-desc">Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte del golf en las cinco provincias de la región.</p>
-      <div class="footer-contact">
-        <p>Plaza de España 1, Primera Planta, Local 8</p>
-        <p>19200 Azuqueca de Henares (Guadalajara)</p>
-        <p>Teléfono: 949-262300</p>
-        <p>federacion@fedgolfclm.com</p>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Servicios</div>
-      <ul class="footer-links">
-        <li><a href="#">Licencia y Hándicap</a></li>
-        <li><a href="#">Trámites y Cuotas</a></li>
-        <li><a href="#">Seguro de Accidente</a></li>
-        <li><a href="#">Subvenciones</a></li>
-        <li><a href="#">APP FGCLM</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Legal</div>
-      <ul class="footer-links">
-        <li><a href="#">Aviso Legal</a></li>
-        <li><a href="#">Política de Privacidad</a></li>
-        <li><a href="#">Política de Cookies</a></li>
-        <li><a href="#">Reglas de Golf</a></li>
-        <li><a href="#">Circulares FGCLM</a></li>
-      </ul>
-    </div>
+  <div class="stat-provincia" onclick="filterBy('GUADALAJARA')">
+    <div class="stat-prov-num" id="cnt-GU">—</div>
+    <div class="stat-prov-name">Guadalajara</div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
-    <div class="footer-social">
-      <a href="https://www.facebook.com/fedgolfclm/" target="_blank">f</a>
-      <a href="https://www.instagram.com/fedgolfclm" target="_blank">ig</a>
-    </div>
+  <div class="stat-provincia" onclick="filterBy('TOLEDO')">
+    <div class="stat-prov-num" id="cnt-TO">—</div>
+    <div class="stat-prov-name">Toledo</div>
   </div>
-</footer>
+</div>
 
-<style>
-  .filtro-btn {
-    padding: 8px 18px;
-    border: 1.5px solid var(--gray-100);
-    background: var(--white);
-    color: var(--gray-600);
-    font-family: var(--font-body);
-    font-size: 12px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.8px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filtro-btn:hover, .filtro-btn.active {
-    background: var(--green-dark);
-    color: var(--white);
-    border-color: var(--green-dark);
-  }
-</style>
+<!-- FILTROS -->
+<div class="filtros-clubes">
+  <span class="filtro-label">Filtrar por:</span>
+  <button class="filtro-btn active" onclick="filterBy('TODOS')">Todos</button>
+  <button class="filtro-btn" onclick="filterBy('ALBACETE')">Albacete</button>
+  <button class="filtro-btn" onclick="filterBy('CIUDAD REAL')">Ciudad Real</button>
+  <button class="filtro-btn" onclick="filterBy('CUENCA')">Cuenca</button>
+  <button class="filtro-btn" onclick="filterBy('GUADALAJARA')">Guadalajara</button>
+  <button class="filtro-btn" onclick="filterBy('TOLEDO')">Toledo</button>
+</div>
 
-<script src="app.js"></script>
+<!-- LISTADO -->
+<div class="clubes-section">
+  <div class="clubes-count" id="clubesCount"></div>
+  <div class="clubes-grid" id="contenedor-clubes"></div>
+</div>
+
+<script src="shared.js"></script>
 <script>
-  const toggle = document.getElementById('navToggle');
-  const navL   = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => {
-    navL.classList.toggle('nav-open');
-    toggle.classList.toggle('active');
-  });
-
-  const CLUBES = [
-    { nombre: 'Club de Golf Layos', provincia: 'Toledo', lugar: 'Layos, Toledo', hoyos: 18, info: '18 hoyos · Par 72 · Campo campeonato' },
-    { nombre: 'Golf Torrijos', provincia: 'Toledo', lugar: 'Torrijos, Toledo', hoyos: 9, info: '9 hoyos · Par 36 · Escuela propia' },
-    { nombre: 'Golf Cifuentes', provincia: 'Guadalajara', lugar: 'Cifuentes, Guadalajara', hoyos: 9, info: '9 hoyos · Par 34 · Campo serrano' },
-    { nombre: 'Club de Golf Las Pinaíllas', provincia: 'Albacete', lugar: 'Albacete', hoyos: 18, info: '18 hoyos · Par 72 · Sede regional' },
-    { nombre: 'Golf Cuenca', provincia: 'Cuenca', lugar: 'Cuenca capital', hoyos: 9, info: '9 hoyos · Par 35 · Campo urbano' },
-    { nombre: 'Club de Golf La Vereda', provincia: 'Toledo', lugar: 'Sierra de San Vicente, Toledo', hoyos: 9, info: '9 hoyos · Par 36 · Campos cortos' },
-    { nombre: 'Real Club de Golf Toledo', provincia: 'Toledo', lugar: 'Toledo capital', hoyos: 18, info: '18 hoyos · Par 71 · Club histórico' },
-    { nombre: 'Golf Albacete Norte', provincia: 'Albacete', lugar: 'Albacete provincia', hoyos: 9, info: '9 hoyos · Par 34 · Pitch & Putt' },
-    { nombre: 'Club de Golf El Robledal', provincia: 'Ciudad Real', lugar: 'Ciudad Real', hoyos: 18, info: '18 hoyos · Par 72 · Circuito profesional' },
-    { nombre: 'Club de Golf Valdepeñas', provincia: 'Ciudad Real', lugar: 'Valdepeñas', hoyos: 9, info: '9 hoyos · Par 36 · Zona vinícola' },
-    { nombre: 'Golf Azuqueca', provincia: 'Guadalajara', lugar: 'Azuqueca de Henares', hoyos: 9, info: '9 hoyos · Par 34 · Sede federativa' },
-    { nombre: 'Club de Golf Sigüenza', provincia: 'Guadalajara', lugar: 'Sigüenza', hoyos: 9, info: '9 hoyos · Par 35 · Entorno medieval' },
-    { nombre: 'Golf Tomelloso', provincia: 'Ciudad Real', lugar: 'Tomelloso', hoyos: 9, info: '9 hoyos · Par 36 · La Mancha' },
-    { nombre: 'Club de Golf Cuenca Sur', provincia: 'Cuenca', lugar: 'Motilla del Palancar', hoyos: 9, info: '9 hoyos · Par 34' },
-    { nombre: 'Golf Talavera CLM', provincia: 'Toledo', lugar: 'Talavera de la Reina', hoyos: 18, info: '18 hoyos · Par 71 · Gran capacidad' },
+  const CLUBES_DATA = [
+    { id:'8801', nombre:'Club de Golf Talavera', provincia:'TOLEDO', direccion:'Corredera de Cristo, 14, 45600', campo:'Ctra. Los Navalmorales, Km. 1,5 (Cerro Negro)', hoyos:'9', tel:'925 80 40 61', email:'golftalavera@gmail.com', web:'' },
+    { id:'8802', nombre:'Club de Golf La Vereda', provincia:'CUENCA', direccion:'Plaza del Mercado s/n, 3ª Planta, 16001', campo:'Ctra. De Tragacete, Km 18', hoyos:'18 (Rústico)', tel:'606 25 77 83', email:'laveredagolfclub@gmail.com', web:'laveredagolf.webnode.es' },
+    { id:'8803', nombre:'Club Municipal La Lagunilla', provincia:'ALBACETE', direccion:'Apartado de Correos, 16, 02610 El Bonillo', campo:'Ctra. De Ossa de Montiel, Km 2', hoyos:'9', tel:'967 37 06 70', email:'golflagunillabonillo@gmail.com', web:'' },
+    { id:'8804', nombre:'Club de Golf Tomelloso', provincia:'CIUDAD REAL', direccion:'C/ Asturias, 11, 13700 Tomelloso', campo:'Ctra. Ossa de Montiel, Km 12', hoyos:'9', tel:'655 84 41 26', email:'secretario@clubdegolftomelloso.com', web:'' },
+    { id:'8806', nombre:'Campo de Golf de Cifuentes', provincia:'GUADALAJARA', direccion:'C/ Remedio, 4, 19420 Cifuentes', campo:'Camino de Cifuentes a Ruguilla, Km. 2,6', hoyos:'9 (Rústico)', tel:'630 15 85 41', email:'jomargo@live.com', web:'' },
+    { id:'8807', nombre:'Club de Golf Cuesta Blanca', provincia:'CUENCA', direccion:'16230 Villanueva de la Jara', campo:'C/ del Cementerio de Pozoseco a Valhermoso, Km 2', hoyos:'9 (Rústico)', tel:'967 49 31 08', email:'correo@clubdegolfcuestablanca.es', web:'' },
+    { id:'8808', nombre:'Olalla Golf', provincia:'CUENCA', direccion:'16196 Villar de Olalla', campo:'Ctra. Nac. 420, Km 430', hoyos:'18', tel:'969 26 71 98', email:'clubdeportivoolallagolf@gmail.com', web:'www.cuencagolfclub.es' },
+    { id:'8814', nombre:'Club de Golf Mudela', provincia:'CIUDAD REAL', direccion:'13300 Valdepeñas', campo:'Rústico', hoyos:'9', tel:'616 43 43 77', email:'golfmudela@telefonica.net', web:'' },
+    { id:'8818', nombre:'Club de Golf Layos', provincia:'TOLEDO', direccion:'45123 Layos', campo:'Ctra. De Toledo a Piedrabuena, Km. 12,5', hoyos:'18', tel:'925 37 71 70', email:'info@layosgolf.com', web:'www.layosgolf.com' },
+    { id:'8819', nombre:'Las Pinaíllas Golf', provincia:'ALBACETE', direccion:'02080 Albacete', campo:'Ctra. Motilleja, Km 12', hoyos:'18', tel:'967 19 22 00', email:'info@clubdegolflaspinaillas.com', web:'' },
+    { id:'8820', nombre:'Club de Golf Torrijos', provincia:'TOLEDO', direccion:'Noves, Toledo', campo:'Ctra. Torrijos Fuensalida, Km 2', hoyos:'9', tel:'925 77 22 30', email:'clubgolftorrijos@gmail.com', web:'' },
+    { id:'8828', nombre:'Club Palomarejos Golf', provincia:'TOLEDO', direccion:'45600 Talavera de la Reina', campo:'Ctra. N-V, Km 113', hoyos:'18', tel:'925 72 15 65', email:'tienda@palomarejosgolf.com', web:'www.palomarejosgolf.com' },
+    { id:'8837', nombre:'Club de Golf La Caminera', provincia:'CIUDAD REAL', direccion:'13700 Torrenueva', campo:'De la Vega - Camino de Altamar s/n', hoyos:'18 + 18 P&P', tel:'926 34 47 33', email:'golfca@salleshotels.com', web:'www.lacamineragolf.es' },
+    { id:'8845', nombre:'Cabanillas Casa de Campo', provincia:'GUADALAJARA', direccion:'19171 Cabanillas del Campo', campo:'Paraje de la Dehesa s/n', hoyos:'18 + 9 P&P', tel:'949 324 600', email:'info@cabanillascasadecampogolf.es', web:'www.cabanillascasadecampogolf.es' },
   ];
 
-  function renderClubes(prov) {
-    const grid = document.getElementById('clubesGrid');
-    const filtrados = prov === 'todas' ? CLUBES : CLUBES.filter(c => c.provincia === prov);
-    grid.innerHTML = filtrados.map(c => `
-      <a href="#" class="club-card">
-        <span class="club-provincia">${c.provincia}</span>
-        <div class="club-nombre">${c.nombre}</div>
-        <div class="club-lugar">📍 ${c.lugar}</div>
-        <div class="club-info">⛳ ${c.info}</div>
-      </a>
+  function render(data) {
+    document.getElementById('clubesCount').textContent =
+      `${data.length} club${data.length !== 1 ? 'es' : ''} mostrado${data.length !== 1 ? 's' : ''}`;
+
+    document.getElementById('contenedor-clubes').innerHTML = data.map(c => `
+      <div class="club-card">
+        <span class="club-prov-tag">${c.provincia}</span>
+        <div class="club-id">${c.id}</div>
+        <h3 class="club-name">${c.nombre}</h3>
+        <span class="club-hoyos">⛳ ${c.hoyos} hoyos</span>
+        <div class="club-detail"><strong>Sede:</strong> ${c.direccion}</div>
+        <div class="club-detail"><strong>Campo:</strong> ${c.campo}</div>
+        <div class="club-detail"><strong>Email:</strong> <a href="mailto:${c.email}" style="color:var(--green-accent);text-decoration:none;">${c.email}</a></div>
+        <div class="club-actions">
+          <a href="tel:${c.tel.replace(/\s/g,'')}" class="club-btn club-btn-tel">📞 ${c.tel}</a>
+          ${c.web ? `<a href="https://${c.web}" target="_blank" rel="noopener" class="club-btn club-btn-web">🌐 Web</a>` : ''}
+        </div>
+      </div>
     `).join('');
   }
 
-  document.querySelectorAll('.filtro-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderClubes(btn.dataset.prov);
+  function filterBy(prov) {
+    document.querySelectorAll('.filtro-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.trim().toUpperCase() === prov || (prov === 'TODOS' && b.textContent.trim() === 'Todos'));
     });
+    const filtered = prov === 'TODOS' ? CLUBES_DATA : CLUBES_DATA.filter(c => c.provincia === prov);
+    render(filtered);
+  }
+
+  // Stats por provincia
+  const provMap = { 'ALBACETE': 'AB', 'CIUDAD REAL': 'CR', 'CUENCA': 'CU', 'GUADALAJARA': 'GU', 'TOLEDO': 'TO' };
+  Object.entries(provMap).forEach(([prov, key]) => {
+    const cnt = CLUBES_DATA.filter(c => c.provincia === prov).length;
+    document.getElementById('cnt-' + key).textContent = cnt;
   });
 
-  renderClubes('todas');
+  render(CLUBES_DATA);
 </script>
 </body>
 </html>
