@@ -7,225 +7,451 @@
   <link rel="icon" type="image/png" href="img/favicon_pagina.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+
+    /* Resumen de reserva */
+    .reserva-summary {
+      background: var(--green-light);
+      padding: 28px 6rem;
+      border-bottom: 2px solid rgba(45,158,107,0.2);
+    }
+
+    .reserva-summary-inner {
+      display: flex; gap: 32px; flex-wrap: wrap; align-items: center;
+    }
+
+    .reserva-dato {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+
+    .reserva-dato-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--green-mid);
+    }
+
+    .reserva-dato-valor {
+      font-size: 15px; font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .reserva-dato-separador {
+      width: 1px; height: 40px;
+      background: rgba(45,158,107,0.25);
+    }
+
+    /* Formulario */
+    .form-section { background: var(--white); padding: 80px 6rem; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin-top: 2.5rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--gray-600);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-100);
+      border-radius: 3px;
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--gray-900);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-accent);
+      box-shadow: 0 0 0 3px rgba(45,158,107,0.08);
+    }
+
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #e05c5c;
+    }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-group .error-msg {
+      font-size: 11px; color: #e05c5c;
+      display: none;
+    }
+
+    .form-group.has-error .error-msg { display: block; }
+    .form-group.has-error input,
+    .form-group.has-error select { border-color: #e05c5c; }
+
+    /* Checkbox */
+    .form-check {
+      display: flex; align-items: flex-start; gap: 12px;
+      grid-column: 1 / -1;
+    }
+
+    .form-check input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0;
+      margin-top: 2px; cursor: pointer;
+      accent-color: var(--green-accent);
+      padding: 0; border: none;
+    }
+
+    .form-check label {
+      font-size: 13px; color: var(--gray-600); line-height: 1.5;
+      text-transform: none; letter-spacing: 0; font-weight: 400;
+      cursor: pointer;
+    }
+
+    .form-check a { color: var(--green-accent); }
+
+    /* Submit */
+    .form-submit { margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+    /* Éxito */
+    .form-success {
+      display: none;
+      background: var(--green-light);
+      border: 1px solid var(--green-accent);
+      border-radius: 4px;
+      padding: 40px 32px;
+      max-width: 700px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .form-success-icon { font-size: 56px; margin-bottom: 16px; }
+
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 700;
+      color: var(--green-dark); margin-bottom: 10px;
+    }
+
+    .form-success p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+    .form-success-actions { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* Info lateral */
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 80px;
+      max-width: 1100px;
+    }
+
+    .form-sidebar {}
+
+    .sidebar-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      padding: 28px 24px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card-title {
+      font-family: var(--font-display);
+      font-size: 16px; font-weight: 700;
+      color: var(--green-dark); margin-bottom: 16px;
+    }
+
+    .sidebar-info-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-info-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+    .sidebar-info-text { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+    .sidebar-info-text strong { color: var(--green-dark); display: block; margin-bottom: 2px; }
+
+    @media (max-width: 1000px) {
+      .form-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-section { padding: 50px 2.5rem; }
+      .reserva-summary { padding: 20px 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .form-check { grid-column: 1; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">
-      <img src="img/favicon_pagina.png" alt="Logo FGCLM" style="height: 48px; width: auto;">
-    </div>
-    <div class="nav-logo-text">
-      <span>Federación de Golf</span>
-      <span>Castilla-La Mancha</span>
-    </div>
-  </a>
-  <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="clubes.html">Clubes</a></li>
-    <li><a href="escuela.html">Escuela</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="#" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <a href="#" class="btn-nav btn-nav-gold">Área Federados</a>
-  </div>
-</nav>
-
-<div class="page-hero" style="min-height: auto;">
+<div class="page-hero" style="min-height: 240px;">
   <div class="page-hero-content">
     <div class="page-hero-label">Escuela FGCLM</div>
     <h1>Formulario de <em>Inscripción</em></h1>
-    <p>Completa tus datos para confirmar tu plaza en la clase seleccionada. Recibirás un correo de confirmación con toda la información necesaria.</p>
+    <p>Completa tus datos para confirmar tu plaza en la clase seleccionada.</p>
   </div>
 </div>
 
-<!-- RESUMEN DE LA RESERVA -->
-<section style="background: var(--green-light); padding: 32px 6rem;">
-  <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: center;" id="reservaSummary">
-    <!-- Rellenado por JS -->
+<!-- RESUMEN DE RESERVA -->
+<div class="reserva-summary">
+  <div class="reserva-summary-inner" id="reservaSummary">
+    <div class="reserva-dato">
+      <span class="reserva-dato-label">Clase</span>
+      <span class="reserva-dato-valor" id="res-clase">—</span>
+    </div>
+    <div class="reserva-dato-separador"></div>
+    <div class="reserva-dato">
+      <span class="reserva-dato-label">Fecha</span>
+      <span class="reserva-dato-valor" id="res-fecha">—</span>
+    </div>
+    <div class="reserva-dato-separador"></div>
+    <div class="reserva-dato">
+      <span class="reserva-dato-label">Horario</span>
+      <span class="reserva-dato-valor" id="res-hora">—</span>
+    </div>
+    <div class="reserva-dato-separador"></div>
+    <div class="reserva-dato">
+      <span class="reserva-dato-label">Lugar</span>
+      <span class="reserva-dato-valor">Escuela FGCLM · Azuqueca</span>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- FORMULARIO -->
 <section class="form-section">
-  <div class="section-header">
-    <div class="section-label">Datos del inscrito</div>
-    <h2 class="section-title">Completa tu inscripción</h2>
-  </div>
+  <div class="form-layout">
+    <div>
+      <div class="section-header">
+        <div class="section-label">Datos del inscrito</div>
+        <h2 class="section-title">Completa tu inscripción</h2>
+      </div>
 
-  <div id="formSuccess" style="display: none; background: var(--green-light); border: 1px solid var(--green-accent); border-radius: 8px; padding: 32px; max-width: 700px; text-align: center; margin-bottom: 32px;">
-    <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
-    <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px;">¡Inscripción completada!</div>
-    <p style="color: var(--gray-600); font-size: 14px; line-height: 1.7;">Hemos recibido tu solicitud correctamente. En breve recibirás un correo de confirmación con todos los detalles de tu clase.</p>
-    <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-      <a href="escuela.html" class="btn-primary" style="background: var(--green-dark); color: var(--white);">Volver a la Escuela</a>
-      <a href="index.html" class="btn-secondary" style="color: var(--green-dark); border-color: var(--green-dark);">Ir al Inicio</a>
-    </div>
-  </div>
+      <!-- Mensaje de éxito -->
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✅</div>
+        <h3>¡Inscripción completada!</h3>
+        <p>Hemos recibido tu solicitud correctamente. En breve recibirás un correo de confirmación con todos los detalles de tu clase.</p>
+        <div class="form-success-actions">
+          <a href="escuela.html" class="btn-primary" style="background:var(--green-dark);color:var(--white);">Volver a la Escuela</a>
+          <a href="index.html" class="btn-secondary">Ir al Inicio</a>
+        </div>
+      </div>
 
-  <form id="inscripcionForm" novalidate>
-    <div class="form-grid">
-      <div class="form-group">
-        <label for="nombre">Nombre *</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-      </div>
-      <div class="form-group">
-        <label for="apellidos">Apellidos *</label>
-        <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Correo electrónico *</label>
-        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
-      </div>
-      <div class="form-group">
-        <label for="telefono">Teléfono de contacto *</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="600 000 000" required>
-      </div>
-      <div class="form-group">
-        <label for="dni">DNI / NIE</label>
-        <input type="text" id="dni" name="dni" placeholder="12345678A">
-      </div>
-      <div class="form-group">
-        <label for="nacimiento">Fecha de nacimiento</label>
-        <input type="date" id="nacimiento" name="nacimiento">
-      </div>
-      <div class="form-group">
-        <label for="nivel">Nivel actual</label>
-        <select id="nivel" name="nivel">
-          <option value="">Selecciona tu nivel</option>
-          <option value="sin-experiencia">Sin experiencia previa</option>
-          <option value="principiante">Principiante (sin hándicap)</option>
-          <option value="hdcp-54-36">Hándicap 36–54</option>
-          <option value="hdcp-36-18">Hándicap 18–36</option>
-          <option value="hdcp-18">Hándicap inferior a 18</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="como">¿Cómo nos conociste?</label>
-        <select id="como" name="como">
-          <option value="">Selecciona una opción</option>
-          <option value="web">Web FGCLM</option>
-          <option value="rrss">Redes sociales</option>
-          <option value="club">A través de un club</option>
-          <option value="amigo">Recomendación</option>
-          <option value="otro">Otro</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label for="observaciones">Observaciones o necesidades especiales</label>
-        <textarea id="observaciones" name="observaciones" placeholder="Si tienes alguna lesión, necesidad especial o deseas añadir cualquier información relevante, indícala aquí."></textarea>
-      </div>
-      <div class="form-group full" style="flex-direction: row; align-items: flex-start; gap: 12px;">
-        <input type="checkbox" id="privacidad" name="privacidad" style="width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;" required>
-        <label for="privacidad" style="text-transform: none; letter-spacing: 0; font-size: 13px; font-weight: 400; color: var(--gray-600); cursor: pointer;">
-          He leído y acepto la <a href="#" style="color: var(--green-accent);">Política de Privacidad</a> de la Federación de Golf de Castilla-La Mancha y consiento el tratamiento de mis datos personales para la gestión de la inscripción. *
-        </label>
-      </div>
-      <div class="form-submit full">
-        <button type="submit" class="btn-primary" style="background: var(--green-dark); color: var(--white); border: none; cursor: pointer; font-family: var(--font-body);">
-          Confirmar inscripción →
-        </button>
-      </div>
+      <form id="inscripcionForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group" id="g-nombre">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+            <span class="error-msg">Por favor, introduce tu nombre.</span>
+          </div>
+
+          <div class="form-group" id="g-apellidos">
+            <label for="apellidos">Apellidos *</label>
+            <input type="text" id="apellidos" placeholder="Tus apellidos" required autocomplete="family-name">
+            <span class="error-msg">Por favor, introduce tus apellidos.</span>
+          </div>
+
+          <div class="form-group" id="g-email">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" placeholder="correo@ejemplo.com" required autocomplete="email">
+            <span class="error-msg">Introduce un correo electrónico válido.</span>
+          </div>
+
+          <div class="form-group" id="g-telefono">
+            <label for="telefono">Teléfono de contacto *</label>
+            <input type="tel" id="telefono" placeholder="600 000 000" required autocomplete="tel">
+            <span class="error-msg">Por favor, introduce un teléfono.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="dni">DNI / NIE</label>
+            <input type="text" id="dni" placeholder="12345678A" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="nacimiento" autocomplete="bday">
+          </div>
+
+          <div class="form-group">
+            <label for="nivel">Nivel actual</label>
+            <select id="nivel">
+              <option value="">Selecciona tu nivel</option>
+              <option value="sin-experiencia">Sin experiencia previa</option>
+              <option value="principiante">Principiante (sin hándicap)</option>
+              <option value="hdcp-54-36">Hándicap 36–54</option>
+              <option value="hdcp-36-18">Hándicap 18–36</option>
+              <option value="hdcp-18">Hándicap inferior a 18</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="como">¿Cómo nos conociste?</label>
+            <select id="como">
+              <option value="">Selecciona una opción</option>
+              <option value="web">Web FGCLM</option>
+              <option value="rrss">Redes sociales</option>
+              <option value="club">A través de un club</option>
+              <option value="amigo">Recomendación</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="observaciones">Observaciones o necesidades especiales</label>
+            <textarea id="observaciones" placeholder="Si tienes alguna lesión, necesidad especial o deseas añadir información relevante, indícala aquí."></textarea>
+          </div>
+
+          <div class="form-check" id="g-privacidad">
+            <input type="checkbox" id="privacidad" required>
+            <label for="privacidad">
+              He leído y acepto la <a href="#">Política de Privacidad</a> de la FGCLM y autorizo el tratamiento de mis datos para gestionar esta inscripción. *
+            </label>
+          </div>
+
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" style="background:var(--green-dark);color:var(--white);">
+            Confirmar inscripción →
+          </button>
+          <a href="escuela.html" class="btn-secondary">Cancelar</a>
+        </div>
+      </form>
     </div>
-  </form>
+
+    <!-- SIDEBAR -->
+    <aside class="form-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">📍 Localización</div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">🗺️</span>
+          <div class="sidebar-info-text">
+            <strong>Escuela FGCLM</strong>
+            Plaza de España 1, 1ª Planta<br>
+            19200 Azuqueca de Henares (Guadalajara)
+          </div>
+        </div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">📞</span>
+          <div class="sidebar-info-text">
+            <strong>Teléfono</strong>
+            <a href="tel:949262300" style="color:var(--green-accent);">949-262300</a>
+          </div>
+        </div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">✉️</span>
+          <div class="sidebar-info-text">
+            <strong>Email</strong>
+            <a href="mailto:federacion@fedgolfclm.com" style="color:var(--green-accent);">federacion@fedgolfclm.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">ℹ️ Información útil</div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">⏱️</span>
+          <div class="sidebar-info-text">
+            <strong>Confirmación</strong>
+            Recibirás un email de confirmación en menos de 24h.
+          </div>
+        </div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">💳</span>
+          <div class="sidebar-info-text">
+            <strong>Pago</strong>
+            El pago se realiza el primer día de clase en las instalaciones.
+          </div>
+        </div>
+        <div class="sidebar-info-item">
+          <span class="sidebar-info-icon">🔄</span>
+          <div class="sidebar-info-text">
+            <strong>Cancelación</strong>
+            Puedes cancelar hasta 24h antes sin coste alguno.
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card" style="background:var(--green-dark);border-color:var(--green-dark);">
+        <div class="sidebar-card-title" style="color:var(--gold);">🎓 ¿Tienes dudas?</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:16px;">
+          Si no encuentras la clase que buscas o necesitas información adicional, contáctanos directamente.
+        </p>
+        <a href="mailto:federacion@fedgolfclm.com" class="btn-primary" style="width:100%;justify-content:center;">Contactar →</a>
+      </div>
+    </aside>
+  </div>
 </section>
 
-<footer>
-  <div class="footer-top footer-top-3col">
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <div class="footer-logo-icon">FG</div>
-        <div class="footer-logo-name">Federación de Golf<br>de Castilla-La Mancha</div>
-      </div>
-      <p class="footer-desc">Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte del golf en las cinco provincias de la región.</p>
-      <div class="footer-contact">
-        <p>Plaza de España 1, Primera Planta, Local 8</p>
-        <p>19200 Azuqueca de Henares (Guadalajara)</p>
-        <p>Teléfono: 949-262300</p>
-        <p>federacion@fedgolfclm.com</p>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Servicios</div>
-      <ul class="footer-links">
-        <li><a href="#">Licencia y Hándicap</a></li>
-        <li><a href="#">Trámites y Cuotas</a></li>
-        <li><a href="#">Seguro de Accidente</a></li>
-        <li><a href="#">Subvenciones</a></li>
-        <li><a href="#">APP FGCLM</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Legal</div>
-      <ul class="footer-links">
-        <li><a href="#">Aviso Legal</a></li>
-        <li><a href="#">Política de Privacidad</a></li>
-        <li><a href="#">Política de Cookies</a></li>
-        <li><a href="#">Reglas de Golf</a></li>
-        <li><a href="#">Circulares FGCLM</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
-    <div class="footer-social">
-      <a href="https://www.facebook.com/fedgolfclm/" target="_blank">f</a>
-      <a href="https://www.instagram.com/fedgolfclm" target="_blank">ig</a>
-    </div>
-  </div>
-</footer>
-
-<script src="app.js"></script>
+<script src="shared.js"></script>
 <script>
-  // Hamburguesa
-  const toggle = document.getElementById('navToggle');
-  const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('nav-open');
-    toggle.classList.toggle('active');
-  });
-
-  // Mostrar resumen de reserva desde URL params
+  /* Rellenar resumen desde URL params */
   const params = new URLSearchParams(window.location.search);
-  const fecha = params.get('fecha') || 'Por confirmar';
-  const hora  = params.get('hora')  || 'Por confirmar';
-  const tipo  = params.get('tipo')  || 'Clase de golf';
+  const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-  document.getElementById('reservaSummary').innerHTML = `
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <span style="font-size: 22px;">📅</span>
-      <div><div style="font-size: 10px; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: 1px;">Fecha</div>
-      <div style="font-size: 15px; font-weight: 700; color: var(--green-dark);">${fecha}</div></div>
-    </div>
-    <div style="width: 1px; height: 40px; background: var(--green-accent); opacity: 0.3;"></div>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <span style="font-size: 22px;">🕘</span>
-      <div><div style="font-size: 10px; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: 1px;">Horario</div>
-      <div style="font-size: 15px; font-weight: 700; color: var(--green-dark);">${hora}</div></div>
-    </div>
-    <div style="width: 1px; height: 40px; background: var(--green-accent); opacity: 0.3;"></div>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <span style="font-size: 22px;">🎓</span>
-      <div><div style="font-size: 10px; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: 1px;">Modalidad</div>
-      <div style="font-size: 15px; font-weight: 700; color: var(--green-dark);">${tipo}</div></div>
-    </div>
-  `;
+  if (params.get('clase')) document.getElementById('res-clase').textContent = decodeURIComponent(params.get('clase'));
+  if (params.get('dia') && params.get('mes')) {
+    document.getElementById('res-fecha').textContent =
+      `${params.get('dia')} de ${MESES[parseInt(params.get('mes')) - 1]}`;
+  }
+  if (params.get('hora')) document.getElementById('res-hora').textContent = params.get('hora');
 
-  // Submit simulado
+  /* Validación y envío */
   document.getElementById('inscripcionForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const privacidad = document.getElementById('privacidad').checked;
-    if (!privacidad) {
-      alert('Debes aceptar la Política de Privacidad para continuar.');
-      return;
+    let valid = true;
+
+    // Campos requeridos
+    ['nombre', 'apellidos', 'email', 'telefono'].forEach(id => {
+      const input = document.getElementById(id);
+      const group = document.getElementById('g-' + id);
+      if (!input.value.trim()) {
+        group.classList.add('has-error'); valid = false;
+      } else {
+        group.classList.remove('has-error');
+      }
+    });
+
+    // Email format
+    const emailEl = document.getElementById('email');
+    if (emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+      document.getElementById('g-email').classList.add('has-error'); valid = false;
     }
-    document.getElementById('inscripcionForm').style.display = 'none';
+
+    // Privacidad
+    const privEl = document.getElementById('privacidad');
+    const privGroup = document.getElementById('g-privacidad');
+    if (!privEl.checked) {
+      privGroup.style.outline = '2px solid #e05c5c'; valid = false;
+    } else {
+      privGroup.style.outline = '';
+    }
+
+    if (!valid) return;
+
+    // Simular éxito
+    this.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
-    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Limpiar errores al escribir
+  document.querySelectorAll('.form-group input, .form-group select').forEach(el => {
+    el.addEventListener('input', () => {
+      el.closest('.form-group').classList.remove('has-error');
+    });
   });
 </script>
 </body>
