@@ -1,18 +1,13 @@
 /**
  * shared.js — Header y Footer compartido
  * Federación de Golf de Castilla-La Mancha
- *
- * Inyecta el nav y el footer en todas las páginas secundarias
- * y gestiona el menú hamburguesa para móvil.
  */
 
 (function () {
   'use strict';
 
-  /* ── Detectar página activa para resaltar enlace ── */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  /* ── HTML del NAV ── */
   const NAV_HTML = `
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">
@@ -31,40 +26,40 @@
 
   <ul class="nav-links" id="navLinks">
     <li class="dropdown">
-      <a href="index.html#sobre">Federación</a>
+      <a href="presidente.html">Federación</a>
       <ul class="dropdown-menu">
-        <li><a href="#">Bienvenida del Presidente</a></li>
-        <li><a href="#">Junta Directiva y Asamblea</a></li>
-        <li><a href="#">Comités y Delegaciones</a></li>
-        <li><a href="#">Licencia y Hándicap</a></li>
-        <li><a href="#">Subvenciones</a></li>
-        <li><a href="#">Transparencia</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="presidente.html" data-page="presidente.html">Bienvenida del Presidente</a></li>
+        <li><a href="junta.html" data-page="junta.html">Junta Directiva y Asamblea</a></li>
+        <li><a href="comites.html" data-page="comites.html">Comités y Delegaciones</a></li>
+        <li><a href="licencia.html" data-page="licencia.html">Licencia y Hándicap</a></li>
+        <li><a href="subvenciones.html" data-page="subvenciones.html">Subvenciones</a></li>
+        <li><a href="transparencia.html" data-page="transparencia.html">Transparencia</a></li>
+        <li><a href="contacto.html" data-page="contacto.html">Contacto</a></li>
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#">Reglamentos</a>
+      <a href="reglas-golf.html">Reglamentos</a>
       <ul class="dropdown-menu">
-        <li><a href="#">Reglas de Golf</a></li>
-        <li><a href="#">Circulares RFEG</a></li>
-        <li><a href="#">Circulares FGCLM</a></li>
-        <li><a href="#">Reglas Locales</a></li>
+        <li><a href="reglas-golf.html" data-page="reglas-golf.html">Reglas de Golf</a></li>
+        <li><a href="circulares.html#tab-rfeg" data-page="circulares.html">Circulares RFEG</a></li>
+        <li><a href="circulares.html#tab-fgclm" data-page="circulares.html">Circulares FGCLM</a></li>
+        <li><a href="circulares.html#tab-locales" data-page="circulares.html">Reglas Locales</a></li>
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#">Rankings</a>
+      <a href="rankings.html">Rankings</a>
       <ul class="dropdown-menu">
-        <li><a href="#">Rankings Castilla-La Mancha</a></li>
-        <li><a href="#">Circuito 5ª Categoría</a></li>
+        <li><a href="rankings.html" data-page="rankings.html">Rankings Castilla-La Mancha</a></li>
+        <li><a href="circuito-5cat.html" data-page="circuito-5cat.html">Circuito 5ª Categoría</a></li>
       </ul>
     </li>
     <li><a href="clubes.html" data-page="clubes.html">Clubes</a></li>
     <li class="dropdown">
-      <a href="#">Torneos</a>
+      <a href="inscripcion.html">Torneos</a>
       <ul class="dropdown-menu">
-        <li><a href="#">Calendario e Inscripciones</a></li>
-        <li><a href="#">Calendario RFEG</a></li>
-        <li><a href="#">Castilla-La Mancha en Cptos. España</a></li>
+        <li><a href="inscripcion.html" data-page="inscripcion.html">Calendario e Inscripciones</a></li>
+        <li><a href="https://rfegolf.es/NoticiasFederacionesPaginas/FederationMicrosite.aspx?FedId=32" target="_blank" rel="noopener">Calendario RFEG</a></li>
+        <li><a href="rankings.html" data-page="rankings.html">Castilla-La Mancha en Cptos. España</a></li>
       </ul>
     </li>
     <li><a href="escuela.html" data-page="escuela.html">Escuela</a></li>
@@ -72,12 +67,11 @@
   </ul>
 
   <div class="nav-actions">
-    <a href="#" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <a href="#" class="btn-nav btn-nav-gold">Área Federados</a>
+    <a href="licencia.html" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
+    <a href="licencia.html" class="btn-nav btn-nav-gold">Área Federados</a>
   </div>
 </nav>`;
 
-  /* ── HTML del FOOTER ── */
   const FOOTER_HTML = `
 <footer>
   <div class="footer-top">
@@ -96,41 +90,37 @@
         <p>federacion@fedgolfclm.com</p>
       </div>
     </div>
-
     <div>
       <div class="footer-col-title">La federación</div>
       <ul class="footer-links">
-        <li><a href="#">Bienvenida del Presidente</a></li>
-        <li><a href="#">Junta Directiva</a></li>
-        <li><a href="#">Comités y Delegaciones</a></li>
-        <li><a href="#">Transparencia</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="presidente.html">Bienvenida del Presidente</a></li>
+        <li><a href="junta.html">Junta Directiva</a></li>
+        <li><a href="comites.html">Comités y Delegaciones</a></li>
+        <li><a href="transparencia.html">Transparencia</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </div>
-
     <div>
       <div class="footer-col-title">Servicios</div>
       <ul class="footer-links">
-        <li><a href="#">Licencia y Hándicap</a></li>
-        <li><a href="#">Trámites y Cuotas</a></li>
-        <li><a href="#">Seguro de Accidente</a></li>
-        <li><a href="#">Subvenciones</a></li>
-        <li><a href="#">APP FGCLM</a></li>
+        <li><a href="licencia.html">Licencia y Hándicap</a></li>
+        <li><a href="licencia.html">Trámites y Cuotas</a></li>
+        <li><a href="licencia.html">Seguro de Accidente</a></li>
+        <li><a href="subvenciones.html">Subvenciones</a></li>
+        <li><a href="inscripcion.html">APP FGCLM</a></li>
       </ul>
     </div>
-
     <div>
       <div class="footer-col-title">Legal</div>
       <ul class="footer-links">
-        <li><a href="#">Aviso Legal</a></li>
-        <li><a href="#">Política de Privacidad</a></li>
-        <li><a href="#">Política de Cookies</a></li>
-        <li><a href="#">Reglas de Golf</a></li>
-        <li><a href="#">Circulares FGCLM</a></li>
+        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+        <li><a href="privacidad.html">Política de Privacidad</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
+        <li><a href="reglas-golf.html">Reglas de Golf</a></li>
+        <li><a href="circulares.html">Circulares FGCLM</a></li>
       </ul>
     </div>
   </div>
-
   <div class="footer-bottom">
     <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
     <div class="footer-social">
@@ -140,7 +130,6 @@
   </div>
 </footer>`;
 
-  /* ── Inyectar NAV al inicio del body ── */
   function injectNav() {
     const existingNav = document.querySelector('nav');
     if (existingNav) {
@@ -150,7 +139,6 @@
     }
   }
 
-  /* ── Inyectar FOOTER al final del body ── */
   function injectFooter() {
     const existingFooter = document.querySelector('footer');
     if (existingFooter) {
@@ -160,7 +148,6 @@
     }
   }
 
-  /* ── Marcar enlace activo ── */
   function markActiveLink() {
     document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
       if (link.getAttribute('data-page') === currentPage) {
@@ -170,7 +157,6 @@
     });
   }
 
-  /* ── Menú hamburguesa ── */
   function initHamburger() {
     const toggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -183,11 +169,9 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Cerrar al hacer click en enlace (no dropdown)
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', () => {
         const parent = link.closest('li');
-        // Si no es dropdown, cerramos
         if (!parent || !parent.classList.contains('dropdown')) {
           navLinks.classList.remove('nav-open');
           toggle.classList.remove('active');
@@ -197,7 +181,6 @@
       });
     });
 
-    // Cerrar al hacer click fuera
     document.addEventListener('click', (e) => {
       if (!e.target.closest('nav') && navLinks.classList.contains('nav-open')) {
         navLinks.classList.remove('nav-open');
@@ -208,7 +191,6 @@
     });
   }
 
-  /* ── Sombra del nav al hacer scroll ── */
   function initNavScroll() {
     const nav = document.getElementById('mainNav');
     if (!nav) return;
@@ -219,7 +201,6 @@
     }, { passive: true });
   }
 
-  /* ── Inicializar todo ── */
   function init() {
     injectNav();
     injectFooter();
