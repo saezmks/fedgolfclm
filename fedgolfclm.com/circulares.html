@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circulares — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .circulares-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--gray-100);
+      margin-bottom: 36px;
+    }
+    .tab-btn {
+      padding: 12px 28px;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gray-300);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .circ-list { list-style: none; }
+    .circ-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .circ-item:first-child { border-top: 1px solid var(--gray-100); }
+    .circ-icon { font-size: 20px; flex-shrink: 0; }
+    .circ-info { flex: 1; }
+    .circ-titulo { font-size: 14px; font-weight: 600; color: var(--green-dark); }
+    .circ-meta { font-size: 11px; color: var(--gray-300); margin-top: 2px; }
+    .circ-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      background: var(--green-light);
+      color: var(--green-mid);
+      flex-shrink: 0;
+    }
+    .circ-badge.nueva { background: var(--gold-light); color: #856404; }
+    @media (max-width: 1100px) { .circulares-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .circulares-section { padding: 32px 1.25rem; } .tab-btn { padding: 10px 14px; font-size: 11px; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Reglamentos</div>
+    <h1><em>Circulares</em></h1>
+    <p>Circulares y comunicados oficiales de la RFEG y la Federación de Golf de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="circulares-section">
+  <p class="intro-text">
+    Las circulares son comunicados oficiales emitidos por la Real Federación Española de Golf (RFEG) y la Federación de Golf de Castilla-La Mancha (FGCLM) con carácter normativo, informativo o interpretativo. Son de obligado conocimiento para todos los clubes, árbitros y jugadores federados.
+  </p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('rfeg', this)">Circulares RFEG</button>
+    <button class="tab-btn" onclick="showTab('fgclm', this)">Circulares FGCLM</button>
+    <button class="tab-btn" onclick="showTab('locales', this)">Reglas Locales</button>
+  </div>
+
+  <div id="tab-rfeg" class="tab-content active">
+    <ul class="circ-list">
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 01/2026 — Condiciones de la Competición Temporada 2026</div>
+          <div class="circ-meta">Publicada: enero 2026 · RFEG</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 02/2026 — Actualización del Sistema WHS para la temporada 2026</div>
+          <div class="circ-meta">Publicada: enero 2026 · RFEG</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 03/2026 — Criterios de selección para Campeonatos de España</div>
+          <div class="circ-meta">Publicada: febrero 2026 · RFEG</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 04/2026 — Interpretaciones oficiales de las Reglas de Golf</div>
+          <div class="circ-meta">Publicada: febrero 2026 · RFEG</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 12/2025 — Normativa de uso de rangefinders y tecnología en competición</div>
+          <div class="circ-meta">Publicada: noviembre 2025 · RFEG</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 10/2025 — Cuotas y tarifas de licencias federativas 2025</div>
+          <div class="circ-meta">Publicada: octubre 2025 · RFEG</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 08/2025 — Normativa antidopaje temporada 2025</div>
+          <div class="circ-meta">Publicada: julio 2025 · RFEG</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular RFEG 06/2025 — Modificaciones al Reglamento de Competición</div>
+          <div class="circ-meta">Publicada: junio 2025 · RFEG</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="tab-fgclm" class="tab-content">
+    <ul class="circ-list">
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 01/2026 — Calendario de Competiciones Autonómicas 2026</div>
+          <div class="circ-meta">Publicada: enero 2026 · FGCLM</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 02/2026 — Cuotas de licencias temporada 2026</div>
+          <div class="circ-meta">Publicada: enero 2026 · FGCLM</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 03/2026 — Condiciones de Competición Cto. Absoluto Masculino 2026</div>
+          <div class="circ-meta">Publicada: marzo 2026 · FGCLM</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 04/2026 — Condiciones de Competición Cto. Femenino 2026</div>
+          <div class="circ-meta">Publicada: abril 2026 · FGCLM</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 08/2025 — Normativa del Circuito 5ª Categoría CLM 2025</div>
+          <div class="circ-meta">Publicada: marzo 2025 · FGCLM</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 07/2025 — Procedimiento de inscripción a torneos autonómicos</div>
+          <div class="circ-meta">Publicada: febrero 2025 · FGCLM</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">📋</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Circular FGCLM 06/2025 — Protocolo de actuación en caso de tormenta eléctrica</div>
+          <div class="circ-meta">Publicada: enero 2025 · FGCLM</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="tab-locales" class="tab-content">
+    <ul class="circ-list">
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales Generales FGCLM 2026</div>
+          <div class="circ-meta">Aplicables a todos los torneos autonómicos · Temporada 2026</div>
+        </div>
+        <div class="circ-badge nueva">Vigente</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales — Club de Golf Layos</div>
+          <div class="circ-meta">Válidas para torneos celebrados en este campo · Toledo</div>
+        </div>
+        <div class="circ-badge">Campo</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales — Cabanillas Golf & Country Club</div>
+          <div class="circ-meta">Válidas para torneos celebrados en este campo · Guadalajara</div>
+        </div>
+        <div class="circ-badge">Campo</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales — Club de Golf Las Pinaíllas</div>
+          <div class="circ-meta">Válidas para torneos celebrados en este campo · Albacete</div>
+        </div>
+        <div class="circ-badge">Campo</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales — Palomarejos Golf</div>
+          <div class="circ-meta">Válidas para torneos celebrados en este campo · Toledo</div>
+        </div>
+        <div class="circ-badge">Campo</div>
+      </li>
+      <li class="circ-item">
+        <div class="circ-icon">⛳</div>
+        <div class="circ-info">
+          <div class="circ-titulo">Reglas Locales — Montealvar Golf</div>
+          <div class="circ-meta">Válidas para torneos celebrados en este campo · Guadalajara</div>
+        </div>
+        <div class="circ-badge">Campo</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
