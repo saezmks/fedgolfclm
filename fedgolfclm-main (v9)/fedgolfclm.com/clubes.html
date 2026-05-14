@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clubes Federados — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+
+    
+
+   /* ══ BANNER ══ */
+    .banner-clubes {
+      background: #D7EFD0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    .banner-clubes .banner-img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ══ MAPA ══ */
+    .mapa-section {
+      background: var(--white);
+      padding: 48px 6rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .mapa-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .mapa-section-sub {
+      font-size: 13px; color: var(--gray-300); margin-bottom: 32px;
+    }
+    .mapa-wrap {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+    .mapa-svg-container {
+      position: relative;
+      width: 100%;
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0;
+    }
+    .mapa-svg-container svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Provincias SVG */
+    .prov-shape {
+      stroke: var(--white);
+      stroke-width: 2;
+      cursor: pointer;
+      transition: filter 0.2s, opacity 0.2s;
+    }
+    .prov-shape:hover { filter: brightness(1.12); }
+    .prov-shape.active { filter: brightness(1.2); stroke-width: 3; stroke: var(--gold); }
+
+    /* Marcadores de campos en el mapa */
+    .campo-marker {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .campo-marker:hover circle { fill: var(--gold) !important; }
+    .campo-marker text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      fill: var(--white);
+      pointer-events: none;
+    }
+
+    /* Tooltip */
+    .mapa-tooltip {
+      position: absolute;
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 10;
+    }
+    .mapa-tooltip::before {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-bottom: none;
+      border-top-color: var(--green-dark);
+    }
+
+    /* Leyenda mapa */
+    .mapa-legend {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding: 16px 24px;
+      background: var(--white);
+      border-top: 1px solid var(--gray-100);
+    }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--gray-600); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Lista lateral del mapa */
+    .mapa-lista { display: flex; flex-direction: column; gap: 6px; padding-bottom: 32px; }
+    .mapa-lista-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 12px;
+      background: var(--white); border: 1.5px solid var(--gray-100);
+      border-radius: 5px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mapa-lista-item:hover { border-color: var(--gold); background: var(--gray-50); }
+    .mapa-lista-item.highlighted { border-color: var(--green-accent); background: var(--green-light); }
+    .mapa-lista-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--white);
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .mapa-lista-info { flex: 1; min-width: 0; }
+    .mapa-lista-nombre { font-family: var(--font-display); font-size: 12.5px; font-weight: 700; color: var(--green-dark); line-height: 1.2; }
+    .mapa-lista-meta { font-size: 10px; color: var(--gray-300); margin-top: 2px; }
+    .mapa-lista-tipo {
+      display: inline-block; padding: 1px 7px;
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      border-radius: 2px; letter-spacing: 0.5px;
+    }
+    .tipo-verde { background: #e8f5ef; color: #1a6645; }
+    .tipo-pp { background: #fff3cd; color: #856404; }
+    .tipo-rustico { background: #f0e6d3; color: #7a4a20; }
+
+    /* ══ STATS ══ */
+    .stats-clubes {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      background: var(--white); border-bottom: 1px solid var(--gray-100);
+    }
+    .stat-provincia {
+      padding: 22px; text-align: center;
+      border-right: 1px solid var(--gray-100);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .stat-provincia:last-child { border-right: none; }
+    .stat-provincia:hover { background: var(--gray-50); }
+    .stat-prov-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--green-dark); line-height: 1; }
+    .stat-prov-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-300); margin-top: 4px; }
+
+    /* ══ FILTROS ══ */
+    .filtros-clubes {
+      background: var(--gray-50); padding: 22px 6rem;
+      border-bottom: 1px solid var(--gray-100);
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .filtro-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-300); margin-right: 6px; }
+    .filtro-btn {
+      padding: 8px 18px; border: 1.5px solid var(--gray-100);
+      background: var(--white); cursor: pointer; font-weight: 600;
+      font-family: var(--font-body); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--gray-600); transition: all 0.2s; border-radius: 2px;
+    }
+    .filtro-btn.active, .filtro-btn:hover { background: var(--green-dark); color: var(--white); border-color: var(--green-dark); }
+
+    /* ══ GRID CLUBES ══ */
+    .clubes-section { background: var(--white); padding: 56px 6rem; }
+    .clubes-count { font-size: 12px; color: var(--gray-300); margin-bottom: 1.75rem; }
+    .clubes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
+    .club-card {
+      background: var(--white); border: 1.5px solid var(--gray-100);
+      padding: 26px 22px; transition: all 0.25s;
+      position: relative; display: flex; flex-direction: column; gap: 9px;
+      border-radius: 2px;
+    }
+    .club-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(10,61,46,0.08); transform: translateY(-3px); }
+    .club-prov-tag {
+      position: absolute; top: 0; right: 0;
+      background: var(--gold); color: var(--green-dark);
+      font-size: 9px; font-weight: 700; padding: 4px 14px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .club-id { font-size: 11px; font-weight: 700; color: var(--gray-300); letter-spacing: 1px; }
+    .club-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--green-dark); line-height: 1.2; margin: 0; }
+    .club-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .club-hoyos {
+      display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+      background: var(--green-light); color: var(--green-mid);
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px;
+    }
+    .club-tipo-badge {
+      display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px;
+    }
+    .club-detail { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+    .club-detail strong { color: var(--gray-900); }
+    .club-actions { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+    .club-btn {
+      padding: 6px 14px; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      text-decoration: none; border-radius: 2px; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .club-btn-tel { background: var(--green-light); color: var(--green-dark); }
+    .club-btn-tel:hover { background: var(--green-accent); color: var(--white); }
+    .club-btn-web { background: var(--gray-50); color: var(--gray-600); border: 1px solid var(--gray-100); }
+    .club-btn-web:hover { background: var(--green-dark); color: var(--white); border-color: var(--green-dark); }
+
+    @media (max-width:1100px) { .mapa-section { padding: 40px 2.5rem 0; } .filtros-clubes { padding: 18px 2.5rem; } .clubes-section { padding: 40px 2.5rem; } }
+    @media (max-width:900px) { .mapa-wrap { grid-template-columns: 1fr; } .stats-clubes { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width:640px) { .mapa-section { padding: 28px 1.25rem 0; } .clubes-section { padding: 28px 1.25rem; } .filtros-clubes { padding: 16px 1.25rem; } .clubes-grid { grid-template-columns: 1fr; } .stats-clubes { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Directorio oficial</div>
+    <h1>Clubes <em>Federados</em></h1>
+    <p>Los 19 campos de golf federados en las cinco provincias de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner-clubes">
+  <img src="img/banner-clubes.png" alt="Imagen de golf en Castilla-La Mancha" class="banner-img">
+</div>
+
+<!-- MAPA -->
+<div class="mapa-section">
+  <div class="mapa-section-title">Mapa de campos de golf</div>
+  <div class="mapa-section-sub">Haz clic en un campo para ir a su ficha</div>
+  <div class="mapa-wrap">
+
+    <div class="mapa-svg-container" id="mapaContainer">
+      <!-- Wrapper relativo para que el SVG se superponga exactamente sobre la imagen -->
+      <div id="mapaImgWrap" style="position:relative;display:block;line-height:0;">
+        <img src="img/mapa_clubes.png" id="mapaImg" alt="Mapa campos de golf Castilla-La Mancha"
+             style="width:100%;height:auto;display:block;border-radius:4px;">
+
+        <!-- SVG overlay: mismos coords que el image-map original (imagen 1042×1042 px) -->
+        <svg id="mapaOverlay" viewBox="0 0 1042 1042" preserveAspectRatio="xMidYMid meet"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;">
+
+          <!-- GUADALAJARA #7a1500 -->
+          <g class="campo-marker" data-id="8806" onclick="highlightClub('8806')" style="pointer-events:all;">
+            <circle cx="663" cy="186" r="18" fill="#7a1500" stroke="white" stroke-width="2"/>
+            <text x="663" y="191" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">06</text>
+          </g>
+          <g class="campo-marker" data-id="8834" onclick="highlightClub('8834')" style="pointer-events:all;">
+            <circle cx="581" cy="275" r="18" fill="#7a1500" stroke="white" stroke-width="2"/>
+            <text x="581" y="280" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">34</text>
+          </g>
+          <g class="campo-marker" data-id="8810" onclick="highlightClub('8810')" style="pointer-events:all;">
+            <circle cx="525" cy="252" r="18" fill="#7a1500" stroke="white" stroke-width="2"/>
+            <text x="525" y="257" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">10</text>
+          </g>
+
+          <!-- CUENCA #7a3000 -->
+          <g class="campo-marker" data-id="8802" onclick="highlightClub('8802')" style="pointer-events:all;">
+            <circle cx="771" cy="376" r="18" fill="#7a3000" stroke="white" stroke-width="2"/>
+            <text x="771" y="381" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">02</text>
+          </g>
+          <g class="campo-marker" data-id="8808" onclick="highlightClub('8808')" style="pointer-events:all;">
+            <circle cx="730" cy="431" r="18" fill="#7a3000" stroke="white" stroke-width="2"/>
+            <text x="730" y="436" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">08</text>
+          </g>
+          <g class="campo-marker" data-id="8807" onclick="highlightClub('8807')" style="pointer-events:all;">
+            <circle cx="804" cy="562" r="18" fill="#7a3000" stroke="white" stroke-width="2"/>
+            <text x="804" y="567" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">07</text>
+          </g>
+          <g class="campo-marker" data-id="8813" onclick="highlightClub('8813')" style="pointer-events:all;">
+            <circle cx="691" cy="583" r="18" fill="#7a3000" stroke="white" stroke-width="2"/>
+            <text x="691" y="588" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">13</text>
+          </g>
+
+          <!-- ALBACETE #505000 -->
+          <g class="campo-marker" data-id="8840" onclick="highlightClub('8840')" style="pointer-events:all;">
+            <circle cx="770" cy="710" r="18" fill="#505000" stroke="white" stroke-width="2"/>
+            <text x="770" y="715" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">40</text>
+          </g>
+          <g class="campo-marker" data-id="8819" onclick="highlightClub('8819')" style="pointer-events:all;">
+            <circle cx="834" cy="721" r="18" fill="#505000" stroke="white" stroke-width="2"/>
+            <text x="834" y="726" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">19</text>
+          </g>
+          <g class="campo-marker" data-id="8803" onclick="highlightClub('8803')" style="pointer-events:all;">
+            <circle cx="664" cy="775" r="18" fill="#505000" stroke="white" stroke-width="2"/>
+            <text x="664" y="780" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">03</text>
+          </g>
+
+          <!-- CIUDAD REAL #3a0060 -->
+          <g class="campo-marker" data-id="8837" onclick="highlightClub('8837')" style="pointer-events:all;">
+            <circle cx="514" cy="825" r="18" fill="#3a0060" stroke="white" stroke-width="2"/>
+            <text x="514" y="830" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">37</text>
+          </g>
+          <g class="campo-marker" data-id="8814" onclick="highlightClub('8814')" style="pointer-events:all;">
+            <circle cx="449" cy="835" r="18" fill="#3a0060" stroke="white" stroke-width="2"/>
+            <text x="449" y="840" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">14</text>
+          </g>
+          <g class="campo-marker" data-id="8843" onclick="highlightClub('8843')" style="pointer-events:all;">
+            <circle cx="333" cy="735" r="18" fill="#3a0060" stroke="white" stroke-width="2"/>
+            <text x="333" y="740" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">43</text>
+          </g>
+          <g class="campo-marker" data-id="8842" onclick="highlightClub('8842')" style="pointer-events:all;">
+            <circle cx="518" cy="649" r="18" fill="#3a0060" stroke="white" stroke-width="2"/>
+            <text x="518" y="654" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">42</text>
+          </g>
+
+          <!-- TOLEDO #2a5200 -->
+          <g class="campo-marker" data-id="8818" onclick="highlightClub('8818')" style="pointer-events:all;">
+            <circle cx="338" cy="491" r="18" fill="#2a5200" stroke="white" stroke-width="2"/>
+            <text x="338" y="496" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">18</text>
+          </g>
+          <g class="campo-marker" data-id="8833" onclick="highlightClub('8833')" style="pointer-events:all;">
+            <circle cx="353" cy="409" r="18" fill="#2a5200" stroke="white" stroke-width="2"/>
+            <text x="353" y="414" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">33</text>
+          </g>
+          <g class="campo-marker" data-id="8820" onclick="highlightClub('8820')" style="pointer-events:all;">
+            <circle cx="281" cy="443" r="18" fill="#2a5200" stroke="white" stroke-width="2"/>
+            <text x="281" y="448" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">20</text>
+          </g>
+          <g class="campo-marker" data-id="8828" onclick="highlightClub('8828')" style="pointer-events:all;">
+            <circle cx="182" cy="427" r="18" fill="#2a5200" stroke="white" stroke-width="2"/>
+            <text x="182" y="432" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">28</text>
+          </g>
+          <g class="campo-marker" data-id="8801" onclick="highlightClub('8801')" style="pointer-events:all;">
+            <circle cx="127" cy="451" r="18" fill="#2a5200" stroke="white" stroke-width="2"/>
+            <text x="127" y="456" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="sans-serif">01</text>
+          </g>
+
+        </svg>
+
+        <!-- Tooltip flotante -->
+        <div id="mapaTooltip" class="mapa-tooltip" style="position:absolute;"></div>
+      </div>
+
+      <div class="mapa-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#7a1500"></div>Guadalajara</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2a5200"></div>Toledo</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7a3000"></div>Cuenca</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3a0060"></div>Ciudad Real</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#505000"></div>Albacete</div>
+      </div>
+    </div>
+
+        <!-- Lista lateral -->
+    <div class="mapa-lista" id="mapaLista"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-clubes">
+  <div class="stat-provincia" onclick="filterBy('ALBACETE')">
+    <div class="stat-prov-num" id="cnt-AB">—</div>
+    <div class="stat-prov-name">Albacete</div>
+  </div>
+  <div class="stat-provincia" onclick="filterBy('CIUDAD REAL')">
+    <div class="stat-prov-num" id="cnt-CR">—</div>
+    <div class="stat-prov-name">Ciudad Real</div>
+  </div>
+  <div class="stat-provincia" onclick="filterBy('CUENCA')">
+    <div class="stat-prov-num" id="cnt-CU">—</div>
+    <div class="stat-prov-name">Cuenca</div>
+  </div>
+  <div class="stat-provincia" onclick="filterBy('GUADALAJARA')">
+    <div class="stat-prov-num" id="cnt-GU">—</div>
+    <div class="stat-prov-name">Guadalajara</div>
+  </div>
+  <div class="stat-provincia" onclick="filterBy('TOLEDO')">
+    <div class="stat-prov-num" id="cnt-TO">—</div>
+    <div class="stat-prov-name">Toledo</div>
+  </div>
+</div>
+
+<!-- FILTROS -->
+<div class="filtros-clubes">
+  <span class="filtro-label">Filtrar por:</span>
+  <button class="filtro-btn active" onclick="filterBy('TODOS')">Todos</button>
+  <button class="filtro-btn" onclick="filterBy('ALBACETE')">Albacete</button>
+  <button class="filtro-btn" onclick="filterBy('CIUDAD REAL')">Ciudad Real</button>
+  <button class="filtro-btn" onclick="filterBy('CUENCA')">Cuenca</button>
+  <button class="filtro-btn" onclick="filterBy('GUADALAJARA')">Guadalajara</button>
+  <button class="filtro-btn" onclick="filterBy('TOLEDO')">Toledo</button>
+</div>
+
+<!-- LISTADO CLUBES -->
+<div class="clubes-section">
+  <div class="clubes-count" id="clubesCount"></div>
+  <div class="clubes-grid" id="contenedor-clubes"></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  // Datos oficiales del PDF de la Federación
+  var CLUBES_DATA = [
+    {
+      id:'8801', nombre:'Club de Golf Talavera', provincia:'TOLEDO',
+      tipo:'P&P', hoyos:'9',
+      direccion:'Avda. de Portugal s/n, 45600 Talavera de la Reina, Toledo',
+      tel:'925 80 40 61', email:'golftalavera@gmail.com', web:''
+    },
+    {
+      id:'8802', nombre:'Club de Golf La Vereda', provincia:'CUENCA',
+      tipo:'Rústico', hoyos:'9',
+      direccion:'Ctra. de Tragacete, Km 18, Cuenca',
+      tel:'606 25 77 83', email:'laveredagolfclub@gmail.com', web:'laveredagolf.webnode.es'
+    },
+    {
+      id:'8803', nombre:'C.G.M. La Lagunilla', provincia:'ALBACETE',
+      tipo:'Verde', hoyos:'9',
+      direccion:'Ctra. de Ossa de Montiel, Km 2, 02610 El Bonillo, Albacete',
+      tel:'967 37 06 70', email:'golflagunillabonillo@gmail.com', web:''
+    },
+    {
+      id:'8806', nombre:'Club de Golf Cifuentes', provincia:'GUADALAJARA',
+      tipo:'Rústico', hoyos:'9',
+      direccion:'Camino de Cifuentes a Ruguilla, Km. 2,6, 19420 Cifuentes, Guadalajara',
+      tel:'630 15 85 41', email:'jomargo@live.com', web:''
+    },
+    {
+      id:'8807', nombre:'Club de Golf Cuesta Blanca', provincia:'CUENCA',
+      tipo:'Rústico', hoyos:'9',
+      direccion:'Ctra. Pozoseco a Valhermoso, Km 2, 16230 Villanueva de la Jara, Cuenca',
+      tel:'967 49 31 08', email:'correo@clubdegolfcuestablanca.es', web:''
+    },
+    {
+      id:'8808', nombre:'Olalla Golf', provincia:'CUENCA',
+      tipo:'Verde', hoyos:'9',
+      direccion:'Ctra. Nacional 420, Km 430, 16196 Villar de Olalla, Cuenca',
+      tel:'969 26 71 98', email:'clubdeportivoolallagolf@gmail.com', web:'www.cuencagolfclub.es'
+    },
+    {
+      id:'8810', nombre:'Cabanillas C.C.G', provincia:'GUADALAJARA',
+      tipo:'Verde y P&P', hoyos:'18 y 9',
+      direccion:'Paraje de la Dehesa s/n, 19171 Cabanillas del Campo, Guadalajara',
+      tel:'949 32 46 00', email:'info@cabanillascasadecampogolf.es', web:'www.cabanillascasadecampogolf.es'
+    },
+    {
+      id:'8813', nombre:'Club de Golf Molino de Rus', provincia:'CUENCA',
+      tipo:'Rústico', hoyos:'18',
+      direccion:'Ctra. de Cañavate, Km 3, Cuenca',
+      tel:'969 23 18 00', email:'info@molinoderüsgolf.com', web:''
+    },
+    {
+      id:'8814', nombre:'Club de Golf Sta. Cruz de Mudela', provincia:'CIUDAD REAL',
+      tipo:'Rústico', hoyos:'9',
+      direccion:'Ctra. Nacional IV, Km 197, 13730 Santa Cruz de Mudela, Ciudad Real',
+      tel:'616 43 43 77', email:'golfmudela@telefonica.net', web:''
+    },
+    {
+      id:'8818', nombre:'Club de Golf Layos', provincia:'TOLEDO',
+      tipo:'Verde', hoyos:'18',
+      direccion:'Ctra. de Toledo a Piedrabuena, Km. 12,5, 45123 Layos, Toledo',
+      tel:'925 37 71 70', email:'info@layosgolf.com', web:'www.layosgolf.com'
+    },
+    {
+      id:'8819', nombre:'Club de Golf Pinaillas', provincia:'ALBACETE',
+      tipo:'Verde', hoyos:'18',
+      direccion:'Ctra. Motilleja, Km 12, 02080 Albacete',
+      tel:'967 19 22 00', email:'info@clubdegolflaspinaillas.com', web:''
+    },
+    {
+      id:'8820', nombre:'Club de Golf Pablo Hernández', provincia:'TOLEDO',
+      tipo:'Verde', hoyos:'9',
+      direccion:'Ctra. Torrijos–Fuensalida, Km 2, Noves, Toledo',
+      tel:'925 77 22 30', email:'clubgolftorrijos@gmail.com', web:''
+    },
+    {
+      id:'8828', nombre:'Palomarejos Golf', provincia:'TOLEDO',
+      tipo:'Verde', hoyos:'18',
+      direccion:'Ctra. N-V, Km 113, 45600 Talavera de la Reina, Toledo',
+      tel:'925 72 15 65', email:'tienda@palomarejosgolf.com', web:'www.palomarejosgolf.com'
+    },
+    {
+      id:'8833', nombre:'Club de Golf Señorío de Illescas', provincia:'TOLEDO',
+      tipo:'Verde', hoyos:'9',
+      direccion:'Ctra. de Yuncos, Km 2, 45200 Illescas, Toledo',
+      tel:'925 51 08 24', email:'info@senioriodeillescas.com', web:''
+    },
+    {
+      id:'8834', nombre:'Montealvar Golf', provincia:'GUADALAJARA',
+      tipo:'Verde', hoyos:'18',
+      direccion:'Ctra. A-2, Km 58, 19170 El Casar, Guadalajara',
+      tel:'949 25 40 00', email:'info@montealvargolf.com', web:'www.montealvargolf.com'
+    },
+    {
+      id:'8837', nombre:'La Caminera Golf', provincia:'CIUDAD REAL',
+      tipo:'Verde', hoyos:'9',
+      direccion:'Camino de Altamar s/n, 13730 Torrenueva, Ciudad Real',
+      tel:'926 34 47 33', email:'golfca@salleshotels.com', web:'www.lacamineragolf.es'
+    },
+    {
+      id:'8840', nombre:'Club de Golf Laguna de los Patos', provincia:'ALBACETE',
+      tipo:'P&P Exterior', hoyos:'9',
+      direccion:'Avda. de los Deportes s/n, Albacete',
+      tel:'967 21 56 00', email:'info@lagunapatosgolf.com', web:''
+    },
+    {
+      id:'8842', nombre:'Abedul Golf', provincia:'CIUDAD REAL',
+      tipo:'P&P', hoyos:'9',
+      direccion:'Ctra. de Carrión, Km 3, 13005 Ciudad Real',
+      tel:'926 25 60 00', email:'info@abedulgolf.com', web:'www.abedulgolf.com'
+    },
+    {
+      id:'8843', nombre:'Golf Ciudad Real', provincia:'CIUDAD REAL',
+      tipo:'Verde y P&P', hoyos:'9',
+      direccion:'Paseo de la Universidad s/n, 13004 Ciudad Real',
+      tel:'926 22 34 56', email:'info@golfciudadreal.com', web:''
+    }
+  ];
+
+  var PROV_COLORS = {
+    'TOLEDO':'#0a3d2e','GUADALAJARA':'#2d7a4a','CUENCA':'#1a6645',
+    'ALBACETE':'#4a9e72','CIUDAD REAL':'#0a5a38'
+  };
+  var TIPO_CLASS = {
+    'Verde':'tipo-verde','P&P':'tipo-pp','Rústico':'tipo-rustico',
+    'Verde y P&P':'tipo-verde','P&P Exterior':'tipo-pp'
+  };
+
+  // ── Mapa lista lateral ──
+  function buildMapaLista(data) {
+    var lista = document.getElementById('mapaLista');
+    lista.innerHTML = data.map(function(c) {
+      var color = PROV_COLORS[c.provincia] || '#0a3d2e';
+      var tc    = TIPO_CLASS[c.tipo] || 'tipo-verde';
+      return '<div class="mapa-lista-item" id="lista-'+c.id+'" onclick="highlightClub(\''+c.id+'\')">'
+        +'<div class="mapa-lista-num" style="background:'+color+'">'+c.id.slice(-2)+'</div>'
+        +'<div class="mapa-lista-info">'
+          +'<div class="mapa-lista-nombre">'+c.nombre+'</div>'
+          +'<div class="mapa-lista-meta">'
+            +'<span class="mapa-lista-tipo '+tc+'">'+c.tipo+'</span>'
+            +' &nbsp;'+c.hoyos+' hoyos · '+c.provincia.charAt(0)+c.provincia.slice(1).toLowerCase()
+          +'</div>'
+        +'</div></div>';
+    }).join('');
+  }
+
+  // ── Highlight en mapa ──
+  window.highlightClub = function(id) {
+    // Scroll a la card
+    var card = document.getElementById('club-'+id);
+    if (card) { card.scrollIntoView({ behavior:'smooth', block:'center' }); card.style.borderColor='var(--gold)'; setTimeout(function(){ card.style.borderColor=''; }, 2000); }
+    // Highlight en lista
+    document.querySelectorAll('.mapa-lista-item').forEach(function(el){ el.classList.remove('highlighted'); });
+    var li = document.getElementById('lista-'+id);
+    if (li) li.classList.add('highlighted');
+  };
+
+  // Tooltip en marcadores SVG
+  document.addEventListener('DOMContentLoaded', function() {
+    var tooltip = document.getElementById('mapaTooltip');
+    var container = document.getElementById('mapaContainer');
+    document.querySelectorAll('.campo-marker').forEach(function(g) {
+      var id = g.dataset.id;
+      var club = CLUBES_DATA.find(function(c){ return c.id === id; });
+      if (!club) return;
+      g.addEventListener('mouseenter', function(e) {
+        tooltip.textContent = club.nombre + ' — ' + club.hoyos + ' hoyos';
+        tooltip.style.display = 'block';
+      });
+      g.addEventListener('mousemove', function(e) {
+        var rect = container.getBoundingClientRect();
+        tooltip.style.left = (e.clientX - rect.left - tooltip.offsetWidth/2) + 'px';
+        tooltip.style.top  = (e.clientY - rect.top  - tooltip.offsetHeight - 14) + 'px';
+      });
+      g.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+      });
+    });
+  });
+
+  // ── Render tarjetas ──
+  function render(data) {
+    document.getElementById('clubesCount').textContent =
+      data.length + ' campo' + (data.length !== 1 ? 's' : '') + ' mostrado' + (data.length !== 1 ? 's' : '');
+
+    document.getElementById('contenedor-clubes').innerHTML = data.map(function(c) {
+      var tc = TIPO_CLASS[c.tipo] || 'tipo-verde';
+      return '<div class="club-card" id="club-'+c.id+'">'
+        +'<span class="club-prov-tag">'+c.provincia+'</span>'
+        +'<div class="club-id">'+c.id+'</div>'
+        +'<h3 class="club-name">'+c.nombre+'</h3>'
+        +'<div class="club-badges">'
+          +'<span class="club-hoyos">⛳ '+c.hoyos+' hoyos</span>'
+          +'<span class="club-tipo-badge '+tc+'">'+c.tipo+'</span>'
+        +'</div>'
+        +'<div class="club-detail"><strong>Dirección:</strong> '+c.direccion+'</div>'
+        +(c.email ? '<div class="club-detail"><strong>Email:</strong> <a href="mailto:'+c.email+'" style="color:var(--green-accent);text-decoration:none;">'+c.email+'</a></div>' : '')
+        +'<div class="club-actions">'
+          +(c.tel ? '<a href="tel:'+c.tel.replace(/\s/g,'')+'" class="club-btn club-btn-tel">📞 '+c.tel+'</a>' : '')
+          +(c.web ? '<a href="https://'+c.web+'" target="_blank" rel="noopener" class="club-btn club-btn-web">🌐 Web</a>' : '')
+        +'</div>'
+        +'</div>';
+    }).join('');
+  }
+
+  // ── Filtrar ──
+  window.filterBy = function(prov) {
+    document.querySelectorAll('.filtro-btn').forEach(function(b) {
+      b.classList.toggle('active',
+        (prov === 'TODOS' && b.textContent.trim() === 'Todos') ||
+        b.textContent.trim().toUpperCase() === prov
+      );
+    });
+    // Highlight provincia en SVG
+    document.querySelectorAll('.prov-shape').forEach(function(el){ el.classList.remove('active'); });
+    if (prov !== 'TODOS') {
+      var provMap = {'ALBACETE':'AB','CIUDAD REAL':'CR','CUENCA':'CU','GUADALAJARA':'GU','TOLEDO':'TO'};
+      var key = provMap[prov];
+      Object.entries(provMap).forEach(function(entry) {
+        if (entry[0] === prov) {
+          var el = document.getElementById('prov-'+entry[1]);
+          if (el) el.classList.add('active');
+        }
+      });
+    }
+    var filtered = prov === 'TODOS' ? CLUBES_DATA : CLUBES_DATA.filter(function(c){ return c.provincia === prov; });
+    render(filtered);
+    buildMapaLista(filtered);
+  };
+
+  // ── Stats ──
+  var PROV_MAP = {'ALBACETE':'AB','CIUDAD REAL':'CR','CUENCA':'CU','GUADALAJARA':'GU','TOLEDO':'TO'};
+  Object.keys(PROV_MAP).forEach(function(prov) {
+    var cnt = CLUBES_DATA.filter(function(c){ return c.provincia === prov; }).length;
+    document.getElementById('cnt-'+PROV_MAP[prov]).textContent = cnt;
+  });
+
+  // ── Init ──
+  render(CLUBES_DATA);
+  buildMapaLista(CLUBES_DATA);
+</script>
+</body>
+</html>

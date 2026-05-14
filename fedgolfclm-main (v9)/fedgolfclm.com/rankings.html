@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rankings Castilla-La Mancha — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .rankings-page { padding: 64px 6rem; max-width: 1200px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .tabs {
+      display: flex; gap: 0;
+      border-bottom: 2px solid var(--gray-100);
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 11px 20px;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gray-300);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .ranking-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+    .ranking-table th {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .ranking-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 13px;
+      color: var(--gray-900);
+    }
+    .ranking-table tr:hover td { background: var(--gray-50); }
+    .pos-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .pos-1 { background: #FFD700; color: #5a4500; }
+    .pos-2 { background: #C0C0C0; color: #3a3a3a; }
+    .pos-3 { background: #CD7F32; color: white; }
+    .pos-n { background: var(--gray-100); color: var(--gray-600); }
+    .club-cell { font-size: 11px; color: var(--gray-300); display: block; margin-top: 2px; }
+    .pts-cell { font-family: var(--font-display); font-weight: 700; color: var(--green-dark); }
+    .rnk-meta { font-size: 12px; color: var(--gray-300); margin-bottom: 20px; }
+    @media (max-width: 1100px) { .rankings-page { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .rankings-page { padding: 32px 1.25rem; } .ranking-table th, .ranking-table td { padding: 9px 10px; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Rankings</div>
+    <h1>Rankings <em>Castilla-La Mancha</em></h1>
+    <p>Clasificaciones actualizadas del circuito autonómico en todas las categorías. Temporada 2026.</p>
+  </div>
+</div>
+
+<div class="rankings-page">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('masc', this)">Masculino</button>
+    <button class="tab-btn" onclick="showTab('fem', this)">Femenino</button>
+    <button class="tab-btn" onclick="showTab('jov', this)">Juvenil</button>
+    <button class="tab-btn" onclick="showTab('senior', this)">Senior</button>
+    <button class="tab-btn" onclick="showTab('pp', this)">Pitch &amp; Putt</button>
+    <button class="tab-btn" onclick="showTab('adaptado', this)">Golf Adaptado</button>
+  </div>
+
+  <div id="tab-masc" class="tab-content active">
+    <div class="rnk-meta">Ranking Masculino CLM 2026 · Última actualización: mayo 2026 · 3 pruebas disputadas</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugador</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Álvaro Pastor García</td><td>Club de Golf Layos</td><td class="pts-cell">320</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Luis Miguel Sánchez Ruiz</td><td>Torrijos Golf</td><td class="pts-cell">285</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>José Manuel Pardo López</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">260</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Manuel Fajardo López</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">215</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Carlos Jiménez Muñoz</td><td>Olalla Golf Cuenca</td><td class="pts-cell">198</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">6</span></td><td>Rodrigo Martínez Serna</td><td>Cabanillas Golf</td><td class="pts-cell">185</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">7</span></td><td>Adrián Segura González</td><td>Palomarejos Golf</td><td class="pts-cell">172</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">8</span></td><td>Fernando López de la Cruz</td><td>Montealvar Golf</td><td class="pts-cell">160</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">9</span></td><td>Pablo Herráez Moreno</td><td>Club de Golf Cifuentes</td><td class="pts-cell">148</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">10</span></td><td>Antonio Ramos Vega</td><td>Golf Ciudad Real</td><td class="pts-cell">135</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">11</span></td><td>Jorge Bermejo Morales</td><td>Club de Golf Layos</td><td class="pts-cell">122</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">12</span></td><td>Iván Cañas Prieto</td><td>Club de Golf Pinaíllas</td><td class="pts-cell">110</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">13</span></td><td>Diego Torres Alonso</td><td>Abedul Golf</td><td class="pts-cell">98</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">14</span></td><td>Marcos Gil Sánchez</td><td>La Caminera Golf</td><td class="pts-cell">86</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">15</span></td><td>Samuel Pascual Blanco</td><td>Golf Molino de Rus</td><td class="pts-cell">74</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-fem" class="tab-content">
+    <div class="rnk-meta">Ranking Femenino CLM 2026 · Última actualización: mayo 2026 · 3 pruebas disputadas</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugadora</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Ana Belén Martínez Córdoba</td><td>Club de Golf Layos</td><td class="pts-cell">295</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Sofía Romero Vega</td><td>Golf Albacete</td><td class="pts-cell">270</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>Laura García Pérez</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">248</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Isabel Fernández Torres</td><td>Torrijos Golf</td><td class="pts-cell">200</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Carmen López Sánchez</td><td>Club de Golf Cifuentes</td><td class="pts-cell">180</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">6</span></td><td>Marta Iglesias Ruiz</td><td>Palomarejos Golf</td><td class="pts-cell">165</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">7</span></td><td>Patricia Navas Alarcón</td><td>Cabanillas Golf</td><td class="pts-cell">150</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">8</span></td><td>Elena Ramírez del Pozo</td><td>Montealvar Golf</td><td class="pts-cell">138</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">9</span></td><td>Rosa Morales Castellanos</td><td>Golf Ciudad Real</td><td class="pts-cell">120</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">10</span></td><td>Cristina Valverde Soto</td><td>Olalla Golf Cuenca</td><td class="pts-cell">105</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-jov" class="tab-content">
+    <div class="rnk-meta">Ranking Juvenil CLM 2026 (Sub-18 combinado) · Última actualización: mayo 2026</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Cat.</th><th>Puntos</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Nicolás Sáez Martín</td><td>Cabanillas Golf</td><td>Sub-18</td><td class="pts-cell">280</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Andrea Moreno Torres</td><td>Club de Golf Layos</td><td>Sub-18</td><td class="pts-cell">255</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>Guillermo Ruiz Castellanos</td><td>Palomarejos Golf</td><td>Sub-16</td><td class="pts-cell">230</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Lucía Pérez Montero</td><td>Golf Pinaíllas</td><td>Sub-18</td><td class="pts-cell">198</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Mario González Aparicio</td><td>Montealvar Golf</td><td>Sub-16</td><td class="pts-cell">176</td></tr>
+        <tr><td><span class="pos-badge pos-n">6</span></td><td>Alejandra López Rubio</td><td>Cabanillas Golf</td><td>Sub-14</td><td class="pts-cell">155</td></tr>
+        <tr><td><span class="pos-badge pos-n">7</span></td><td>Jaime Delgado Nieto</td><td>Club de Golf Layos</td><td>Sub-14</td><td class="pts-cell">140</td></tr>
+        <tr><td><span class="pos-badge pos-n">8</span></td><td>Claudia Mínguez Navarro</td><td>Olalla Golf</td><td>Sub-18</td><td class="pts-cell">125</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-senior" class="tab-content">
+    <div class="rnk-meta">Ranking Senior CLM 2026 (mayores de 55 años) · Última actualización: mayo 2026</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Ramón Ortega Blanco</td><td>Palomarejos Golf</td><td class="pts-cell">310</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Concepción Téllez Morales</td><td>Cabanillas Golf</td><td class="pts-cell">285</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>Ernesto Valladares Sanz</td><td>Club de Golf Layos</td><td class="pts-cell">260</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Pilar Aragonés Moreno</td><td>Montealvar Golf</td><td class="pts-cell">218</td><td>3</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Francisco Rueda Cano</td><td>Golf Ciudad Real</td><td class="pts-cell">195</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">6</span></td><td>Julia Pedraza Lara</td><td>Golf Pinaíllas</td><td class="pts-cell">178</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">7</span></td><td>Tomás Cervantes Gil</td><td>Club de Golf Cifuentes</td><td class="pts-cell">155</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">8</span></td><td>Rosario Medina Bravo</td><td>Abedul Golf</td><td class="pts-cell">132</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-pp" class="tab-content">
+    <div class="rnk-meta">Ranking Pitch & Putt CLM 2026 · Última actualización: mayo 2026</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Javier Ruiz Molero</td><td>Golf Talavera</td><td class="pts-cell">245</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Alicia Sánchez Briega</td><td>Abedul Golf</td><td class="pts-cell">220</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>Pedro Arjona Moreno</td><td>Golf Laguna de los Patos</td><td class="pts-cell">198</td><td>2</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Verónica López Navas</td><td>Golf Talavera</td><td class="pts-cell">175</td><td>1</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Miguel Serna Andújar</td><td>Abedul Golf</td><td class="pts-cell">152</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-adaptado" class="tab-content">
+    <div class="rnk-meta">Ranking Golf Adaptado CLM 2026 · Última actualización: mayo 2026</div>
+    <table class="ranking-table">
+      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Categoría</th><th>Puntos</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pos-badge pos-1">1</span></td><td>Rafael Moreno Castillo</td><td>Club de Golf Layos</td><td>Categoría A</td><td class="pts-cell">280</td></tr>
+        <tr><td><span class="pos-badge pos-2">2</span></td><td>Isabel García Núñez</td><td>Cabanillas Golf</td><td>Categoría B</td><td class="pts-cell">255</td></tr>
+        <tr><td><span class="pos-badge pos-3">3</span></td><td>Ángel Delgado Marcos</td><td>Golf Pinaíllas</td><td>Categoría A</td><td class="pts-cell">230</td></tr>
+        <tr><td><span class="pos-badge pos-n">4</span></td><td>Carmen Herrera Vidal</td><td>Palomarejos Golf</td><td>Categoría C</td><td class="pts-cell">198</td></tr>
+        <tr><td><span class="pos-badge pos-n">5</span></td><td>Sergio Martín Pascual</td><td>Golf Ciudad Real</td><td>Categoría B</td><td class="pts-cell">176</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

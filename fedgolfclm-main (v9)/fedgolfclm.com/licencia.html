@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licencia y Hándicap — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .licencia-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .cuotas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .cuota-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      padding: 28px 22px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .cuota-card:hover { border-color: var(--gold); }
+    .cuota-card.destacado {
+      border-color: var(--green-accent);
+      background: var(--green-light);
+    }
+    .cuota-tipo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-300); margin-bottom: 10px; }
+    .cuota-precio { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--green-dark); line-height: 1; }
+    .cuota-anno { font-size: 12px; color: var(--gray-300); margin-bottom: 14px; }
+    .cuota-incluye { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+    .pasos-list { list-style: none; margin-bottom: 48px; }
+    .paso-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .paso-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green-dark); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; flex-shrink: 0;
+    }
+    .paso-content { flex: 1; }
+    .paso-titulo { font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+    .paso-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .handicap-box {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+    }
+    .handicap-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 14px; }
+    .handicap-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 1100px) { .licencia-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .licencia-section { padding: 32px 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">La Federación</div>
+    <h1>Licencia y <em>Hándicap</em></h1>
+    <p>Todo lo que necesitas saber para federarte y gestionar tu hándicap en Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="licencia-section">
+  <p class="intro-text">
+    La licencia federativa es el documento que acredita tu condición de jugador/a de golf federado/a en Castilla-La Mancha. Te permite participar en competiciones oficiales, obtener y mantener tu hándicap WHS, y acceder a los seguros de accidente y responsabilidad civil de la federación.
+  </p>
+
+  <div class="block-title">Cuotas de Licencia 2026</div>
+  <div class="cuotas-grid">
+    <div class="cuota-card">
+      <div class="cuota-tipo">Licencia Adulto</div>
+      <div class="cuota-precio">55€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Seguro de accidente · Seguro RC · Hándicap WHS · Participación en torneos FGCLM</div>
+    </div>
+    <div class="cuota-card destacado">
+      <div class="cuota-tipo">Licencia Juvenil</div>
+      <div class="cuota-precio">30€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Jugadores Sub-18 · Seguro de accidente · Hándicap WHS · Circuito Juvenil CLM</div>
+    </div>
+    <div class="cuota-card">
+      <div class="cuota-tipo">Licencia Senior</div>
+      <div class="cuota-precio">45€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Mayores de 55 años · Seguro de accidente · Hándicap WHS · Torneos Senior CLM</div>
+    </div>
+    <div class="cuota-card">
+      <div class="cuota-tipo">Licencia Profesional</div>
+      <div class="cuota-precio">80€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Profesionales PGA · Seguro RC profesional · Participación en torneos pro-am</div>
+    </div>
+    <div class="cuota-card">
+      <div class="cuota-tipo">Licencia Pitch & Putt</div>
+      <div class="cuota-precio">30€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Modalidad P&P · Seguro de accidente · Hándicap · Competiciones P&P autonómicas</div>
+    </div>
+    <div class="cuota-card">
+      <div class="cuota-tipo">Licencia Golf Adaptado</div>
+      <div class="cuota-precio">20€</div>
+      <div class="cuota-anno">/ temporada 2026</div>
+      <div class="cuota-incluye">Diversidad funcional · Seguro de accidente · Programa de golf adaptado FGCLM</div>
+    </div>
+  </div>
+
+  <div class="block-title">Cómo Federarse</div>
+  <ul class="pasos-list">
+    <li class="paso-item">
+      <div class="paso-num">1</div>
+      <div class="paso-content">
+        <div class="paso-titulo">Contacta con un club federado</div>
+        <div class="paso-desc">La tramitación de la licencia se realiza a través de tu club de golf. Dirígete al secretario o administrador de tu club para iniciar el proceso de alta federativa. Consulta el directorio de clubes en la sección <a href="clubes.html" style="color:var(--green-accent);">Clubes Federados</a>.</div>
+      </div>
+    </li>
+    <li class="paso-item">
+      <div class="paso-num">2</div>
+      <div class="paso-content">
+        <div class="paso-titulo">Rellena el formulario de inscripción</div>
+        <div class="paso-desc">Cumplimenta el formulario de solicitud de licencia con tus datos personales: nombre completo, DNI/NIE, fecha de nacimiento, domicilio y correo electrónico. Los menores de edad requieren autorización del padre, madre o tutor legal.</div>
+      </div>
+    </li>
+    <li class="paso-item">
+      <div class="paso-num">3</div>
+      <div class="paso-content">
+        <div class="paso-titulo">Abona la cuota correspondiente</div>
+        <div class="paso-desc">El pago se realiza a través del club, que a su vez lo gestiona con la federación. Las cuotas varían según la categoría (adulto, juvenil, senior, profesional, etc.) y están actualizadas para la temporada 2026.</div>
+      </div>
+    </li>
+    <li class="paso-item">
+      <div class="paso-num">4</div>
+      <div class="paso-content">
+        <div class="paso-titulo">Recibe tu licencia y tu hándicap</div>
+        <div class="paso-desc">Una vez tramitada el alta, recibirás tu número de licencia y podrás acceder al sistema WHS para gestionar tu hándicap. El proceso habitualmente tarda entre 24 y 72 horas hábiles.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="block-title">Sistema de Hándicap WHS</div>
+  <div class="handicap-box">
+    <p>
+      Desde el 1 de enero de 2020, el golf mundial adoptó el <strong>World Handicap System (WHS)</strong>, el sistema unificado de hándicap impulsado por el R&A y la USGA. En España, es gestionado por la Real Federación Española de Golf (RFEG).
+    </p>
+    <p>
+      El WHS permite a los jugadores con licencia federativa obtener un <strong>Índice de Hándicap</strong> que refleja su nivel de juego potencial. Este índice se calcula a partir de las 8 mejores puntuaciones de las últimas 20 rondas registradas en competiciones o vueltas habilitadas.
+    </p>
+    <p>
+      Para <strong>consultar tu hándicap</strong>, puedes hacerlo a través del portal de la RFEG con tu número de licencia federativa. Tu club también puede informarte del procedimiento para registrar tarjetas y actualizar tu índice.
+    </p>
+    <p>
+      Si eres nuevo en el golf, el sistema WHS incluye un procedimiento de <strong>hándicap inicial</strong> basado en las primeras rondas jugadas. Los jugadores sin hándicap previo comienzan con un índice de 54.0 y lo van ajustando conforme registran tarjetas de juego.
+    </p>
+    <p>
+      Para más información sobre el sistema WHS o cualquier consulta sobre tu hándicap, contacta con la federación en <strong>federacion@fedgolfclm.com</strong> o llama al <strong>949-262300</strong>.
+    </p>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
