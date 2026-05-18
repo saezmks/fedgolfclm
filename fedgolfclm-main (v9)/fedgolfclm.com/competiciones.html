@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario Oficial de Competiciones 2026 - FGCLM</title>
+    <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
     <style>
         :root {
             --primary-color: #1b4332;
@@ -31,7 +35,7 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 0 0 40px 0;
+            padding: 70px 0 40px 0;
         }
 
         header {
@@ -290,6 +294,129 @@
             color: #ffffff;
         }
 
+        /* Filtros */
+        .filtros-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .filtros-container label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 11pt;
+        }
+
+        .filtros-container select {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            font-size: 10.5pt;
+            font-family: inherit;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        .filtros-container select:focus {
+            border-color: var(--primary-light);
+        }
+
+        /* Footer CSS */
+        footer {
+            background-color: var(--primary-color);
+            color: #cbd5e1;
+            padding: 50px 20px 20px 20px;
+            margin-top: 50px;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: #ffffff;
+            font-size: 13pt;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            font-size: 10.5pt;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 10.5pt;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.2s;
+            font-size: 14pt;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--primary-light);
+            font-size: 9.5pt;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             .rankings-container {
                 grid-template-columns: 1fr;
@@ -302,6 +429,11 @@
 
             header h1 {
                 font-size: 18pt;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
     </style>
@@ -336,7 +468,24 @@
              ========================================================================= -->
         <h2 class="section-title">Calendario General de Competiciones Oficiales 2026</h2>
 
-        <div class="grid-meses">
+        <div class="filtros-container">
+            <label for="filtroMes">Filtrar por mes:</label>
+            <select id="filtroMes">
+                <option value="todos">Todos los meses</option>
+                <option value="febrero">Febrero</option>
+                <option value="marzo">Marzo</option>
+                <option value="abril">Abril</option>
+                <option value="mayo">Mayo</option>
+                <option value="junio">Junio</option>
+                <option value="julio">Julio</option>
+                <option value="septiembre">Septiembre</option>
+                <option value="octubre">Octubre</option>
+                <option value="noviembre">Noviembre</option>
+                <option value="diciembre">Diciembre</option>
+            </select>
+        </div>
+
+        <div class="grid-meses" id="gridMeses">
 
             <!-- FEBRERO -->
             <div class="mes-bloque">
@@ -858,7 +1007,7 @@
 
     </div>
 
-    <footer>
+    <footer class="keep-custom-footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Federación de Golf Castilla-La Mancha</h4>
@@ -892,6 +1041,30 @@
         </div>
     </footer>
 
+    <script src="shared.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filtroMes = document.getElementById('filtroMes');
+            const bloquesMeses = document.querySelectorAll('#gridMeses .mes-bloque');
+
+            filtroMes.addEventListener('change', (e) => {
+                const mesSeleccionado = e.target.value.toLowerCase();
+
+                bloquesMeses.forEach(bloque => {
+                    if (mesSeleccionado === 'todos') {
+                        bloque.style.display = 'block';
+                    } else {
+                        const tituloMes = bloque.querySelector('.mes-title').textContent.toLowerCase();
+                        if (tituloMes.includes(mesSeleccionado)) {
+                            bloque.style.display = 'block';
+                        } else {
+                            bloque.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
