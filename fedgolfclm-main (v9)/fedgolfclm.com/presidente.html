@@ -32,7 +32,12 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 64px;
+      overflow: hidden;
+    }
+    .presidente-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .presidente-meta { flex: 1; min-width: 240px; }
     .presidente-cargo {
@@ -105,7 +110,10 @@
 
 <div class="presidente-section">
   <div class="presidente-header">
-    <div class="presidente-avatar">🏌️</div>
+    <div class="presidente-avatar">
+      <!-- Cambia la ruta en 'src' por la foto real del presidente -->
+      <img src="img/2019-Carlos-Gutiérrez.jpg" alt="Foto del Presidente">
+    </div>
     <div class="presidente-meta">
       <div class="presidente-cargo">Presidente</div>
       <div class="presidente-nombre">Federación de Golf<br>de Castilla-La Mancha</div>
