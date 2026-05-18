@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Oficial de Competiciones 2026 - FGCLM</title>
+    <style>
+        :root {
+            --primary-color: #1b4332;
+            --primary-light: #2d6a4f;
+            --accent-color: #d4af37;
+            --accent-hover: #b8962e;
+            --bg-body: #f4f7f5;
+            --bg-card: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #5a6578;
+            --border-color: #e2e8f0;
+            --badge-inscripcion: #e63946;
+            --badge-wagr: #457b9d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 0 40px 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 12pt;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 15px auto 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .nota-importante {
+            background-color: #fffbeb;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .nota-importante h3 {
+            color: #b45309;
+            font-size: 12pt;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nota-importante p {
+            font-size: 10.5pt;
+            color: #78350f;
+        }
+
+        h2.section-title {
+            color: var(--primary-color);
+            font-size: 16pt;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin: 45px 0 25px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .grid-meses {
+            display: block;
+        }
+
+        .mes-bloque {
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .mes-title {
+            color: var(--primary-light);
+            font-size: 13pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .lista-torneos {
+            list-style: none;
+        }
+
+        .torneo-item {
+            padding: 12px 10px;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 11pt;
+            transition: background-color 0.2s ease;
+        }
+
+        .torneo-item:last-child {
+            border-bottom: none;
+        }
+
+        .torneo-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .fecha {
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 110px;
+            display: inline-block;
+        }
+
+        .nombre-torneo {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nombre-torneo:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        .lugar {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        .badge-inscripcion {
+            background-color: var(--badge-inscripcion);
+            color: #ffffff !important;
+            transition: background-color 0.2s;
+        }
+
+        .badge-inscripcion:hover {
+            background-color: #c92a3a;
+            text-decoration: none;
+        }
+
+        .badge-wagr {
+            background-color: var(--badge-wagr);
+            color: #ffffff;
+        }
+
+        /* Sección Rankings y Campos Rústicos */
+        .rankings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .ranking-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .ranking-card h4 {
+            color: var(--primary-color);
+            font-size: 11.5pt;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-acceso {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: #ffffff;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 10pt;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .btn-acceso:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Historial de Resultados */
+        .resultados-anteriores {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .tabla-resultados {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .tabla-resultados th,
+        .tabla-resultados td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabla-resultados th {
+            background-color: #f8fafc;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10pt;
+        }
+
+        .tabla-resultados tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        .btn-tabla {
+            background-color: transparent;
+            color: var(--primary-light);
+            border: 1px solid var(--primary-light);
+            padding: 5px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 9.5pt;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-tabla:hover {
+            background-color: var(--primary-light);
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .rankings-container {
+                grid-template-columns: 1fr;
+            }
+
+            .fecha {
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            header h1 {
+                font-size: 18pt;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>Calendario Oficial – Inscripciones y Resultados</h1>
+            <p>Torneos Federación de Golf de Castilla La Mancha</p>
+            <p style="font-size: 10.5pt; color: #a7f3d0; margin-top: 10px;">
+                Consulta la forma de inscripción y los resultados de los torneos oficiales organizados por la Federación
+                de Golf de Castilla y La Mancha. Pincha en cada caso sobre el nombre del campeonato oficial para obtener
+                la información deseada.
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="nota-importante">
+            <h3>Nota Importante</h3>
+            <p>En el siguiente listado aparecen las pruebas que integran tanto el calendario general de competiciones
+                oficiales como, en la parte inferior, las pruebas locales y comunes que componen los Rankings Locales
+                Femenino, Senior y de Pitch & Putt. Asimismo se pueden consultar, en la parte inferior de la página, los
+                resultados de temporadas anteriores.</p>
+        </div>
+
+        <!-- =========================================================================
+             CALENDARIO GENERAL DE COMPETICIONES OFICIALES 2026
+             ========================================================================= -->
+        <h2 class="section-title">Calendario General de Competiciones Oficiales 2026</h2>
+
+        <div class="grid-meses">
+
+            <!-- FEBRERO -->
+            <div class="mes-bloque">
+                <div class="mes-title">Febrero 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">14-15 feb</span>
+                        <a href="#" class="nombre-torneo">Torneo Provincial de Toledo</a>
+                        <span class="lugar">— Palomarejos y Layos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- MARZO -->
+            <div class="mes-bloque">
+                <div class="mes-title">Marzo 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">1 mar</span>
+                        <a href="#" class="nombre-torneo">I Campeonato de Castilla La Mancha Individual de Campos
+                            Rústicos</a>
+                        <span class="lugar">— Golf Mudela</span>
+                        <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">7-8 mar</span>
+                        <a href="#" class="nombre-torneo">Final Ranking Locales Femenino, Senior y Pitch & Putt</a>
+                        <span class="lugar">— Playa Serena</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">13-15 mar</span>
+                        <a href="#" class="nombre-torneo">V Campeonato de Castilla La Mancha Sub 18</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                        <span class="badge badge-wagr">WAGR</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">14-15 mar</span>
+                        <a href="#" class="nombre-torneo">I Puntuable Zonal Madrid – Castilla La Mancha</a>
+                        <span class="lugar">— Layos</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">21 mar</span>
+                        <a href="#" class="nombre-torneo">I Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Señorío de Illescas</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">22 mar</span>
+                        <a href="#" class="nombre-torneo">Jornada Inaugural Liga Senior Masculina por Equipos de
+                            Castilla La Mancha</a>
+                        <span class="lugar">— Layos</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">22 mar</span>
+                        <a href="#" class="nombre-torneo">Jornada Inaugural Liga Femenina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— Torrijos Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">28 mar</span>
+                        <a href="#" class="nombre-torneo">XXXIII Campeonato de Castilla La Mancha de Parejas Four
+                            Ball</a>
+                        <span class="lugar">— Golf Ciudad Real</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">28 mar</span>
+                        <a href="#" class="nombre-torneo">I Torneo Liga Escolar y II Puntuable Ranking Juvenil de
+                            Castilla La Mancha</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">30 mar</span>
+                        <a href="#" class="nombre-torneo">III Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">31 mar</span>
+                        <a href="#" class="nombre-torneo">IV Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ABRIL -->
+            <div class="mes-bloque">
+                <div class="mes-title">Abril 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">11 abr</span>
+                        <a href="#" class="nombre-torneo">V Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Golf Ciudad Real</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">12 abr</span>
+                        <a href="#" class="nombre-torneo">II Jornada Liga Senior Masculina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— Montealvar</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">12 abr</span>
+                        <a href="#" class="nombre-torneo">II Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">18 abr</span>
+                        <a href="#" class="nombre-torneo">Torneo Provincial de Ciudad Real</a>
+                        <span class="lugar">— Golf Ciudad Real</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">19 abr</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes de Pitch &
+                            Putt</a>
+                        <span class="lugar">— Abedul Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">19 abr</span>
+                        <a href="#" class="nombre-torneo">Puntuable Ranking Juvenil de Castilla La Mancha – CIRCUITO
+                            MAJ</a>
+                        <span class="lugar">— Las Pinaillas</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">19 abr</span>
+                        <a href="#" class="nombre-torneo">II Campeonato de Castilla La Mancha por Parejas de Campos
+                            Rústicos</a>
+                        <span class="lugar">— Golf Cuesta Blanca</span>
+                        <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">25 abr</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes</a>
+                        <span class="lugar">— Layos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- MAYO -->
+            <div class="mes-bloque">
+                <div class="mes-title">Mayo 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">1 may</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha de Campos Cortos por
+                            Parejas</a>
+                        <span class="lugar">— Cifuentes</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">1 ó 2 may</span>
+                        <a href="#" class="nombre-torneo">Torneo Provincial de Albacete</a>
+                        <span class="lugar">— Las Pinaillas</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">8-10 may</span>
+                        <a href="#" class="nombre-torneo">XVII Campeonato de Castilla La Mancha Absoluto Masculino</a>
+                        <span class="lugar">— Layos</span>
+                        <span class="badge badge-wagr">WAGR</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">9 may</span>
+                        <a href="#" class="nombre-torneo">III Campeonato de Castilla La Mancha de Campos Rústicos</a>
+                        <span class="lugar">— La Vereda</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">9 may</span>
+                        <a href="#" class="nombre-torneo">XX Campeonato de Castilla La Mancha Absoluto Femenino</a>
+                        <span class="lugar">— Señorío de Illescas</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">16 may</span>
+                        <a href="#" class="nombre-torneo">VI Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Layos</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">16-17 may</span>
+                        <a href="#" class="nombre-torneo">II Puntuable Zonal Juvenil de Castilla La Mancha – Madrid</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">17 may</span>
+                        <a href="#" class="nombre-torneo">III Jornada Liga Senior Masculina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— Palomarejos Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">17 may</span>
+                        <a href="#" class="nombre-torneo">III Jornada Liga Femenina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— La Roda</span>
+                        <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">23 may</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha de Parejas de Pitch & Putt
+                            (18 hoyos Fourball – 18 hoyos Foursome)</a>
+                        <span class="lugar">— Talavera</span>
+                        <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">30 may</span>
+                        <a href="#" class="nombre-torneo">VII Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— La Lagunilla</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">31 may</span>
+                        <a href="#" class="nombre-torneo">XXXVII Copa Federación de Castilla La Mancha</a>
+                        <span class="lugar">— Golf Montealvar</span>
+                        <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- JUNIO -->
+            <div class="mes-bloque">
+                <div class="mes-title">Junio 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">6 jun</span>
+                        <a href="#" class="nombre-torneo">VIII Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— La Roda</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">7 jun</span>
+                        <a href="#" class="nombre-torneo">IV Jornada Liga Senior por Equipos de Castilla La Mancha</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">7 jun</span>
+                        <a href="#" class="nombre-torneo">IV Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">13 jun</span>
+                        <a href="#" class="nombre-torneo">IX Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">13-14 jun</span>
+                        <a href="#" class="nombre-torneo">XVII Campeonato de Castilla La Mancha Senior Masculino y
+                            Femenino</a>
+                        <span class="lugar">— Torrijos Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">20-21 jun</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha Match Play de Pitch &
+                            Putt</a>
+                        <span class="lugar">— La Roda</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">27 jun</span>
+                        <a href="#" class="nombre-torneo">Torneo Provincial de Cuenca</a>
+                        <span class="lugar">— Olalla Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">28 jun</span>
+                        <a href="#" class="nombre-torneo">Jornada Final Liga Senior Masculina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— Torrijos Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">28 jun</span>
+                        <a href="#" class="nombre-torneo">Jornada Final Liga Femenina por Equipos de Castilla La
+                            Mancha</a>
+                        <span class="lugar">— Layos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- JULIO -->
+            <div class="mes-bloque">
+                <div class="mes-title">Julio 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">4-5 jul</span>
+                        <a href="#" class="nombre-torneo">Torneo Provincial de Guadalajara</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf – Golf Montealvar</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">9-11 jul</span>
+                        <a href="#" class="nombre-torneo">Alps de las Castillas</a>
+                        <span class="lugar">— Golf Lerma</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">18-19 jul</span>
+                        <a href="#" class="nombre-torneo">Campeonato de Castilla La Mancha Absoluto de Pitch & Putt</a>
+                        <span class="lugar">— Golf Ciudad Real</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- SEPTIEMBRE -->
+            <div class="mes-bloque">
+                <div class="mes-title">Septiembre 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">5 sep</span>
+                        <a href="#" class="nombre-torneo">Final Autonómica de 5ª Categoría</a>
+                        <span class="lugar">— La Lagunilla</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">12 sep</span>
+                        <a href="#" class="nombre-torneo">Final Ranking Senior de Castilla La Mancha</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">12 sep</span>
+                        <a href="#" class="nombre-torneo">Final Ranking Femenino de Castilla La Mancha</a>
+                        <span class="lugar">— Las Pinaíllas</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">19 sep</span>
+                        <a href="#" class="nombre-torneo">Final Ranking de Pitch & Putt de Castilla La Mancha</a>
+                        <span class="lugar">— Cabanillas Casa de Campo Golf</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">19-20 sep</span>
+                        <a href="#" class="nombre-torneo">Campeonato de España de Golf Adaptado – Campeonato Absoluto de
+                            Castilla La Mancha de Golf Adaptado</a>
+                        <span class="lugar">— Las Pinaíllas</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- OCTUBRE -->
+            <div class="mes-bloque">
+                <div class="mes-title">Octubre 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">4 oct</span>
+                        <a href="#" class="nombre-torneo">Final Provincial de Castilla La Mancha</a>
+                        <span class="lugar">— La Lagunilla</span>
+                    </li>
+                    <li class="torneo-item">
+                        <span class="fecha">24 oct</span>
+                        <a href="#" class="nombre-torneo">Torneo de Campeones de Castilla La Mancha</a>
+                        <span class="lugar">— Palomarejos Golf</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- NOVIEMBRE -->
+            <div class="mes-bloque">
+                <div class="mes-title">Noviembre 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">14-15 nov</span>
+                        <a href="#" class="nombre-torneo">Campeonato de España Interclubes de Pitch & Putt</a>
+                        <span class="lugar">— Abedul Golf</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- DICIEMBRE -->
+            <div class="mes-bloque">
+                <div class="mes-title">Diciembre 2026</div>
+                <ul class="lista-torneos">
+                    <li class="torneo-item">
+                        <span class="fecha">12-13 dic</span>
+                        <a href="#" class="nombre-torneo">I Match Cuadrangular Senior Castilla La Mancha – Andalucía –
+                            Comunidad Valenciana – Murcia</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- =========================================================================
+             CATEGORÍAS ESPECÍFICAS (FILTROS / VISTAS)
+             ========================================================================= -->
+
+        <h2 class="section-title">Torneos Juveniles y Sub 18 de Castilla La Mancha 2026</h2>
+        <div class="mes-bloque">
+            <ul class="lista-torneos">
+                <li class="torneo-item"><span class="fecha">13-15 mar</span><a href="#" class="nombre-torneo">V
+                        Campeonato de Castilla La Mancha Sub 18</a> <span class="lugar">— Cabanillas Casa de Campo
+                        Golf</span> <span class="badge badge-wagr">WAGR</span></li>
+                <li class="torneo-item"><span class="fecha">14-15 mar</span><a href="#" class="nombre-torneo">I
+                        Puntuable Zonal Madrid – Castilla La Mancha</a> <span class="lugar">— Layos</span></li>
+                <li class="torneo-item"><span class="fecha">21 mar</span><a href="#" class="nombre-torneo">I Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Señorío de Illescas</span></li>
+                <li class="torneo-item"><span class="fecha">28 mar</span><a href="#" class="nombre-torneo">I Torneo Liga
+                        Escolar y II Puntuable Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla
+                        Golf</span></li>
+                <li class="torneo-item"><span class="fecha">30 mar</span><a href="#" class="nombre-torneo">III Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla Golf</span></li>
+                <li class="torneo-item"><span class="fecha">31 mar</span><a href="#" class="nombre-torneo">IV Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla Golf</span></li>
+                <li class="torneo-item"><span class="fecha">11 abr</span><a href="#" class="nombre-torneo">V Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Golf Ciudad Real</span></li>
+                <li class="torneo-item"><span class="fecha">19 abr</span><a href="#" class="nombre-torneo">Puntuable
+                        Ranking Juvenil de Castilla La Mancha – CIRCUITO MAJ</a> <span class="lugar">— Las
+                        Pinaillas</span></li>
+                <li class="torneo-item"><span class="fecha">16 may</span><a href="#" class="nombre-torneo">VI Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Layos</span></li>
+                <li class="torneo-item"><span class="fecha">16-17 may</span><a href="#" class="nombre-torneo">II
+                        Puntuable Zonal Juvenil de Castilla La Mancha – Madrid</a> <span class="lugar">— Cabanillas Casa
+                        de Campo Golf</span></li>
+                <li class="torneo-item"><span class="fecha">30 may</span><a href="#" class="nombre-torneo">VII Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— La Lagunilla</span></li>
+                <li class="torneo-item"><span class="fecha">30-31 may</span><a href="#" class="nombre-torneo">Campeonato
+                        de España de Golf Adaptado – Campeonato de Castilla La Mancha de Golf Adaptado</a> <span
+                        class="lugar">— Las Pinaíllas</span></li>
+                <li class="torneo-item"><span class="fecha">6 jun</span><a href="#" class="nombre-torneo">VIII Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— La Roda</span></li>
+                <li class="torneo-item"><span class="fecha">13 jun</span><a href="#" class="nombre-torneo">IX Puntuable
+                        Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Cabanillas Casa de Campo
+                        Golf</span></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Torneos de Pitch & Putt Castilla La Mancha 2026</h2>
+        <div class="mes-bloque">
+            <ul class="lista-torneos">
+                <li class="torneo-item"><span class="fecha">19 abr</span><a href="#" class="nombre-torneo">Campeonato de
+                        Castilla La Mancha Interclubes de Pitch & Putt</a> <span class="lugar">— Abedul Golf</span></li>
+                <li class="torneo-item"><span class="fecha">23 may</span><a href="#" class="nombre-torneo">Campeonato de
+                        Castilla La Mancha de Parejas de Pitch & Putt (18 hoyos Fourball – 18 hoyos Foursome)</a> <span
+                        class="lugar">— Talavera</span> <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                </li>
+                <li class="torneo-item"><span class="fecha">20-21 jun</span><a href="#" class="nombre-torneo">Campeonato
+                        de Castilla La Mancha Match Play de Pitch & Putt</a> <span class="lugar">— La Roda</span></li>
+                <li class="torneo-item"><span class="fecha">18-19 jul</span><a href="#" class="nombre-torneo">Campeonato
+                        de Castilla La Mancha Absoluto de Pitch & Putt</a> <span class="lugar">— Golf Ciudad Real</span>
+                </li>
+                <li class="torneo-item"><span class="fecha">19 sep</span><a href="#" class="nombre-torneo">Final Ranking
+                        de Pitch & Putt de Castilla La Mancha</a> <span class="lugar">— Cabanillas Casa de Campo
+                        Golf</span></li>
+                <li class="torneo-item"><span class="fecha">14-15 nov</span><a href="#" class="nombre-torneo">Campeonato
+                        de España Interclubes de Pitch & Putt</a> <span class="lugar">— Abedul Golf</span></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Torneos de Golf Adaptado de Castilla La Mancha 2026</h2>
+        <div class="mes-bloque">
+            <ul class="lista-torneos">
+                <li class="torneo-item"><span class="fecha">30-31 may</span><a href="#" class="nombre-torneo">Campeonato
+                        de España de Golf Adaptado – Campeonato de Castilla La Mancha de Golf Adaptado</a> <span
+                        class="lugar">— Las Pinaíllas</span></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Torneos de Campos Rústicos de Castilla La Mancha 2026</h2>
+        <div class="mes-bloque">
+            <ul class="lista-torneos">
+                <li class="torneo-item"><span class="fecha">1 mar</span><a href="#" class="nombre-torneo">I Campeonato
+                        de Castilla La Mancha Individual de Campos Rústicos</a> <span class="lugar">— Golf Mudela</span>
+                    <a href="#" class="badge badge-inscripcion">Inscripciones</a>
+                </li>
+                <li class="torneo-item"><span class="fecha">19 abr</span><a href="#" class="nombre-torneo">II Campeonato
+                        de Castilla La Mancha por Parejas de Campos Rústicos</a> <span class="lugar">— Golf Cuesta
+                        Blanca</span> <a href="#" class="badge badge-inscripcion">Inscripciones</a></li>
+                <li class="torneo-item"><span class="fecha">1 may</span><a href="#" class="nombre-torneo">Campeonato de
+                        Castilla La Mancha de Campos Rústicos por Parejas</a> <span class="lugar">— Cifuentes</span>
+                </li>
+                <li class="torneo-item"><span class="fecha">9 may</span><a href="#" class="nombre-torneo">III Campeonato
+                        de Castilla La Mancha de Campos Rústicos</a> <span class="lugar">— La Vereda</span></li>
+            </ul>
+        </div>
+
+        <!-- =========================================================================
+             RANKINGS LOCALES
+             ========================================================================= -->
+        <h2 class="section-title">Rankings Locales de Castilla La Mancha 2026</h2>
+        <div class="rankings-container">
+            <div class="ranking-card">
+                <h4>Ranking Local Femenino de Castilla La Mancha 2026</h4>
+                <p style="color: var(--text-muted); font-size: 10pt; margin-bottom: 15px;">Pruebas Locales</p>
+                <a href="#" class="btn-acceso">Acceso</a>
+            </div>
+            <div class="ranking-card">
+                <h4>Ranking Local Senior Masculino de Castilla La Mancha 2026</h4>
+                <p style="color: var(--text-muted); font-size: 10pt; margin-bottom: 15px;">Pruebas Locales</p>
+                <a href="#" class="btn-acceso">Acceso</a>
+            </div>
+            <div class="ranking-card">
+                <h4>Ranking Local de Pitch & Putt de Castilla La Mancha 2026</h4>
+                <p style="color: var(--text-muted); font-size: 10pt; margin-bottom: 15px;">Pruebas Locales</p>
+                <a href="#" class="btn-acceso">Acceso</a>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+             RESULTADOS TEMPORADAS ANTERIORES
+             ========================================================================= -->
+        <h2 class="section-title">Resultados Competiciones FGCLM Años Anteriores</h2>
+        <div class="resultados-anteriores">
+            <table class="tabla-resultados">
+                <thead>
+                    <tr>
+                        <th>Temporada / Archivo Histórico</th>
+                        <th style="text-align: right;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2020</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2021</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2022</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2023</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2024</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                    <tr>
+                        <td>Resultados Competiciones FGCLM 2025</td>
+                        <td style="text-align: right;"><a href="#" class="btn-tabla">Acceso</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Federación de Golf Castilla-La Mancha</h4>
+                <p>Gobierno de Castilla-La Mancha</p>
+                <p>c/ Donoso Cortés, 1 - 45005 Toledo</p>
+                <p>Tlf: 925 23 57 58</p>
+                <p>[EMAIL_ADDRESS]</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces de Interés</h4>
+                <ul class="footer-links">
+                    <li><a href="transparencia.html">Transparencia</a></li>
+                    <li><a href="licencia.html">Licencia</a></li>
+                    <li><a href="reglas-golf.html">Reglamentos</a></li>
+                    <li><a href="subvenciones.html">Subvenciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📸</a>
+                    <a href="#" aria-label="RSS">📡</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Federación de Golf Castilla-La Mancha - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
