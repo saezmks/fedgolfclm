@@ -4,9 +4,9 @@
  */
 
 (function () {
-  'use strict';
+  "use strict";
 
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
   const NAV_HTML = `
 <nav id="mainNav">
@@ -67,8 +67,15 @@
   </ul>
 
   <div class="nav-actions">
-    <a href="https://rfegolf.es/PaginasServicios/Servicios.aspx" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <a href="licencia.html" class="btn-nav btn-nav-gold">Área Federados</a>
+    <a href="https://rfegolf.es/jugar/handicap" target="blank" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
+    <div class="dropdown-app nav-app-dropdown">
+      <button class="btn-nav btn-nav-gold boton-app-nav">App Torneos ▾</button>
+      <div class="dropdown-contenido dropdown-contenido-nav">
+        <a href="https://apps.apple.com/es/app/fgclm-torneos/id6444149260" target="_blank">iOS</a>
+        <a href="https://play.google.com/store/apps/details?id=es.torneodegolf.fed.app&pli=1" target="_blank">Android</a>
+        <a href="https://appgallery.huawei.com/app/C107314035" target="_blank">Huawei</a>
+      </div>
+    </div>
   </div>
 </nav>`;
 
@@ -131,74 +138,79 @@
 </footer>`;
 
   function injectNav() {
-    const existingNav = document.querySelector('nav');
+    const existingNav = document.querySelector("nav");
     if (existingNav) {
       existingNav.outerHTML = NAV_HTML;
     } else {
-      document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
+      document.body.insertAdjacentHTML("afterbegin", NAV_HTML);
     }
   }
 
   function injectFooter() {
-    const existingFooter = document.querySelector('footer');
+    const existingFooter = document.querySelector("footer");
     if (existingFooter) {
       existingFooter.outerHTML = FOOTER_HTML;
     } else {
-      document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
+      document.body.insertAdjacentHTML("beforeend", FOOTER_HTML);
     }
   }
 
   function markActiveLink() {
-    document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
-      if (link.getAttribute('data-page') === currentPage) {
-        link.classList.add('active');
-        link.style.color = 'var(--gold)';
+    document.querySelectorAll(".nav-links a[data-page]").forEach((link) => {
+      if (link.getAttribute("data-page") === currentPage) {
+        link.classList.add("active");
+        link.style.color = "var(--gold)";
       }
     });
   }
 
   function initHamburger() {
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
+    const toggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
     if (!toggle || !navLinks) return;
 
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('nav-open');
-      toggle.classList.toggle('active', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+    toggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("nav-open");
+      toggle.classList.toggle("active", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        const parent = link.closest('li');
-        if (!parent || !parent.classList.contains('dropdown')) {
-          navLinks.classList.remove('nav-open');
-          toggle.classList.remove('active');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        const parent = link.closest("li");
+        if (!parent || !parent.classList.contains("dropdown")) {
+          navLinks.classList.remove("nav-open");
+          toggle.classList.remove("active");
+          toggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
         }
       });
     });
 
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('nav') && navLinks.classList.contains('nav-open')) {
-        navLinks.classList.remove('nav-open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("nav") && navLinks.classList.contains("nav-open")) {
+        navLinks.classList.remove("nav-open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
       }
     });
   }
 
   function initNavScroll() {
-    const nav = document.getElementById('mainNav');
+    const nav = document.getElementById("mainNav");
     if (!nav) return;
-    window.addEventListener('scroll', () => {
-      nav.style.boxShadow = window.scrollY > 10
-        ? '0 4px 24px rgba(0,0,0,0.35)'
-        : '0 2px 20px rgba(0,0,0,0.25)';
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        nav.style.boxShadow =
+          window.scrollY > 10
+            ? "0 4px 24px rgba(0,0,0,0.35)"
+            : "0 2px 20px rgba(0,0,0,0.25)";
+      },
+      { passive: true },
+    );
   }
 
   function init() {
@@ -209,10 +221,9 @@
     initNavScroll();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
-
 })();
