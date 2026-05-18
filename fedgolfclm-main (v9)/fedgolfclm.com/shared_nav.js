@@ -70,13 +70,6 @@
         <li><a href="circulares.html#tab-locales" data-page="circulares.html">Reglas Locales</a></li>
       </ul>
     </li>
-    <li class="dropdown">
-      <a href="rankings.html">Rankings</a>
-      <ul class="dropdown-menu">
-        <li><a href="rankings.html" data-page="rankings.html">Rankings Castilla-La Mancha</a></li>
-        <li><a href="circuito-5cat.html" data-page="circuito-5cat.html">Circuito 5ª Categoría</a></li>
-      </ul>
-    </li>
     <li><a href="clubes.html" data-page="clubes.html">Clubes</a></li>
     <li class="dropdown">
       <a href="inscripcion.html">Torneos</a>
@@ -97,8 +90,6 @@
         <line x1="16.5" y1="16.5" x2="22" y2="22"/>
       </svg>
     </button>
-    <a href="https://rfegolf.es/PaginasServicios/Servicios.aspx" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <a href="licencia.html" class="btn-nav btn-nav-gold">APP Torneos FGLM</a>
   </div>
 </nav>
 
@@ -132,7 +123,7 @@
         <button class="search-chip" data-q="licencia">Licencia</button>
         <button class="search-chip" data-q="torneos">Torneos</button>
         <button class="search-chip" data-q="clubes">Clubes</button>
-        <button class="search-chip" data-q="rankings">Rankings</button>
+
         <button class="search-chip" data-q="noticias">Noticias</button>
         <button class="search-chip" data-q="escuela">Escuela</button>
       </div>
@@ -176,7 +167,7 @@
         <li><a href="licencia.html">Trámites y Cuotas</a></li>
         <li><a href="licencia.html">Seguro de Accidente</a></li>
         <li><a href="subvenciones.html">Subvenciones</a></li>
-        <li><a href="inscripcion.html">APP Torneos FGCLM</a></li>
+
       </ul>
     </div>
     <div>

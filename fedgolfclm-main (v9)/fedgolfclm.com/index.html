@@ -8,8 +8,8 @@
 <link rel="icon" type="image/png" href="img/favicon_pagina.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="list-mag-child/style.css">
+    <!-- <link rel="stylesheet" href="shared.css"> (Integrado en el child theme) -->
 </head>
 <body>
 
@@ -48,13 +48,6 @@
     </ul>
   </li>
 
-  <li class="dropdown">
-    <a href="#rankings">Rankings</a>
-    <ul class="dropdown-menu">
-      <li><a href="rankings.html">Rankings Castilla-La Mancha</a></li>
-      <li><a href="circuito-5cat.html">Circuito 5ª Categoría</a></li>
-    </ul>
-  </li>
 
   <li><a href="clubes.html">Clubes</a></li>
 
@@ -72,14 +65,6 @@
 
   <div class="nav-actions">
     <a href="https://rfegolf.es/PaginasServicios/Servicios.aspx" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-    <div class="dropdown-app nav-app-dropdown">
-      <button class="btn-nav btn-nav-gold boton-app-nav">📱 App Torneos FGCLM ▾</button>
-      <div class="dropdown-contenido dropdown-contenido-nav">
-        <a href="https://apps.apple.com/es/app/fgclm-torneos/id6444149260" target="_blank">iOS</a>
-        <a href="https://play.google.com/store/apps/details?id=es.torneodegolf.fed.app&pli=1" target="_blank">Android</a>
-        <a href="https://appgallery.huawei.com/app/C107314035" target="_blank">Huawei</a>
-      </div>
-    </div>
   </div>
 </nav>
 
@@ -109,10 +94,6 @@
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">5.000+</div>
-      <div class="hero-stat-label">Federados</div>
-    </div>
-    <div class="hero-stat">
       <div class="hero-stat-num">40+</div>
       <div class="hero-stat-label">Clubes</div>
     </div>
@@ -132,19 +113,6 @@
     <div class="quick-bar-icon">📋</div>
     Licencia
   </a>
-  <a href="rankings.html">
-    <div class="quick-bar-icon">📊</div>
-    Rankings CLM
-  </a>
-  <div class="dropdown-app">
-    <button class="boton-app-fgclm">📱 APP  Torneos FGCLM</button>
-    
-    <div class="dropdown-contenido">
-      <a href="https://apps.apple.com/es/app/fgclm-torneos/id6444149260" target="_blank">iOS</a>
-      <a href="https://play.google.com/store/apps/details?id=es.torneodegolf.fed.app&pli=1" target="_blank">Android</a>
-      <a href="https://appgallery.huawei.com/app/C107314035" target="_blank">Huawei</a>
-    </div>
-  </div>
 </div>
 
 <section class="noticias-section" id="noticias">
@@ -181,13 +149,6 @@
       <div class="area-icon">🏆</div>
       <div class="area-title">Competiciones y Torneos</div>
       <div class="area-desc">Consulta el calendario completo de torneos FGCLM y la RFEG, inscripciones y resultados en tiempo real.</div>
-      <div class="area-link">Acceder</div>
-    </a>
-
-    <a href="rankings.html" class="area-card">
-      <div class="area-icon">📊</div>
-      <div class="area-title">Rankings CLM 2026</div>
-      <div class="area-desc">Posiciones actualizadas en las distintas categorías del circuito autonómico de Castilla-La Mancha.</div>
       <div class="area-link">Acceder</div>
     </a>
 
@@ -241,204 +202,12 @@
     <h2 class="section-title">Próximos torneos</h2>
   </div>
 
-  <div class="calendario-grid">
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">8</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Mayo</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Masculino</span>
-      <div class="evento-nombre">XVII Campeonato Absoluto Masculino de Castilla-La Mancha</div>
-      <div class="evento-lugar">📍 Club de Golf Layos, Toledo</div>
-    </a>
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">15</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Mayo</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Femenino</span>
-      <div class="evento-nombre">Campeonato Autonómico Femenino de Castilla-La Mancha 2026</div>
-      <div class="evento-lugar">📍 Por confirmar</div>
-    </a>
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">22</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Mayo</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Juvenil</span>
-      <div class="evento-nombre">Campeonato Regional Juvenil - Circuito Sub-18 CLM</div>
-      <div class="evento-lugar">📍 Club de Golf Las Pinaíllas, Albacete</div>
-    </a>
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">1</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Jun</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Senior</span>
-      <div class="evento-nombre">I Prueba Ranking Senior Castilla-La Mancha 2026</div>
-      <div class="evento-lugar">📍 Club de Golf Torrijos, Toledo</div>
-    </a>
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">14</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Jun</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Pitch &amp; Putt</span>
-      <div class="evento-nombre">Campeonato de España Pitch &amp; Putt - Selección CLM</div>
-      <div class="evento-lugar">📍 Por confirmar</div>
-    </a>
-
-    <a href="inscripcion.html" class="evento-card">
-      <div class="evento-fecha">
-        <div class="evento-dia">20</div>
-        <div class="evento-mes-info">
-          <span class="evento-mes">Jun</span>
-          <span class="evento-anyo">2026</span>
-        </div>
-      </div>
-      <span class="evento-cat">Masculino</span>
-      <div class="evento-nombre">Torneo Provincial Guadalajara - Open de Cifuentes</div>
-      <div class="evento-lugar">📍 Golf Cifuentes, Guadalajara</div>
-    </a>
-
+  <div class="calendario-grid" id="calendarioIndexGrid">
+    <!-- El calendario se actualizará automáticamente desde JS -->
   </div>
 
   <div style="margin-top: 2.5rem;">
     <a href="inscripcion.html" class="btn-primary">Ver calendario completo →</a>
-  </div>
-</section>
-
-<section class="rankings-section" id="rankings">
-  <div class="rankings-col">
-    <div class="section-label">Clasificaciones</div>
-    <h2 class="section-title" style="font-size: 2rem;">Ranking Masculino CLM 2026</h2>
-
-    <ul class="ranking-list">
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos gold">1</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Álvaro Pastor García</div>
-          <div class="ranking-club">Club de Golf Layos</div>
-        </div>
-        <div class="ranking-pts">320 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos silver">2</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Luis Miguel Sánchez</div>
-          <div class="ranking-club">Torrijos Golf</div>
-        </div>
-        <div class="ranking-pts">285 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos bronze">3</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">José Manuel Pardo</div>
-          <div class="ranking-club">Club de Golf Las Pinaíllas</div>
-        </div>
-        <div class="ranking-pts">260 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos">4</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Manuel Fajardo López</div>
-          <div class="ranking-club">Club de Golf Las Pinaíllas</div>
-        </div>
-        <div class="ranking-pts">215 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos">5</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Carlos Jiménez Muñoz</div>
-          <div class="ranking-club">Golf Cuenca</div>
-        </div>
-        <div class="ranking-pts">198 pts</div>
-      </a></li>
-    </ul>
-
-    <div style="margin-top: 1.5rem;">
-      <a href="rankings.html" class="btn-primary" style="font-size: 12px; padding: 10px 22px; background: var(--green-dark); color: white;">Ranking completo →</a>
-    </div>
-  </div>
-
-  <div class="rankings-col" style="background: var(--gray-50);">
-    <div class="section-label">Clasificaciones</div>
-    <h2 class="section-title" style="font-size: 2rem;">Ranking Femenino CLM 2026</h2>
-
-    <ul class="ranking-list">
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos gold">1</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Ana Belén Martínez</div>
-          <div class="ranking-club">Club de Golf Layos</div>
-        </div>
-        <div class="ranking-pts">295 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos silver">2</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Sofía Romero Vega</div>
-          <div class="ranking-club">Golf Albacete</div>
-        </div>
-        <div class="ranking-pts">270 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos bronze">3</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Laura García Pérez</div>
-          <div class="ranking-club">Las Pinaíllas Golf</div>
-        </div>
-        <div class="ranking-pts">248 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos">4</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Isabel Fernández Torres</div>
-          <div class="ranking-club">Torrijos Golf</div>
-        </div>
-        <div class="ranking-pts">200 pts</div>
-      </a></li>
-
-      <li><a href="rankings.html" class="ranking-item">
-        <div class="ranking-pos">5</div>
-        <div class="ranking-info">
-          <div class="ranking-nombre">Carmen López Sánchez</div>
-          <div class="ranking-club">Club de Golf Cifuentes</div>
-        </div>
-        <div class="ranking-pts">180 pts</div>
-      </a></li>
-    </ul>
-
-    <div style="margin-top: 1.5rem;">
-      <a href="rankings.html" class="btn-primary" style="font-size: 12px; padding: 10px 22px; background: var(--green-dark); color: white;">Ranking completo →</a>
-    </div>
   </div>
 </section>
 
@@ -567,6 +336,7 @@
 </footer>
 
 <script src="shared.js"></script>
+<script src="calendario_index.js"></script>
 <script src="noticias_index.js"></script>
 </body>
 </html>
