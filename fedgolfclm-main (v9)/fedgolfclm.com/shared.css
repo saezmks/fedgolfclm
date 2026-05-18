@@ -475,3 +475,52 @@ footer {
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .nav-actions .btn-nav-outline { display: none; }
 }
+
+/* ========================================================
+   SCROLL REVEAL — Animaciones al hacer scroll
+   Se aplican automáticamente a través de shared.js
+   ======================================================== */
+
+/* Estado inicial: invisible y desplazado hacia abajo */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Variantes de dirección */
+[data-reveal="left"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(40px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.92);
+}
+
+/* Estado visible: totalmente opaco en su posición natural */
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Retrasos escalonados para grids (stagger) */
+[data-reveal-delay="1"] { transition-delay: 0.08s; }
+[data-reveal-delay="2"] { transition-delay: 0.16s; }
+[data-reveal-delay="3"] { transition-delay: 0.24s; }
+[data-reveal-delay="4"] { transition-delay: 0.32s; }
+[data-reveal-delay="5"] { transition-delay: 0.40s; }
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

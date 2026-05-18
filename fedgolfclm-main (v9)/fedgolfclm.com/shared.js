@@ -222,12 +222,84 @@
     );
   }
 
+  function initScrollReveal() {
+    // Elementos que se animan al entrar en pantalla
+    const SELECTORS = [
+      'section',
+      '.page-hero',
+      '.section-header',
+      '.area-card',
+      '.evento-card',
+      '.noticia-card',
+      '.modalidad-card',
+      '.precio-card',
+      '.profesor-card',
+      '.doc-block',
+      '.form-card',
+      '.pat-featured-card',
+      '.pat-logo',
+      '.ranking-card',
+      '.club-card',
+      'article',
+      '.highlight-box',
+    ];
+
+    // Selecciona todos los elementos que coincidan y aún no tengan data-reveal
+    const candidates = document.querySelectorAll(SELECTORS.join(','));
+
+    candidates.forEach(function (el) {
+      if (el.hasAttribute('data-reveal')) return; // ya marcado manualmente
+
+      // Decide si es hijo de un grid → stagger
+      const parent = el.parentElement;
+      const siblings = parent
+        ? Array.from(parent.children).filter(function (c) {
+            return c.matches(SELECTORS.join(','));
+          })
+        : [];
+      const idx = siblings.indexOf(el);
+
+      el.setAttribute('data-reveal', '');
+      if (idx > 0 && idx <= 5) {
+        el.setAttribute('data-reveal-delay', String(idx));
+      }
+    });
+
+    // IntersectionObserver: añade .revealed cuando el elemento entra en pantalla
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: muestra todo si el navegador no soporta IO
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        el.classList.add('revealed');
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target); // se anima solo una vez
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
   function init() {
     injectNav();
     injectFooter();
     markActiveLink();
     initHamburger();
     initNavScroll();
+    // Scroll reveal se lanza después de que el DOM esté completo
+    // (pequeño timeout para que otros scripts como noticias_index.js puedan insertar tarjetas)
+    setTimeout(initScrollReveal, 80);
   }
 
   if (document.readyState === "loading") {
