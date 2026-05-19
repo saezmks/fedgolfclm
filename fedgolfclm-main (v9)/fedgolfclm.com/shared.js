@@ -89,7 +89,7 @@
 </nav>`;
 
   const FOOTER_HTML = `
-<footer>
+<footer class="footer-minimal">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">
@@ -97,33 +97,18 @@
         <div class="footer-logo-name">Federación de Golf<br>de Castilla-La Mancha</div>
       </div>
       <p class="footer-desc">
-        Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte del golf en las cinco provincias de la región.
+        Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte.
       </p>
       <div class="footer-contact">
-        <p>Plaza de España 1, Primera Planta, Local 8</p>
-        <p>19200 Azuqueca de Henares (Guadalajara)</p>
-        <p>Teléfono: 949-262300</p>
-        <p>federacion@fedgolfclm.com</p>
+        <p>Plaza de España 1, Local 8, 19200 Azuqueca de Henares (Gu) | 949-262300 | federacion@fedgolfclm.com</p>
       </div>
     </div>
     <div>
       <div class="footer-col-title">La federación</div>
       <ul class="footer-links">
         <li><a href="presidente.html">Bienvenida del Presidente</a></li>
-        <li><a href="junta-directiva.html">Junta Directiva</a></li>
         <li><a href="comites.html">Comités y Delegaciones</a></li>
-        <li><a href="transparencia.html">Transparencia</a></li>
         <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Servicios</div>
-      <ul class="footer-links">
-        <li><a href="licencia.html">Licencia y Hándicap</a></li>
-        <li><a href="licencia.html">Trámites y Cuotas</a></li>
-        <li><a href="licencia.html">Seguro de Accidente</a></li>
-        <li><a href="subvenciones.html">Subvenciones</a></li>
-        <li><a href="competiciones.html">APP Torneos FGCLM</a></li>
       </ul>
     </div>
     <div>
@@ -132,8 +117,6 @@
         <li><a href="aviso-legal.html">Aviso Legal</a></li>
         <li><a href="privacidad.html">Política de Privacidad</a></li>
         <li><a href="cookies.html">Política de Cookies</a></li>
-        <li><a href="reglamentos.html">Reglas de Golf</a></li>
-        <li><a href="circulares-fgclm.html">Circulares FGCLM</a></li>
       </ul>
     </div>
   </div>
