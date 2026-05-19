@@ -224,9 +224,42 @@ nav {
   background: #d4b36a;
 }
 
+/* ── HERO ENTRANCE ANIMATIONS ── */
+
+/* Cinematic Ken-Burns zoom on background */
+@keyframes heroZoomIn {
+  0%   { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* Soft fade-up with slight blur clearing */
+@keyframes heroFadeUp {
+  0%   { opacity: 0; transform: translateY(36px); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+/* Fade in from the left for the tag */
+@keyframes heroSlideRight {
+  0%   { opacity: 0; transform: translateX(-28px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Stats counter slide up */
+@keyframes heroStatUp {
+  0%   { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle gold line draw */
+@keyframes heroLineDraw {
+  0%   { width: 0; opacity: 0; }
+  100% { width: 32px; opacity: 1; }
+}
+
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   background: var(--green-dark);
   position: relative;
   display: flex; flex-direction: column;
@@ -238,6 +271,7 @@ nav {
   background: 
     linear-gradient(135deg, rgba(10,61,46,0.97) 0%, rgba(26,102,69,0.85) 50%, rgba(45,158,107,0.6) 100%),
     url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover no-repeat;
+  animation: heroZoomIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .hero-pattern {
@@ -249,7 +283,7 @@ nav {
 
 .hero-top-bar {
   position: relative; z-index: 2;
-  padding: 110px 6rem 0;
+  padding: 82px 6rem 0;
   display: flex; align-items: center; gap: 12px;
 }
 
@@ -262,6 +296,7 @@ nav {
   font-size: 10px; font-weight: 600;
   color: var(--gold); letter-spacing: 1.5px;
   text-transform: uppercase;
+  animation: heroSlideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
 .hero-tag::before {
@@ -280,7 +315,7 @@ nav {
 .hero-content {
   position: relative; z-index: 2;
   flex: 1;
-  padding: 3rem 6rem 5rem;
+  padding: 1.5rem 6rem 2rem;
   display: flex; align-items: flex-end;
 }
 
@@ -290,23 +325,26 @@ nav {
   font-size: 11px; font-weight: 600;
   color: var(--gold); letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
   display: flex; align-items: center; gap: 12px;
+  animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 }
 
 .hero-eyebrow::before {
   content: '';
-  width: 32px; height: 1px;
+  height: 1px;
   background: var(--gold);
+  animation: heroLineDraw 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 900; line-height: 0.95;
   color: var(--white);
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   letter-spacing: -1px;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
 }
 
 .hero-title em {
@@ -316,14 +354,16 @@ nav {
 }
 
 .hero-sub {
-  font-size: 16px; font-weight: 300;
+  font-size: 15px; font-weight: 300;
   color: rgba(255,255,255,0.65);
-  line-height: 1.7; max-width: 480px;
-  margin-bottom: 3rem;
+  line-height: 1.6; max-width: 480px;
+  margin-bottom: 1.5rem;
+  animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
 }
 
 .hero-ctas {
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both;
 }
 
 .btn-primary {
@@ -361,25 +401,30 @@ nav {
 }
 
 .hero-stats {
-  position: absolute; bottom: 0; right: 6rem;
+  position: absolute; bottom: 8px; right: 6rem;
   display: flex; gap: 0;
   z-index: 2;
 }
 
 .hero-stat {
-  padding: 24px 36px;
+  padding: 14px 28px;
   background: rgba(255,255,255,0.06);
   border-top: 1px solid rgba(255,255,255,0.1);
   border-left: 1px solid rgba(255,255,255,0.1);
   text-align: center;
   backdrop-filter: blur(4px);
+  animation: heroStatUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.hero-stat:nth-child(1) { animation-delay: 1.3s; }
+.hero-stat:nth-child(2) { animation-delay: 1.45s; }
+.hero-stat:nth-child(3) { animation-delay: 1.6s; }
 
 .hero-stat:first-child { border-left: none; }
 
 .hero-stat-num {
   font-family: var(--font-display);
-  font-size: 2.2rem; font-weight: 700;
+  font-size: 1.8rem; font-weight: 700;
   color: var(--gold); line-height: 1;
   margin-bottom: 4px;
 }
@@ -1098,13 +1143,31 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: 2.8rem; }
-  .hero-stats { position: static; flex-direction: row; flex-wrap: wrap; margin: 0 2.5rem 3rem; }
-  .hero-content { padding-bottom: 2rem; }
+  .hero { height: auto; max-height: none; min-height: 100vh; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-stats { position: static; flex-direction: row; flex-wrap: wrap; margin: 0 2.5rem 1.5rem; }
+  .hero-content { padding-bottom: 1rem; }
   .areas-grid { grid-template-columns: 1fr; }
   .noticias-grid { grid-template-columns: 1fr; }
   .rankings-section { grid-template-columns: 1fr; }
   .rankings-col { padding: 60px 2.5rem; }
   .footer-top { grid-template-columns: 1fr; }
   .pat-logos { gap: 30px; }
+}
+
+/* ── Reduced Motion: disable hero entrance animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-tag,
+  .hero-eyebrow,
+  .hero-eyebrow::before,
+  .hero-title,
+  .hero-sub,
+  .hero-ctas,
+  .hero-stat {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
