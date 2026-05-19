@@ -1,220 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rankings Castilla-La Mancha — Federación de Golf de Castilla-La Mancha</title>
   <link rel="icon" type="image/png" href="img/favicon_pagina.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
-    body { padding-top: 70px; }
-    .rankings-page { padding: 64px 6rem; max-width: 1200px; margin: 0 auto; }
-    .block-title {
+    body {
+      padding-top: 70px;
+    }
+
+    .rankings-page {
+      padding: 64px 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
       font-family: var(--font-display);
-      font-size: 1.4rem; font-weight: 700;
+      font-size: 2.2rem;
+      font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--gold);
+      margin-bottom: 2rem;
     }
-    .tabs {
-      display: flex; gap: 0;
-      border-bottom: 2px solid var(--gray-100);
-      margin-bottom: 36px;
-      flex-wrap: wrap;
+
+    .rankings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 5rem;
     }
-    .tab-btn {
-      padding: 11px 20px;
-      border: none;
-      background: none;
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--gray-300);
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: all 0.2s;
+
+    .ranking-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 8px;
+      padding: 32px;
+      transition: all 0.3s;
     }
-    .tab-btn.active { color: var(--green-dark); border-bottom-color: var(--gold); }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .ranking-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
-    .ranking-table th {
-      background: var(--green-dark);
-      color: var(--white);
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+
+    .ranking-card:hover {
+      background: var(--white);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-color: var(--gold);
     }
-    .ranking-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--gray-100);
+
+    .ranking-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .ranking-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ranking-links a {
       font-size: 13px;
-      color: var(--gray-900);
-    }
-    .ranking-table tr:hover td { background: var(--gray-50); }
-    .pos-badge {
-      display: inline-flex;
+      font-weight: 600;
+      color: var(--green-accent);
+      text-decoration: none;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      font-weight: 700;
-      font-size: 13px;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
     }
-    .pos-1 { background: #FFD700; color: #5a4500; }
-    .pos-2 { background: #C0C0C0; color: #3a3a3a; }
-    .pos-3 { background: #CD7F32; color: white; }
-    .pos-n { background: var(--gray-100); color: var(--gray-600); }
-    .club-cell { font-size: 11px; color: var(--gray-300); display: block; margin-top: 2px; }
-    .pts-cell { font-family: var(--font-display); font-weight: 700; color: var(--green-dark); }
-    .rnk-meta { font-size: 12px; color: var(--gray-300); margin-bottom: 20px; }
-    @media (max-width: 1100px) { .rankings-page { padding: 48px 2.5rem; } }
-    @media (max-width: 640px) { .rankings-page { padding: 32px 1.25rem; } .ranking-table th, .ranking-table td { padding: 9px 10px; } }
+
+    .ranking-links a::before {
+      content: '→';
+    }
+
+    .ranking-links a:hover {
+      color: var(--gold);
+    }
+
+    .ranking-links span {
+      font-size: 13px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .historic-section {
+      background: var(--white);
+      border-top: 2px solid var(--gray-100);
+      padding-top: 4rem;
+    }
+
+    .historic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .historic-year {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .historic-year h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gray-100);
+      padding-bottom: 10px;
+    }
+
+    .historic-year ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .historic-year a {
+      font-size: 13px;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .historic-year a:hover {
+      color: var(--green-accent);
+    }
+
+    .historic-year span {
+      font-size: 13px;
+      color: var(--gray-300);
+    }
+
+    @media (max-width: 1100px) {
+      .rankings-page {
+        padding: 48px 2.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .rankings-page {
+        padding: 32px 1.25rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<div class="page-hero">
-  <div class="page-hero-content">
-    <div class="page-hero-label">Rankings</div>
-    <h1>Rankings <em>Castilla-La Mancha</em></h1>
-    <p>Clasificaciones actualizadas del circuito autonómico en todas las categorías. Temporada 2026.</p>
-  </div>
-</div>
-
-<div class="rankings-page">
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('masc', this)">Masculino</button>
-    <button class="tab-btn" onclick="showTab('fem', this)">Femenino</button>
-    <button class="tab-btn" onclick="showTab('jov', this)">Juvenil</button>
-    <button class="tab-btn" onclick="showTab('senior', this)">Senior</button>
-    <button class="tab-btn" onclick="showTab('pp', this)">Pitch &amp; Putt</button>
-    <button class="tab-btn" onclick="showTab('adaptado', this)">Golf Adaptado</button>
+  <div class="page-hero">
+    <div class="page-hero-content" data-reveal>
+      <div class="page-hero-label">Información Oficial</div>
+      <h1>Rankings <em>Castilla-La Mancha</em></h1>
+      <p>Consulta los reglamentos y accede a las clasificaciones actualizadas de todos los rankings autonómicos, así
+        como al archivo histórico de temporadas anteriores.</p>
+    </div>
   </div>
 
-  <div id="tab-masc" class="tab-content active">
-    <div class="rnk-meta">Ranking Masculino CLM 2026 · Última actualización: mayo 2026 · 3 pruebas disputadas</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugador</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Álvaro Pastor García</td><td>Club de Golf Layos</td><td class="pts-cell">320</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Luis Miguel Sánchez Ruiz</td><td>Torrijos Golf</td><td class="pts-cell">285</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>José Manuel Pardo López</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">260</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Manuel Fajardo López</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">215</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Carlos Jiménez Muñoz</td><td>Olalla Golf Cuenca</td><td class="pts-cell">198</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">6</span></td><td>Rodrigo Martínez Serna</td><td>Cabanillas Golf</td><td class="pts-cell">185</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">7</span></td><td>Adrián Segura González</td><td>Palomarejos Golf</td><td class="pts-cell">172</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">8</span></td><td>Fernando López de la Cruz</td><td>Montealvar Golf</td><td class="pts-cell">160</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">9</span></td><td>Pablo Herráez Moreno</td><td>Club de Golf Cifuentes</td><td class="pts-cell">148</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">10</span></td><td>Antonio Ramos Vega</td><td>Golf Ciudad Real</td><td class="pts-cell">135</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">11</span></td><td>Jorge Bermejo Morales</td><td>Club de Golf Layos</td><td class="pts-cell">122</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">12</span></td><td>Iván Cañas Prieto</td><td>Club de Golf Pinaíllas</td><td class="pts-cell">110</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">13</span></td><td>Diego Torres Alonso</td><td>Abedul Golf</td><td class="pts-cell">98</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">14</span></td><td>Marcos Gil Sánchez</td><td>La Caminera Golf</td><td class="pts-cell">86</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">15</span></td><td>Samuel Pascual Blanco</td><td>Golf Molino de Rus</td><td class="pts-cell">74</td><td>1</td></tr>
-      </tbody>
-    </table>
+  <div class="rankings-page">
+
+    <h2 class="section-title" data-reveal>Rankings Actuales 2026</h2>
+
+    <div class="rankings-grid">
+      <div class="ranking-card" data-reveal>
+        <h3>Ranking Absoluto Masculino</h3>
+        <div class="ranking-links">
+          <span>Reglamento – próximamente</span>
+          <a href="./rankings/actualizacion-2026.html" target="_blank">Acceso Ranking Absoluto Masculino</a>
+        </div>
+      </div>
+
+      <div class="ranking-card" data-reveal>
+        <h3>Ranking Juvenil</h3>
+        <div class="ranking-links">
+          <a href="https://www.fedgolfclm.com/reglamentos-rankings-sub-18-sub-16-y-juvenil-de-castilla-la-mancha-2026/"
+            target="_blank">Reglamento Ranking Sub 18, Sub 16, Infantil, Alevín y Benjamín</a>
+          <span>Acceso Ranking Sub 18, Sub 16, Infantil, Alevín y Benjamín</span>
+        </div>
+      </div>
+
+      <div class="ranking-card" data-reveal>
+        <h3>Ranking Autonómico Femenino</h3>
+        <div class="ranking-links">
+          <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/01/REGLAMENTO-RANKING-AUTONOMICO-FEMENINO-clm-2026.pdf"
+            target="_blank">Reglamento Ranking Autonómico Femenino</a>
+          <a href="https://www.fedgolfclm.com/actualizacion-de-los-rankings-autonomicos-masculino-femenino-senior-y-pitch-putt-de-castilla-la-mancha-2026/"
+            target="_blank">Acceso Ranking Absoluto Femenino</a>
+        </div>
+      </div>
+
+      <div class="ranking-card" data-reveal>
+        <h3>Ranking Autonómico Senior Masculino</h3>
+        <div class="ranking-links">
+          <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/01/REGLAMENTO-RANKING-AUTONOMICO-SENIOR-CLM-2026.pdf"
+            target="_blank">Reglamento Ranking Autonómico Senior Masculino</a>
+          <a href="https://www.fedgolfclm.com/actualizacion-de-los-rankings-autonomicos-masculino-femenino-senior-y-pitch-putt-de-castilla-la-mancha-2026/"
+            target="_blank">Acceso Ranking Senior</a>
+        </div>
+      </div>
+
+      <div class="ranking-card" data-reveal>
+        <h3>Ranking Autonómico Pitch & Putt</h3>
+        <div class="ranking-links">
+          <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/01/REGLAMENTO-RANKING-AUTONOMICO-PyP-clm-2026.pdf"
+            target="_blank">Reglamento Ranking Autonómico de Pitch & Putt</a>
+          <a href="https://www.fedgolfclm.com/actualizacion-de-los-rankings-autonomicos-masculino-femenino-senior-y-pitch-putt-de-castilla-la-mancha-2026/"
+            target="_blank">Acceso Ranking Pitch & Putt</a>
+        </div>
+      </div>
+
+      <div class="ranking-card" data-reveal>
+        <h3>Rankings Locales Femenino, Senior y Pitch & Putt</h3>
+        <div class="ranking-links">
+          <a href="https://www.fedgolfclm.com/reglamento-rankings-locales-femenino-senior-y-pitch-putt-de-castilla-la-mancha-2026/"
+            target="_blank">Reglamento</a>
+          <a href="https://www.fedgolfclm.com/calendario-y-resultados-pruebas-de-los-rankings-locales-femenino-senior-y-pitch-putt-de-castilla-la-mancha-2026/"
+            target="_blank">Acceso Rankings Locales</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="historic-section" data-reveal>
+      <h2 class="section-title">Histórico de Rankings</h2>
+
+      <div class="historic-grid">
+        <!-- 2025 -->
+        <div class="historic-year">
+          <h4>Año 2025</h4>
+          <ul>
+            <li><a href="./rankings/masculino-2025.html">Ranking Absoluto Masculino 2025</a></li>
+            <li><a href="./rankings/juvenil-2025.html">Ranking Juvenil 2025</a></li>
+            <li><a href="./rankings/autonomicos-2025.html">Ranking Absoluto Femenino 2025</a></li>
+            <li><a href="./rankings/autonomicos-2025.html">Ranking Senior 2025</a></li>
+            <li><a href="./rankings/autonomicos-2025.html">Ranking Pitch &amp; Putt 2025</a></li>
+          </ul>
+        </div>
+
+        <!-- 2024 -->
+        <div class="historic-year">
+          <h4>Año 2024</h4>
+          <ul>
+            <li><a href="./rankings/masculino-2024.html">Ranking Absoluto Masculino 2024</a></li>
+            <li><a href="./rankings/juvenil-2024.html">Ranking Juvenil 2024</a></li>
+            <li><a href="./rankings/autonomicos-2024.html">Ranking Absoluto Femenino 2024</a></li>
+            <li><a href="./rankings/autonomicos-2024.html">Ranking Senior 2024</a></li>
+            <li><a href="./rankings/autonomicos-2024.html">Ranking Pitch &amp; Putt 2024</a></li>
+          </ul>
+        </div>
+
+        <!-- 2023 -->
+        <div class="historic-year">
+          <h4>Año 2023</h4>
+          <ul>
+            <li><a href="./rankings/masculino-2023.html">Ranking Absoluto Masculino 2023</a></li>
+            <li><a href="./rankings/juvenil-2023.html">Ranking Juvenil 2023</a></li>
+            <li><a href="./rankings/autonomicos-2023.html">Ranking Absoluto Femenino 2023</a></li>
+            <li><a href="./rankings/autonomicos-2023.html">Ranking Senior 2023</a></li>
+            <li><a href="./rankings/autonomicos-2023.html">Ranking Pitch &amp; Putt 2023</a></li>
+          </ul>
+        </div>
+
+        <!-- 2022 -->
+        <div class="historic-year">
+          <h4>Año 2022</h4>
+          <ul>
+            <li><a href="./rankings/masculino-2022.html">Ranking Absoluto Masculino 2022</a></li>
+            <li><a href="./rankings/juvenil-2022.html">Ranking Juvenil 2022</a></li>
+            <li><a href="./rankings/autonomicos-2022.html">Ranking Absoluto Femenino 2022</a></li>
+            <li><a href="./rankings/autonomicos-2022.html">Ranking Senior 2022</a></li>
+            <li><a href="./rankings/autonomicos-2022.html">Ranking Pitch &amp; Putt 2022</a></li>
+          </ul>
+        </div>
+
+        <!-- 2021 -->
+        <div class="historic-year">
+          <h4>Año 2021</h4>
+          <ul>
+            <li><a href="./rankings/masculino-2021.html">Ranking Absoluto Masculino 2021</a></li>
+            <li><a href="./rankings/juvenil-2021.html">Ranking Juvenil 2021</a></li>
+            <li><a href="./rankings/autonomicos-2021.html">Ranking Femenino 2021</a></li>
+            <li><a href="./rankings/autonomicos-2021.html">Ranking Senior 2021</a></li>
+            <li><a href="./rankings/autonomicos-2021.html">Ranking Pitch &amp; Putt 2021</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div id="tab-fem" class="tab-content">
-    <div class="rnk-meta">Ranking Femenino CLM 2026 · Última actualización: mayo 2026 · 3 pruebas disputadas</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugadora</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Ana Belén Martínez Córdoba</td><td>Club de Golf Layos</td><td class="pts-cell">295</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Sofía Romero Vega</td><td>Golf Albacete</td><td class="pts-cell">270</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>Laura García Pérez</td><td>Club de Golf Las Pinaíllas</td><td class="pts-cell">248</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Isabel Fernández Torres</td><td>Torrijos Golf</td><td class="pts-cell">200</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Carmen López Sánchez</td><td>Club de Golf Cifuentes</td><td class="pts-cell">180</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">6</span></td><td>Marta Iglesias Ruiz</td><td>Palomarejos Golf</td><td class="pts-cell">165</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">7</span></td><td>Patricia Navas Alarcón</td><td>Cabanillas Golf</td><td class="pts-cell">150</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">8</span></td><td>Elena Ramírez del Pozo</td><td>Montealvar Golf</td><td class="pts-cell">138</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">9</span></td><td>Rosa Morales Castellanos</td><td>Golf Ciudad Real</td><td class="pts-cell">120</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">10</span></td><td>Cristina Valverde Soto</td><td>Olalla Golf Cuenca</td><td class="pts-cell">105</td><td>1</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div id="tab-jov" class="tab-content">
-    <div class="rnk-meta">Ranking Juvenil CLM 2026 (Sub-18 combinado) · Última actualización: mayo 2026</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Cat.</th><th>Puntos</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Nicolás Sáez Martín</td><td>Cabanillas Golf</td><td>Sub-18</td><td class="pts-cell">280</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Andrea Moreno Torres</td><td>Club de Golf Layos</td><td>Sub-18</td><td class="pts-cell">255</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>Guillermo Ruiz Castellanos</td><td>Palomarejos Golf</td><td>Sub-16</td><td class="pts-cell">230</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Lucía Pérez Montero</td><td>Golf Pinaíllas</td><td>Sub-18</td><td class="pts-cell">198</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Mario González Aparicio</td><td>Montealvar Golf</td><td>Sub-16</td><td class="pts-cell">176</td></tr>
-        <tr><td><span class="pos-badge pos-n">6</span></td><td>Alejandra López Rubio</td><td>Cabanillas Golf</td><td>Sub-14</td><td class="pts-cell">155</td></tr>
-        <tr><td><span class="pos-badge pos-n">7</span></td><td>Jaime Delgado Nieto</td><td>Club de Golf Layos</td><td>Sub-14</td><td class="pts-cell">140</td></tr>
-        <tr><td><span class="pos-badge pos-n">8</span></td><td>Claudia Mínguez Navarro</td><td>Olalla Golf</td><td>Sub-18</td><td class="pts-cell">125</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div id="tab-senior" class="tab-content">
-    <div class="rnk-meta">Ranking Senior CLM 2026 (mayores de 55 años) · Última actualización: mayo 2026</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Ramón Ortega Blanco</td><td>Palomarejos Golf</td><td class="pts-cell">310</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Concepción Téllez Morales</td><td>Cabanillas Golf</td><td class="pts-cell">285</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>Ernesto Valladares Sanz</td><td>Club de Golf Layos</td><td class="pts-cell">260</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Pilar Aragonés Moreno</td><td>Montealvar Golf</td><td class="pts-cell">218</td><td>3</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Francisco Rueda Cano</td><td>Golf Ciudad Real</td><td class="pts-cell">195</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">6</span></td><td>Julia Pedraza Lara</td><td>Golf Pinaíllas</td><td class="pts-cell">178</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">7</span></td><td>Tomás Cervantes Gil</td><td>Club de Golf Cifuentes</td><td class="pts-cell">155</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">8</span></td><td>Rosario Medina Bravo</td><td>Abedul Golf</td><td class="pts-cell">132</td><td>2</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div id="tab-pp" class="tab-content">
-    <div class="rnk-meta">Ranking Pitch & Putt CLM 2026 · Última actualización: mayo 2026</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Puntos</th><th>Pruebas</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Javier Ruiz Molero</td><td>Golf Talavera</td><td class="pts-cell">245</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Alicia Sánchez Briega</td><td>Abedul Golf</td><td class="pts-cell">220</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>Pedro Arjona Moreno</td><td>Golf Laguna de los Patos</td><td class="pts-cell">198</td><td>2</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Verónica López Navas</td><td>Golf Talavera</td><td class="pts-cell">175</td><td>1</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Miguel Serna Andújar</td><td>Abedul Golf</td><td class="pts-cell">152</td><td>2</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div id="tab-adaptado" class="tab-content">
-    <div class="rnk-meta">Ranking Golf Adaptado CLM 2026 · Última actualización: mayo 2026</div>
-    <table class="ranking-table">
-      <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>Categoría</th><th>Puntos</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pos-badge pos-1">1</span></td><td>Rafael Moreno Castillo</td><td>Club de Golf Layos</td><td>Categoría A</td><td class="pts-cell">280</td></tr>
-        <tr><td><span class="pos-badge pos-2">2</span></td><td>Isabel García Núñez</td><td>Cabanillas Golf</td><td>Categoría B</td><td class="pts-cell">255</td></tr>
-        <tr><td><span class="pos-badge pos-3">3</span></td><td>Ángel Delgado Marcos</td><td>Golf Pinaíllas</td><td>Categoría A</td><td class="pts-cell">230</td></tr>
-        <tr><td><span class="pos-badge pos-n">4</span></td><td>Carmen Herrera Vidal</td><td>Palomarejos Golf</td><td>Categoría C</td><td class="pts-cell">198</td></tr>
-        <tr><td><span class="pos-badge pos-n">5</span></td><td>Sergio Martín Pascual</td><td>Golf Ciudad Real</td><td>Categoría B</td><td class="pts-cell">176</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<script src="shared.js"></script>
-<script>
-  function showTab(tabId, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tabId).classList.add('active');
-    btn.classList.add('active');
-  }
-</script>
+  <script src="shared.js"></script>
 </body>
+
 </html>
