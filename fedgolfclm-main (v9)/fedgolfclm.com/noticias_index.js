@@ -66,8 +66,8 @@
       : '';
 
     return `
-      <a href="${href}"${target} class="noticia-card${isFeatured ? ' noticia-card-featured' : ''}">
-        ${buildThumb(n, isFeatured)}
+      <a href="${href}"${target} class="noticia-card">
+        ${buildThumb(n, false)}
         <div class="noticia-body">
           ${cat ? `<span class="noticia-cat">${cat}</span>` : ''}
           <div class="noticia-fecha">${n.fecha || ''}</div>
@@ -78,17 +78,110 @@
   }
 
   function renderIndexNews(data) {
-    // Take the 5 most recent posts
-    const latest = data.slice(0, 5);
+    // Take the 7 most recent posts
+    const latest = data.slice(0, 7);
     const skeleton = document.getElementById('noticiasIndexSkeleton');
-    const grid     = document.getElementById('noticiasIndexGrid');
-    if (!grid) return;
+    const wrapper = document.getElementById('noticiasCarouselWrapper');
+    const track = document.getElementById('noticiasCarouselTrack');
+    if (!track || !wrapper) return;
 
-    grid.innerHTML = latest.map((n, i) => buildCard(n, i)).join('');
+    // Create 3 copies for infinite loop (left clones, real, right clones)
+    const carouselItems = [...latest, ...latest, ...latest];
+    track.innerHTML = carouselItems.map((n, i) => buildCard(n, i)).join('');
 
-    // Swap skeleton → real grid
+    // Swap skeleton → real carousel
     if (skeleton) skeleton.style.display = 'none';
-    grid.style.display = '';
+    wrapper.style.display = 'flex';
+
+    initCarousel(latest.length);
+  }
+
+  function initCarousel(numItems) {
+    const track = document.getElementById('noticiasCarouselTrack');
+    const btnPrev = document.getElementById('btnPrevNews');
+    const btnNext = document.getElementById('btnNextNews');
+    
+    // Start at the real items (middle set)
+    let currentIndex = numItems; 
+    let isTransitioning = false;
+    
+    function updateCarousel(instant = false) {
+      const containerWidth = track.parentElement.offsetWidth;
+      const itemWidth = track.children[0].offsetWidth;
+      const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+      
+      // Calculate center offset so the active slide is centered
+      const centerOffset = (containerWidth - itemWidth) / 2;
+      const moveDistance = (currentIndex * (itemWidth + gap)) - centerOffset;
+      
+      if (instant) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${moveDistance}px)`;
+        track.offsetHeight; // Force reflow
+      } else {
+        track.style.transition = 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+        track.style.transform = `translateX(-${moveDistance}px)`;
+      }
+
+      // Update active class
+      Array.from(track.children).forEach((child, index) => {
+        if (index === currentIndex) {
+          child.classList.add('active-slide');
+        } else {
+          child.classList.remove('active-slide');
+        }
+      });
+    }
+
+    function handleTransitionEnd() {
+      isTransitioning = false;
+      // If we moved to the left clone zone, jump to real zone
+      if (currentIndex < numItems) {
+        currentIndex += numItems;
+        updateCarousel(true);
+      } 
+      // If we moved to the right clone zone, jump back to real zone
+      else if (currentIndex >= numItems * 2) {
+        currentIndex -= numItems;
+        updateCarousel(true);
+      }
+    }
+
+    track.addEventListener('transitionend', handleTransitionEnd);
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex--;
+      updateCarousel();
+    }
+
+    btnNext.addEventListener('click', nextSlide);
+    btnPrev.addEventListener('click', prevSlide);
+
+    // Auto slide every 5.5 seconds
+    let autoSlideInterval = setInterval(nextSlide, 5500);
+
+    // Pause on hover
+    const wrapper = document.getElementById('noticiasCarouselWrapper');
+    wrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    wrapper.addEventListener('mouseleave', () => {
+      autoSlideInterval = setInterval(nextSlide, 5500);
+    });
+
+    window.addEventListener('resize', () => {
+      updateCarousel(true);
+    });
+    
+    // Initial setup (instant so no animation on load)
+    updateCarousel(true);
   }
 
   // Load JSON — path relative to index.html
