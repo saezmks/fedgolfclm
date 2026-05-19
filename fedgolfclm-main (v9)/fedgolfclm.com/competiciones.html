@@ -11,449 +11,17 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shared.css">
-    <style>
-        :root {
-            --primary-color: #1b4332;
-            --primary-light: #2d6a4f;
-            --accent-color: #d4af37;
-            --accent-hover: #b8962e;
-            --bg-body: #f4f7f5;
-            --bg-card: #ffffff;
-            --text-main: #2d3748;
-            --text-muted: #5a6578;
-            --border-color: #e2e8f0;
-            --badge-inscripcion: #e63946;
-            --badge-wagr: #457b9d;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 70px 0 40px 0;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        header h1 {
-            font-size: 24pt;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        header p {
-            font-size: 12pt;
-            color: #cbd5e1;
-            max-width: 700px;
-            margin: 15px auto 0 auto;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .nota-importante {
-            background-color: #fffbeb;
-            border-left: 5px solid #f59e0b;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 35px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-        }
-
-        .nota-importante h3 {
-            color: #b45309;
-            font-size: 12pt;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nota-importante p {
-            font-size: 10.5pt;
-            color: #78350f;
-        }
-
-        h2.section-title {
-            color: var(--primary-color);
-            font-size: 16pt;
-            border-bottom: 3px solid var(--primary-light);
-            padding-bottom: 8px;
-            margin: 45px 0 25px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .grid-meses {
-            display: block;
-        }
-
-        .mes-bloque {
-            background: var(--bg-card);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-        }
-
-        .mes-title {
-            color: var(--primary-light);
-            font-size: 13pt;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .lista-torneos {
-            list-style: none;
-        }
-
-        .torneo-item {
-            padding: 12px 10px;
-            border-bottom: 1px dashed var(--border-color);
-            font-size: 11pt;
-            transition: background-color 0.2s ease;
-        }
-
-        .torneo-item:last-child {
-            border-bottom: none;
-        }
-
-        .torneo-item:hover {
-            background-color: #f8fafc;
-        }
-
-        .fecha {
-            font-weight: 700;
-            color: var(--primary-color);
-            min-width: 110px;
-            display: inline-block;
-        }
-
-        .nombre-torneo {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nombre-torneo:hover {
-            color: var(--primary-light);
-            text-decoration: underline;
-        }
-
-        .lugar {
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 3px 8px;
-            font-size: 8.5pt;
-            font-weight: 600;
-            border-radius: 4px;
-            margin-left: 8px;
-            text-transform: uppercase;
-            text-decoration: none;
-            vertical-align: middle;
-        }
-
-        .badge-inscripcion {
-            background-color: var(--badge-inscripcion);
-            color: #ffffff !important;
-            transition: background-color 0.2s;
-        }
-
-        .badge-inscripcion:hover {
-            background-color: #c92a3a;
-            text-decoration: none;
-        }
-
-        .badge-wagr {
-            background-color: var(--badge-wagr);
-            color: #ffffff;
-        }
-
-        /* Sección Rankings y Campos Rústicos */
-        .rankings-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .ranking-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-        }
-
-        .ranking-card h4 {
-            color: var(--primary-color);
-            font-size: 11.5pt;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-acceso {
-            display: inline-block;
-            background-color: var(--primary-light);
-            color: #ffffff;
-            padding: 10px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 10pt;
-            transition: background-color 0.2s;
-            width: 100%;
-        }
-
-        .btn-acceso:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* Historial de Resultados */
-        .resultados-anteriores {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-        }
-
-        .tabla-resultados {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .tabla-resultados th,
-        .tabla-resultados td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .tabla-resultados th {
-            background-color: #f8fafc;
-            color: var(--primary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 10pt;
-        }
-
-        .tabla-resultados tr:hover {
-            background-color: #fcfcfc;
-        }
-
-        .btn-tabla {
-            background-color: transparent;
-            color: var(--primary-light);
-            border: 1px solid var(--primary-light);
-            padding: 5px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 9.5pt;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .btn-tabla:hover {
-            background-color: var(--primary-light);
-            color: #ffffff;
-        }
-
-        /* Filtros */
-        .filtros-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            background: #ffffff;
-            padding: 15px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-        }
-
-        .filtros-container label {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 11pt;
-        }
-
-        .filtros-container select {
-            padding: 8px 12px;
-            border-radius: 5px;
-            border: 1px solid var(--border-color);
-            font-size: 10.5pt;
-            font-family: inherit;
-            color: var(--text-main);
-            outline: none;
-            cursor: pointer;
-            min-width: 200px;
-        }
-
-        .filtros-container select:focus {
-            border-color: var(--primary-light);
-        }
-
-        /* Footer CSS */
-        footer {
-            background-color: var(--primary-color);
-            color: #cbd5e1;
-            padding: 50px 20px 20px 20px;
-            margin-top: 50px;
-            border-top: 5px solid var(--accent-color);
-        }
-
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            color: #ffffff;
-            font-size: 13pt;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .footer-section p {
-            margin-bottom: 10px;
-            font-size: 10.5pt;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 10.5pt;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-light);
-            color: #ffffff;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: background-color 0.2s, transform 0.2s;
-            font-size: 14pt;
-        }
-
-        .footer-social a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--primary-light);
-            font-size: 9.5pt;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .rankings-container {
-                grid-template-columns: 1fr;
-            }
-
-            .fecha {
-                display: block;
-                margin-bottom: 4px;
-            }
-
-            header h1 {
-                font-size: 18pt;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body class="competiciones-page-body">
 
-    <header>
-        <div class="header-container">
-            <h1>Calendario Oficial – Inscripciones y Resultados</h1>
-            <p>Torneos Federación de Golf de Castilla La Mancha</p>
-            <p style="font-size: 10.5pt; color: #a7f3d0; margin-top: 10px;">
-                Consulta la forma de inscripción y los resultados de los torneos oficiales organizados por la Federación
-                de Golf de Castilla y La Mancha. Pincha en cada caso sobre el nombre del campeonato oficial para obtener
-                la información deseada.
-            </p>
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <div class="page-hero-label">Torneos</div>
+            <h1>Calendario Oficial – <em>Inscripciones y Resultados</em></h1>
+            <p>Consulta la forma de inscripción y los resultados de los torneos oficiales organizados por la Federación de Golf de Castilla-La Mancha. Pincha en cada caso sobre el nombre del campeonato oficial para obtener la información deseada.</p>
         </div>
-    </header>
+    </div>
 
     <div class="container">
 
@@ -495,7 +63,8 @@
                 <ul class="lista-torneos">
                     <li class="torneo-item">
                         <span class="fecha">14-15 feb</span>
-                        <a href="competiciones/calendario/febrero/torneo_provincial_toledo.html" class="nombre-torneo">Torneo Provincial de Toledo</a>
+                        <a href="competiciones/calendario/febrero/torneo_provincial_toledo.html"
+                            class="nombre-torneo">Torneo Provincial de Toledo</a>
                         <span class="lugar">— Palomarejos y Layos</span>
                     </li>
                 </ul>
@@ -507,64 +76,75 @@
                 <ul class="lista-torneos">
                     <li class="torneo-item">
                         <span class="fecha">1 mar</span>
-                        <a href="competiciones/calendario/marzo/campeonato_rusticos.html" class="nombre-torneo">I Campeonato de Castilla La Mancha Individual de Campos
+                        <a href="competiciones/calendario/marzo/campeonato_rusticos.html" class="nombre-torneo">I
+                            Campeonato de Castilla La Mancha Individual de Campos
                             Rústicos</a>
                         <span class="lugar">— Golf Mudela</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">7-8 mar</span>
-                        <a href="competiciones/calendario/marzo/ranking_locales.html" class="nombre-torneo">Final Ranking Locales Femenino, Senior y Pitch & Putt</a>
+                        <a href="competiciones/calendario/marzo/ranking_locales.html" class="nombre-torneo">Final
+                            Ranking Locales Femenino, Senior y Pitch & Putt</a>
                         <span class="lugar">— Playa Serena</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">13-15 mar</span>
-                        <a href="competiciones/calendario/marzo/campeonato_sub18.html" class="nombre-torneo">V Campeonato de Castilla La Mancha Sub 18</a>
+                        <a href="competiciones/calendario/marzo/campeonato_sub18.html" class="nombre-torneo">V
+                            Campeonato de Castilla La Mancha Sub 18</a>
                         <span class="lugar">— Cabanillas Casa de Campo Golf</span>
                         <span class="badge badge-wagr">WAGR</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">14-15 mar</span>
-                        <a href="competiciones/calendario/marzo/puntuable_zonal.html" class="nombre-torneo">I Puntuable Zonal Madrid – Castilla La Mancha</a>
+                        <a href="competiciones/calendario/marzo/puntuable_zonal.html" class="nombre-torneo">I Puntuable
+                            Zonal Madrid – Castilla La Mancha</a>
                         <span class="lugar">— Layos</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">21 mar</span>
-                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_1.html" class="nombre-torneo">I Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_1.html"
+                            class="nombre-torneo">I Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Señorío de Illescas</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">22 mar</span>
-                        <a href="competiciones/calendario/marzo/jornada_inaugural_liga_senior_masculina.html" class="nombre-torneo">Jornada Inaugural Liga Senior Masculina por Equipos de
+                        <a href="competiciones/calendario/marzo/jornada_inaugural_liga_senior_masculina.html"
+                            class="nombre-torneo">Jornada Inaugural Liga Senior Masculina por Equipos de
                             Castilla La Mancha</a>
                         <span class="lugar">— Layos</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">22 mar</span>
-                        <a href="competiciones/calendario/marzo/jornada_inaugural_liga_femenina.html" class="nombre-torneo">Jornada Inaugural Liga Femenina por Equipos de Castilla La
+                        <a href="competiciones/calendario/marzo/jornada_inaugural_liga_femenina.html"
+                            class="nombre-torneo">Jornada Inaugural Liga Femenina por Equipos de Castilla La
                             Mancha</a>
                         <span class="lugar">— Torrijos Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">28 mar</span>
-                        <a href="competiciones/calendario/marzo/campeonato_parejas_four_ball.html" class="nombre-torneo">XXXIII Campeonato de Castilla La Mancha de Parejas Four
+                        <a href="competiciones/calendario/marzo/campeonato_parejas_four_ball.html"
+                            class="nombre-torneo">XXXIII Campeonato de Castilla La Mancha de Parejas Four
                             Ball</a>
                         <span class="lugar">— Golf Ciudad Real</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">28 mar</span>
-                        <a href="competiciones/calendario/marzo/liga_escolar_ranking_juvenil_2.html" class="nombre-torneo">I Torneo Liga Escolar y II Puntuable Ranking Juvenil de
+                        <a href="competiciones/calendario/marzo/liga_escolar_ranking_juvenil_2.html"
+                            class="nombre-torneo">I Torneo Liga Escolar y II Puntuable Ranking Juvenil de
                             Castilla La Mancha</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">30 mar</span>
-                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_3.html" class="nombre-torneo">III Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_3.html"
+                            class="nombre-torneo">III Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">31 mar</span>
-                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_4.html" class="nombre-torneo">IV Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_4.html"
+                            class="nombre-torneo">IV Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                 </ul>
@@ -576,47 +156,55 @@
                 <ul class="lista-torneos">
                     <li class="torneo-item">
                         <span class="fecha">11 abr</span>
-                        <a href="competiciones/calendario/abril/puntuable_ranking_juvenil_5.html" class="nombre-torneo">V Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/abril/puntuable_ranking_juvenil_5.html"
+                            class="nombre-torneo">V Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Golf Ciudad Real</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">12 abr</span>
-                        <a href="competiciones/calendario/abril/jornada_2_liga_senior_masculina.html" class="nombre-torneo">II Jornada Liga Senior Masculina por Equipos de Castilla La
+                        <a href="competiciones/calendario/abril/jornada_2_liga_senior_masculina.html"
+                            class="nombre-torneo">II Jornada Liga Senior Masculina por Equipos de Castilla La
                             Mancha</a>
                         <span class="lugar">— Montealvar</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">12 abr</span>
-                        <a href="competiciones/calendario/abril/jornada_2_liga_femenina.html" class="nombre-torneo">II Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/abril/jornada_2_liga_femenina.html" class="nombre-torneo">II
+                            Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">18 abr</span>
-                        <a href="competiciones/calendario/abril/torneo_provincial_ciudad_real.html" class="nombre-torneo">Torneo Provincial de Ciudad Real</a>
+                        <a href="competiciones/calendario/abril/torneo_provincial_ciudad_real.html"
+                            class="nombre-torneo">Torneo Provincial de Ciudad Real</a>
                         <span class="lugar">— Golf Ciudad Real</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">19 abr</span>
-                        <a href="competiciones/calendario/abril/campeonato_interclubes_pitch_putt.html" class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes de Pitch &
+                        <a href="competiciones/calendario/abril/campeonato_interclubes_pitch_putt.html"
+                            class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes de Pitch &
                             Putt</a>
                         <span class="lugar">— Abedul Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">19 abr</span>
-                        <a href="competiciones/calendario/abril/puntuable_ranking_juvenil_maj.html" class="nombre-torneo">Puntuable Ranking Juvenil de Castilla La Mancha – CIRCUITO
+                        <a href="competiciones/calendario/abril/puntuable_ranking_juvenil_maj.html"
+                            class="nombre-torneo">Puntuable Ranking Juvenil de Castilla La Mancha – CIRCUITO
                             MAJ</a>
                         <span class="lugar">— Las Pinaillas</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">19 abr</span>
-                        <a href="competiciones/calendario/abril/campeonato_parejas_rusticos.html" class="nombre-torneo">II Campeonato de Castilla La Mancha por Parejas de Campos
+                        <a href="competiciones/calendario/abril/campeonato_parejas_rusticos.html"
+                            class="nombre-torneo">II Campeonato de Castilla La Mancha por Parejas de Campos
                             Rústicos</a>
                         <span class="lugar">— Golf Cuesta Blanca</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">25 abr</span>
-                        <a href="competiciones/calendario/abril/campeonato_interclubes.html" class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes</a>
+                        <a href="competiciones/calendario/abril/campeonato_interclubes.html"
+                            class="nombre-torneo">Campeonato de Castilla La Mancha Interclubes</a>
                         <span class="lugar">— Layos</span>
                     </li>
                 </ul>
@@ -628,69 +216,81 @@
                 <ul class="lista-torneos">
                     <li class="torneo-item">
                         <span class="fecha">1 may</span>
-                        <a href="competiciones/calendario/mayo/campeonato_campos_cortos_parejas.html" class="nombre-torneo">Campeonato de Castilla La Mancha de Campos Cortos por
+                        <a href="competiciones/calendario/mayo/campeonato_campos_cortos_parejas.html"
+                            class="nombre-torneo">Campeonato de Castilla La Mancha de Campos Cortos por
                             Parejas</a>
                         <span class="lugar">— Cifuentes</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">1 ó 2 may</span>
-                        <a href="competiciones/calendario/mayo/torneo_provincial_albacete.html" class="nombre-torneo">Torneo Provincial de Albacete</a>
+                        <a href="competiciones/calendario/mayo/torneo_provincial_albacete.html"
+                            class="nombre-torneo">Torneo Provincial de Albacete</a>
                         <span class="lugar">— Las Pinaillas</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">8-10 may</span>
-                        <a href="competiciones/calendario/mayo/campeonato_absoluto_masculino.html" class="nombre-torneo">XVII Campeonato de Castilla La Mancha Absoluto Masculino</a>
+                        <a href="competiciones/calendario/mayo/campeonato_absoluto_masculino.html"
+                            class="nombre-torneo">XVII Campeonato de Castilla La Mancha Absoluto Masculino</a>
                         <span class="lugar">— Layos</span>
                         <span class="badge badge-wagr">WAGR</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">9 may</span>
-                        <a href="competiciones/calendario/mayo/campeonato_campos_cortos.html" class="nombre-torneo">III Campeonato de Castilla La Mancha de Campos Rústicos</a>
+                        <a href="competiciones/calendario/mayo/campeonato_campos_cortos.html" class="nombre-torneo">III
+                            Campeonato de Castilla La Mancha de Campos Rústicos</a>
                         <span class="lugar">— La Vereda</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">9 may</span>
-                        <a href="competiciones/calendario/mayo/campeonato_absoluto_femenino.html" class="nombre-torneo">XX Campeonato de Castilla La Mancha Absoluto Femenino</a>
+                        <a href="competiciones/calendario/mayo/campeonato_absoluto_femenino.html"
+                            class="nombre-torneo">XX Campeonato de Castilla La Mancha Absoluto Femenino</a>
                         <span class="lugar">— Señorío de Illescas</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">16 may</span>
-                        <a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_6.html" class="nombre-torneo">VI Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_6.html"
+                            class="nombre-torneo">VI Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Layos</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">16-17 may</span>
-                        <a href="competiciones/calendario/mayo/puntuable_zonal_2.html" class="nombre-torneo">II Puntuable Zonal Juvenil de Castilla La Mancha – Madrid</a>
+                        <a href="competiciones/calendario/mayo/puntuable_zonal_2.html" class="nombre-torneo">II
+                            Puntuable Zonal Juvenil de Castilla La Mancha – Madrid</a>
                         <span class="lugar">— Cabanillas Casa de Campo Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">17 may</span>
-                        <a href="competiciones/calendario/mayo/jornada_3_liga_senior_masculina.html" class="nombre-torneo">III Jornada Liga Senior Masculina por Equipos de Castilla La
+                        <a href="competiciones/calendario/mayo/jornada_3_liga_senior_masculina.html"
+                            class="nombre-torneo">III Jornada Liga Senior Masculina por Equipos de Castilla La
                             Mancha</a>
                         <span class="lugar">— Palomarejos Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">17 may</span>
-                        <a href="competiciones/calendario/mayo/jornada_3_liga_femenina.html" class="nombre-torneo">III Jornada Liga Femenina por Equipos de Castilla La
+                        <a href="competiciones/calendario/mayo/jornada_3_liga_femenina.html" class="nombre-torneo">III
+                            Jornada Liga Femenina por Equipos de Castilla La
                             Mancha</a>
                         <span class="lugar">— La Roda</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">23 may</span>
-                        <a href="competiciones/calendario/mayo/campeonato_parejas_pitch_putt.html" class="nombre-torneo">Campeonato de Castilla La Mancha de Parejas de Pitch & Putt
+                        <a href="competiciones/calendario/mayo/campeonato_parejas_pitch_putt.html"
+                            class="nombre-torneo">Campeonato de Castilla La Mancha de Parejas de Pitch & Putt
                             (18 hoyos Fourball – 18 hoyos Foursome)</a>
                         <span class="lugar">— Talavera</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">30 may</span>
-                        <a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_7.html" class="nombre-torneo">VII Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_7.html"
+                            class="nombre-torneo">VII Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— La Lagunilla</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">31 may</span>
-                        <a href="competiciones/calendario/mayo/copa_federacion.html" class="nombre-torneo">XXXVII Copa Federación de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/mayo/copa_federacion.html" class="nombre-torneo">XXXVII Copa
+                            Federación de Castilla La Mancha</a>
                         <span class="lugar">— Golf Montealvar</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
@@ -703,40 +303,47 @@
                 <ul class="lista-torneos">
                     <li class="torneo-item">
                         <span class="fecha">6 jun</span>
-                        <a href="competiciones/calendario/junio/puntuable_ranking_juvenil_8.html" class="nombre-torneo">VIII Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/junio/puntuable_ranking_juvenil_8.html"
+                            class="nombre-torneo">VIII Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— La Roda</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">7 jun</span>
-                        <a href="competiciones/calendario/junio/jornada_4_liga_senior_masculina.html" class="nombre-torneo">IV Jornada Liga Senior por Equipos de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/junio/jornada_4_liga_senior_masculina.html"
+                            class="nombre-torneo">IV Jornada Liga Senior por Equipos de Castilla La Mancha</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">7 jun</span>
-                        <a href="competiciones/calendario/junio/jornada_4_liga_femenina.html" class="nombre-torneo">IV Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/junio/jornada_4_liga_femenina.html" class="nombre-torneo">IV
+                            Jornada Liga Femenina por Equipos de Castilla La Mancha</a>
                         <span class="lugar">— Cabanillas Casa de Campo Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">13 jun</span>
-                        <a href="competiciones/calendario/junio/puntuable_ranking_juvenil_9.html" class="nombre-torneo">IX Puntuable Ranking Juvenil de Castilla La Mancha</a>
+                        <a href="competiciones/calendario/junio/puntuable_ranking_juvenil_9.html"
+                            class="nombre-torneo">IX Puntuable Ranking Juvenil de Castilla La Mancha</a>
                         <span class="lugar">— Cabanillas Casa de Campo Golf</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">13-14 jun</span>
-                        <a href="competiciones/calendario/junio/campeonato_senior_masculino_femenino.html" class="nombre-torneo">XVII Campeonato de Castilla La Mancha Senior Masculino y
+                        <a href="competiciones/calendario/junio/campeonato_senior_masculino_femenino.html"
+                            class="nombre-torneo">XVII Campeonato de Castilla La Mancha Senior Masculino y
                             Femenino</a>
                         <span class="lugar">— Torrijos Golf</span>
                         <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">20-21 jun</span>
-                        <a href="competiciones/calendario/junio/campeonato_match_play_pitch_putt.html" class="nombre-torneo">Campeonato de Castilla La Mancha Match Play de Pitch &
+                        <a href="competiciones/calendario/junio/campeonato_match_play_pitch_putt.html"
+                            class="nombre-torneo">Campeonato de Castilla La Mancha Match Play de Pitch &
                             Putt</a>
                         <span class="lugar">— La Roda</span>
                     </li>
                     <li class="torneo-item">
                         <span class="fecha">27 jun</span>
-                        <a href="competiciones/calendario/junio/torneo_provincial_cuenca.html" class="nombre-torneo">Torneo Provincial de Cuenca</a>
+                        <a href="competiciones/calendario/junio/torneo_provincial_cuenca.html"
+                            class="nombre-torneo">Torneo Provincial de Cuenca</a>
                         <span class="lugar">— Olalla Golf</span>
                     </li>
                     <li class="torneo-item">
@@ -859,38 +466,61 @@
         <h2 class="section-title">Torneos Juveniles y Sub 18 de Castilla La Mancha 2026</h2>
         <div class="mes-bloque">
             <ul class="lista-torneos">
-                <li class="torneo-item"><span class="fecha">13-15 mar</span><a href="competiciones/calendario/marzo/campeonato_sub18_juvenil.html" class="nombre-torneo">V
+                <li class="torneo-item"><span class="fecha">13-15 mar</span><a
+                        href="competiciones/calendario/marzo/campeonato_sub18_juvenil.html" class="nombre-torneo">V
                         Campeonato de Castilla La Mancha Sub 18</a> <span class="lugar">— Cabanillas Casa de Campo
                         Golf</span> <span class="badge badge-wagr">WAGR</span></li>
-                <li class="torneo-item"><span class="fecha">14-15 mar</span><a href="competiciones/calendario/marzo/puntuable_zonal_juvenil.html" class="nombre-torneo">I
+                <li class="torneo-item"><span class="fecha">14-15 mar</span><a
+                        href="competiciones/calendario/marzo/puntuable_zonal_juvenil.html" class="nombre-torneo">I
                         Puntuable Zonal Madrid – Castilla La Mancha</a> <span class="lugar">— Layos</span></li>
-                <li class="torneo-item"><span class="fecha">21 mar</span><a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_1_juvenil.html" class="nombre-torneo">I Puntuable
+                <li class="torneo-item"><span class="fecha">21 mar</span><a
+                        href="competiciones/calendario/marzo/puntuable_ranking_juvenil_1_juvenil.html"
+                        class="nombre-torneo">I Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Señorío de Illescas</span></li>
-                <li class="torneo-item"><span class="fecha">28 mar</span><a href="competiciones/calendario/marzo/liga_escolar_ranking_juvenil_2_juvenil.html" class="nombre-torneo">I Torneo Liga
+                <li class="torneo-item"><span class="fecha">28 mar</span><a
+                        href="competiciones/calendario/marzo/liga_escolar_ranking_juvenil_2_juvenil.html"
+                        class="nombre-torneo">I Torneo Liga
                         Escolar y II Puntuable Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla
                         Golf</span></li>
-                <li class="torneo-item"><span class="fecha">30 mar</span><a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_3_juvenil.html" class="nombre-torneo">III Puntuable
+                <li class="torneo-item"><span class="fecha">30 mar</span><a
+                        href="competiciones/calendario/marzo/puntuable_ranking_juvenil_3_juvenil.html"
+                        class="nombre-torneo">III Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla Golf</span></li>
-                <li class="torneo-item"><span class="fecha">31 mar</span><a href="competiciones/calendario/marzo/puntuable_ranking_juvenil_4_juvenil.html" class="nombre-torneo">IV Puntuable
+                <li class="torneo-item"><span class="fecha">31 mar</span><a
+                        href="competiciones/calendario/marzo/puntuable_ranking_juvenil_4_juvenil.html"
+                        class="nombre-torneo">IV Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Olalla Golf</span></li>
-                <li class="torneo-item"><span class="fecha">11 abr</span><a href="competiciones/calendario/abril/puntuable_ranking_juvenil_5_juvenil.html" class="nombre-torneo">V Puntuable
+                <li class="torneo-item"><span class="fecha">11 abr</span><a
+                        href="competiciones/calendario/abril/puntuable_ranking_juvenil_5_juvenil.html"
+                        class="nombre-torneo">V Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Golf Ciudad Real</span></li>
-                <li class="torneo-item"><span class="fecha">19 abr</span><a href="competiciones/calendario/abril/puntuable_ranking_juvenil_maj_juvenil.html" class="nombre-torneo">Puntuable
+                <li class="torneo-item"><span class="fecha">19 abr</span><a
+                        href="competiciones/calendario/abril/puntuable_ranking_juvenil_maj_juvenil.html"
+                        class="nombre-torneo">Puntuable
                         Ranking Juvenil de Castilla La Mancha – CIRCUITO MAJ</a> <span class="lugar">— Las
                         Pinaillas</span></li>
-                <li class="torneo-item"><span class="fecha">16 may</span><a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_6_juvenil.html" class="nombre-torneo">VI Puntuable
+                <li class="torneo-item"><span class="fecha">16 may</span><a
+                        href="competiciones/calendario/mayo/puntuable_ranking_juvenil_6_juvenil.html"
+                        class="nombre-torneo">VI Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Layos</span></li>
-                <li class="torneo-item"><span class="fecha">16-17 may</span><a href="competiciones/calendario/mayo/puntuable_zonal_2_juvenil.html" class="nombre-torneo">II
+                <li class="torneo-item"><span class="fecha">16-17 may</span><a
+                        href="competiciones/calendario/mayo/puntuable_zonal_2_juvenil.html" class="nombre-torneo">II
                         Puntuable Zonal Juvenil de Castilla La Mancha – Madrid</a> <span class="lugar">— Cabanillas Casa
                         de Campo Golf</span></li>
-                <li class="torneo-item"><span class="fecha">30 may</span><a href="competiciones/calendario/mayo/puntuable_ranking_juvenil_7_juvenil.html" class="nombre-torneo">VII Puntuable
+                <li class="torneo-item"><span class="fecha">30 may</span><a
+                        href="competiciones/calendario/mayo/puntuable_ranking_juvenil_7_juvenil.html"
+                        class="nombre-torneo">VII Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— La Lagunilla</span></li>
                 <li class="torneo-item"><span class="fecha">30-31 may</span><a href="#" class="nombre-torneo">Campeonato
                         de España de Golf Adaptado – Campeonato de Castilla La Mancha de Golf Adaptado</a> <span
                         class="lugar">— Las Pinaíllas</span></li>
-                <li class="torneo-item"><span class="fecha">6 jun</span><a href="competiciones/calendario/junio/puntuable_ranking_juvenil_8_juvenil.html" class="nombre-torneo">VIII Puntuable
+                <li class="torneo-item"><span class="fecha">6 jun</span><a
+                        href="competiciones/calendario/junio/puntuable_ranking_juvenil_8_juvenil.html"
+                        class="nombre-torneo">VIII Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— La Roda</span></li>
-                <li class="torneo-item"><span class="fecha">13 jun</span><a href="competiciones/calendario/junio/puntuable_ranking_juvenil_9_juvenil.html" class="nombre-torneo">IX Puntuable
+                <li class="torneo-item"><span class="fecha">13 jun</span><a
+                        href="competiciones/calendario/junio/puntuable_ranking_juvenil_9_juvenil.html"
+                        class="nombre-torneo">IX Puntuable
                         Ranking Juvenil de Castilla La Mancha</a> <span class="lugar">— Cabanillas Casa de Campo
                         Golf</span></li>
             </ul>
@@ -899,13 +529,19 @@
         <h2 class="section-title">Torneos de Pitch & Putt Castilla La Mancha 2026</h2>
         <div class="mes-bloque">
             <ul class="lista-torneos">
-                <li class="torneo-item"><span class="fecha">19 abr</span><a href="competiciones/calendario/abril/campeonato_interclubes_pitch_putt.html" class="nombre-torneo">Campeonato de
+                <li class="torneo-item"><span class="fecha">19 abr</span><a
+                        href="competiciones/calendario/abril/campeonato_interclubes_pitch_putt.html"
+                        class="nombre-torneo">Campeonato de
                         Castilla La Mancha Interclubes de Pitch & Putt</a> <span class="lugar">— Abedul Golf</span></li>
-                <li class="torneo-item"><span class="fecha">23 may</span><a href="competiciones/calendario/mayo/campeonato_parejas_pitch_putt.html" class="nombre-torneo">Campeonato de
+                <li class="torneo-item"><span class="fecha">23 may</span><a
+                        href="competiciones/calendario/mayo/campeonato_parejas_pitch_putt.html"
+                        class="nombre-torneo">Campeonato de
                         Castilla La Mancha de Parejas de Pitch & Putt (18 hoyos Fourball – 18 hoyos Foursome)</a> <span
                         class="lugar">— Talavera</span> <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                 </li>
-                <li class="torneo-item"><span class="fecha">20-21 jun</span><a href="competiciones/calendario/junio/campeonato_match_play_pitch_putt.html" class="nombre-torneo">Campeonato
+                <li class="torneo-item"><span class="fecha">20-21 jun</span><a
+                        href="competiciones/calendario/junio/campeonato_match_play_pitch_putt.html"
+                        class="nombre-torneo">Campeonato
                         de Castilla La Mancha Match Play de Pitch & Putt</a> <span class="lugar">— La Roda</span></li>
                 <li class="torneo-item"><span class="fecha">18-19 jul</span><a href="#" class="nombre-torneo">Campeonato
                         de Castilla La Mancha Absoluto de Pitch & Putt</a> <span class="lugar">— Golf Ciudad Real</span>
@@ -930,17 +566,25 @@
         <h2 class="section-title">Torneos de Campos Rústicos de Castilla La Mancha 2026</h2>
         <div class="mes-bloque">
             <ul class="lista-torneos">
-                <li class="torneo-item"><span class="fecha">1 mar</span><a href="competiciones/calendario/marzo/campeonato_rusticos_rusticos.html" class="nombre-torneo">I Campeonato
+                <li class="torneo-item"><span class="fecha">1 mar</span><a
+                        href="competiciones/calendario/marzo/campeonato_rusticos_rusticos.html" class="nombre-torneo">I
+                        Campeonato
                         de Castilla La Mancha Individual de Campos Rústicos</a> <span class="lugar">— Golf Mudela</span>
                     <a href="#" class="badge badge-inscripcion">Inscripciones</a>
                 </li>
-                <li class="torneo-item"><span class="fecha">19 abr</span><a href="competiciones/calendario/abril/campeonato_parejas_rusticos_rusticos.html" class="nombre-torneo">II Campeonato
+                <li class="torneo-item"><span class="fecha">19 abr</span><a
+                        href="competiciones/calendario/abril/campeonato_parejas_rusticos_rusticos.html"
+                        class="nombre-torneo">II Campeonato
                         de Castilla La Mancha por Parejas de Campos Rústicos</a> <span class="lugar">— Golf Cuesta
                         Blanca</span> <a href="#" class="badge badge-inscripcion">Inscripciones</a></li>
-                <li class="torneo-item"><span class="fecha">1 may</span><a href="competiciones/calendario/mayo/campeonato_campos_cortos_parejas_rusticos.html" class="nombre-torneo">Campeonato de
+                <li class="torneo-item"><span class="fecha">1 may</span><a
+                        href="competiciones/calendario/mayo/campeonato_campos_cortos_parejas_rusticos.html"
+                        class="nombre-torneo">Campeonato de
                         Castilla La Mancha de Campos Rústicos por Parejas</a> <span class="lugar">— Cifuentes</span>
                 </li>
-                <li class="torneo-item"><span class="fecha">9 may</span><a href="competiciones/calendario/mayo/campeonato_campos_cortos_rusticos.html" class="nombre-torneo">III Campeonato
+                <li class="torneo-item"><span class="fecha">9 may</span><a
+                        href="competiciones/calendario/mayo/campeonato_campos_cortos_rusticos.html"
+                        class="nombre-torneo">III Campeonato
                         de Castilla La Mancha de Campos Rústicos</a> <span class="lugar">— La Vereda</span></li>
             </ul>
         </div>
