@@ -51,7 +51,8 @@
       items.forEach(item => {
         const fechaText = item.querySelector('.fecha')?.textContent.trim() || '';
         const aTag = item.querySelector('a.nombre-torneo');
-        const nombre = aTag ? aTag.textContent.trim() : item.textContent.trim();
+        const nombreRaw = aTag ? aTag.textContent : item.textContent;
+        const nombre = nombreRaw.replace(/\s+/g, ' ').trim();
         const link = aTag && aTag.getAttribute('href') !== '#' ? aTag.getAttribute('href') : 'inscripcion.html';
         const lugarText = item.querySelector('.lugar')?.textContent.replace('—', '').trim() || 'Por confirmar';
         
@@ -82,12 +83,20 @@
         }
       });
 
+      // Eliminar duplicados (ya que competiciones.html puede listar el mismo torneo en diferentes secciones)
+      const eventosUnicosMap = new Map();
+      eventosData.forEach(ev => {
+        // Usamos el nombre del torneo como clave para evitar duplicados exactos
+        eventosUnicosMap.set(ev.nombre.trim(), ev);
+      });
+      const eventosUnicos = Array.from(eventosUnicosMap.values());
+
       // Obtener la fecha actual (sin hora) para comparar
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
 
       // Filtrar eventos futuros o de hoy
-      const eventosFuturos = eventosData.filter(ev => {
+      const eventosFuturos = eventosUnicos.filter(ev => {
         const fechaEv = new Date(ev.fechaStr);
         fechaEv.setHours(0, 0, 0, 0);
         return fechaEv.getTime() >= hoy.getTime();
