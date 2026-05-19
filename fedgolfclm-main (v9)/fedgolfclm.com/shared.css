@@ -177,6 +177,63 @@ nav {
 
 .btn-nav-gold:hover { background: #d4b36a; }
 
+/* App Torneos dropdown */
+.nav-app-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.boton-app-nav {
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.dropdown-contenido-nav {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--green-dark);
+  border-top: 2px solid var(--gold);
+  min-width: 130px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 200;
+}
+
+.dropdown-contenido-nav a {
+  color: rgba(255,255,255,0.85);
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.dropdown-contenido-nav a:hover {
+  color: var(--gold);
+}
+
+.nav-app-dropdown:hover .dropdown-contenido-nav {
+  display: block;
+}
+
+.nav-app-dropdown:hover .boton-app-nav {
+  background: #d4b36a;
+}
+
 /* Hamburguesa móvil */
 .nav-hamburger {
   display: none;
