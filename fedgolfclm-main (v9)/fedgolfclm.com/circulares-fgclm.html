@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circulares FGCLM — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .circulares-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 2px solid var(--gray-100);
+      margin-bottom: 36px;
+    }
+    .tab-btn {
+      padding: 12px 28px;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gray-300);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .circ-list { list-style: none; padding: 0; margin: 0; }
+    .circ-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .circ-item:hover { background-color: var(--gray-50); }
+    .circ-item:first-child { border-top: 1px solid var(--gray-100); }
+    .circ-icon { font-size: 20px; flex-shrink: 0; padding-left: 10px; }
+    .circ-info { flex: 1; }
+    .circ-titulo { font-size: 14px; font-weight: 600; color: var(--green-dark); transition: color 0.2s; }
+    .circ-item:hover .circ-titulo { color: var(--green-accent); }
+    .circ-meta { font-size: 11px; color: var(--gray-300); margin-top: 2px; }
+    .circ-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      background: var(--green-light);
+      color: var(--green-mid);
+      flex-shrink: 0;
+      margin-right: 10px;
+    }
+    .circ-badge.nueva { background: var(--gold-light); color: #856404; }
+    @media (max-width: 1100px) { .circulares-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .circulares-section { padding: 32px 1.25rem; } .tab-btn { padding: 10px 14px; font-size: 11px; } }
+  </style>
+</head>
+<body>
+
+<!-- Navegación compartida inyectada via shared.js -->
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Reglamentos</div>
+    <h1><em>Circulares FGCLM</em></h1>
+    <p>Circulares y comunicados oficiales de la Federación de Golf de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="circulares-section">
+  <p class="intro-text">
+    Las circulares son comunicados oficiales emitidos por la Federación de Golf de Castilla-La Mancha (FGCLM) con carácter normativo, informativo o interpretativo. Son de obligado conocimiento para todos los clubes, árbitros y jugadores federados.
+  </p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('year-2026', this)">2026</button>
+    <button class="tab-btn" onclick="showTab('year-2025', this)">2025</button>
+    <button class="tab-btn" onclick="showTab('year-2024', this)">2024</button>
+    <button class="tab-btn" onclick="showTab('year-2023', this)">2023</button>
+    <button class="tab-btn" onclick="showTab('year-2022', this)">2022</button>
+    <button class="tab-btn" onclick="showTab('year-2021', this)">2021</button>
+  </div>
+
+  <div id="tab-year-2026" class="tab-content active">
+    <ul class="circ-list">
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/01/cirfgclm0126.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2026: Torneo Provincial de Toledo 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/02/cirfgclm0226.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2026: I Campeonato de Castilla La Mancha Individual de Campos Rústicos 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/02/cirfgclm0326-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2026: Campeonato de Castilla La Mancha Sub 18 Masculino y Femenino 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge nueva">Nueva</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm0426.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2026: I Torneo Golf Escolar y II Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm0526-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2026: II Jornada Liga Femenina por Equipos de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm0626-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2026: II Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfglcm0726.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2026: I Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm0826-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2026: I Campeonato de Castilla La Mancha por Parejas Fourball 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm0926.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2026: III Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1026.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2026: IV Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm1126.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2026: Campeonato de Castilla La Mancha Absoluto Masculino 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm1226.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2026: Torneo Provincial de Ciudad Real 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm1326.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2026: Campeonato de Castilla La Mancha Interclubes de Pitch & Putt 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/03/cirfgclm1426.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2026: Campeonato de Castilla La Mancha de Campos Rústicos por Parejas 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1526.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2026: V Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1626.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2026: Campeonato de Castilla La Mancha de Campos Cortos por Parejas 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1726.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2026: Campeonato Interclubes de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1826.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2026: Campeonato de Castilla La Mancha Absoluto Femenino 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm1925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2026: Torneo Provincial de Albacete 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm2026-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2026: II Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/05/cirfgclm2126.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2026: VI Puntuable Ranking Juvenil de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/04/cirfgclm2226.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2026: Copa Federación de Castilla La Mancha 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/05/cirfgclm2326.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2026: Campeonato de Castilla La Mancha por Parejas de Pitch & Putt 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2026/05/cirfgclm2426.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2026: Campeonato de Castilla La Mancha Senior Masculino y Femenino 2026</div>
+          <div class="circ-meta">FGCLM · 2026</div>
+        </div>
+        <div class="circ-badge">2026</div>
+      </a>
+    </ul>
+  </div>
+
+  <div id="tab-year-2025" class="tab-content">
+    <ul class="circ-list">
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0025.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 0/2025: Normativa subvenciones a jugadores de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/01/cirfgclm0125.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2025: Torneo Provincial de Toledo 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/01/cirfgclm0225.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2025: I Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0325.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2025: I Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0425.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2025: I Campeonato de Castilla La Mancha por Parejas Fourball 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0525.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2025: I Jornada Liga Femenina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0625.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2025: I Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0725.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2025: I Campeonato de Castilla La Mancha Individual de Campos Rústicos 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/02/cirfgclm0825.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2025: Campeonato de Castilla La Mancha Sub 18 Masculino y Femenino 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm0925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2025: II Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1025.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2025: Campeonato de Castilla La Mancha de Golf Adaptado 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1125.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2025: Campeonato de Castilla La Mancha de Campos Cortos por Parejas 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1225.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2025: Campeonato de Castilla La Mancha de Campos Rústicos por Parejas 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1325.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2025: II Jornada Liga Femenina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1425.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2025: II Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1525.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2025: III Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1625.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2025: Torneo Abierto Sub 18 de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/03/cirfgclm1725.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2025: Campeonato de Castilla La Mancha Mid Amateur Masculino 2025 – II Puntuable Nacional Mid Amateur Masculino 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm1825.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2025: Campeonato de Castilla La Mancha por Parejas de Pitch & Putt 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/ciirfclm1925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2025: III Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/ciirfclm2025.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2025: III Jornada Liga Femenina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2125.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2025: IV Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2225.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2025: II Campeonato de Castilla La Mancha por Parejas Fourball 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/ciirfclm2325.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2024: Campeonato de Castilla La Mancha Interclubes de Pitch & Putt 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2425-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2024: Campeonato de Castilla La Mancha Match Play por Parejas Foursome 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2525.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 25/2025: IV Jornada Liga Femenina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2625.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 26/2025: IV Jornada Liga Senior por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2725.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 27/2025: II Campeonato de Castilla La Mancha Individual de Campos Rústicos 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm2825.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 28/2025: Torneo Provincial de Ciudad Real 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/05/cirfgclm2925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 29/2025: Campeonato de Castilla La Mancha Absoluto Masculino 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm3025.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 30/2025: Campeonato de Castilla La Mancha Absoluto Femenino 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm3125.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 31/2025: Copa Federación de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/04/cirfgclm3225.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 32/2025: V Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/05/cirfgclm3325.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 33/2025: VI Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/05/cirfgclm3425.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 34/2025: VII Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/05/cirfgclm3525.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 35/2025: Torneo Provincial de Albacete 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/05/cirfgclm3625.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 36/2025: Campeonato Interclubes de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm3725.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 37/2025: Torneo Provincial de Cuenca 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm3825.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 38/2025: Campeonato Match Play Individual de Pitch & Putt de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm3925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 39/2025: V Jornada Liga Femenina por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm4025.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 40/2025: V Jornada Liga Senior por Equipos de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfclm4125.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 41/2025: VIII Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfclm4225.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 42/2025: Campeonato de Castilla La Mancha Absoluto de Pitch & Putt 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfclm4325.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 43/2025: Campeonato de Castilla La Mancha Senior Masculino 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm4425.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 44/2025: Torneo Provincial de Guadalajara 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/06/cirfgclm4525.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 45/2025: IX Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/09/cirfgclm4625.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 46/2025: X Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/09/cirfgclm4725.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 47/2025: XI Puntuable Ranking Juvenil de Castilla La Mancha 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/09/cirfgclm4825.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 48/2025: III Campeonato de Castilla La Mancha de Campos Rústicos por Parejas 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/11/cirfgclm4925.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 49/2025: Convocatoria Medalla y Placa al Mérito Deportivo de la FGCLM 2025</div>
+          <div class="circ-meta">FGCLM · 2025</div>
+        </div>
+        <div class="circ-badge">2025</div>
+      </a>
+    </ul>
+  </div>
+
+  <div id="tab-year-2024" class="tab-content">
+    <ul class="circ-list">
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/01/cirfgclm0124.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2024: Torneo Provincial de Toledo 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/01/cirfgclm0224.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2024: I Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/02/cirfgclm0324-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2024: I Campeonato de Castilla La Mancha Individual de Campos Rústicos 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/02/cirfgclm0424.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2024: III Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/02/cirfgclm0524.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2024: I Jornada Liga Femenina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/02/cirfgclm0624.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2024: I Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/02/cirfgclm0724.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2024: Campeonato de Castilla La Mancha Sub 18 Masculino y Femenino 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm0824-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2024: II Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm0924.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2024: I Campeonato de Castilla La Mancha por Parejas de Campos Rústicos 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm1024.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2024: Campeonato de Golf Adaptado de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm1124.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2024: IV Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm1224.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2024: II Jornada Liga Femenina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/03/cirfgclm1324.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2024: II Jornada Liga Senior Masculina por Equipos de Castilla La Mancha</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1424.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2024: V Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1524.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2024: Campeonato Interclubes de Pitch & Putt de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1624-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2024: Campeonato de Castilla La Mancha Masculino y Femenino de 4ª Categoría 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1724.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2024: Campeonato de Castilla La Mancha Masculino y Femenino de 2ª y 3ª Categoría 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1824-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2024: Campeonato de Castilla La Mancha Absoluto Masculino 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm1924.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2024: III Jornada Liga Femenina y Senior Masculina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm2024-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2024: Campeonato de Castilla La Mancha por Parejas Fourball 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm2124.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2024: II Campeonato de Castilla La Mancha por Parejas de Campos Rústicos 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm2224.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2024: Campeonato de Castilla La Mancha Absoluto Femenino 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm2324.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2024: VI Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm2424-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2024: IV Jornada Liga Femenina y Senior Masculina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/04/cirfgclm2524.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 25/2024: VII Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm2624.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 26/2024: Campeonato de Castilla La Mancha Absoluto de Pitch & Putt 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm2724-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 27/2024: Copa Federación de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm2824.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 28/2024: Campeonato de Castilla La Mancha Senior Masculino 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm2924.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 29/2024: VIII Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/06/cirfgclm3024-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 30/2024: Torneo Provincial de Albacete 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm3124.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 31/2024: Torneo por Parejas Fourball de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm3224.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 32/2024: Jornada Final Liga Femenina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm3324.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 33/2024: Campeonato Interclubes de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm3424.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 34/2024: Torneo Provincial de Ciudad Real 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/05/cirfgclm3524.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 35/2024: IV Torneo Campos Rústicos Individual de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/06/cirfgclm3624.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 36/2024: Campeonato de Parejas de Pitch & Putt de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/06/cirfgclm3724.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 37/2024: Jornada Final Liga Senior Masculina por Equipos de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/06/cirfgclm3824.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 38/2024: Torneo Provincial de Cuenca 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/06/cirfgclm3924.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 39/2024: Torneo Provincial de Guadalajara 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/09/cirfgclm4024-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 40/2024: IX Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2024/11/cirfgclm4124.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 41/2024: Convocatoria Medalla y Placa al Mérito Deportivo de la FGCLM 2023</div>
+          <div class="circ-meta">FGCLM · 2024</div>
+        </div>
+        <div class="circ-badge">2024</div>
+      </a>
+    </ul>
+  </div>
+
+  <div id="tab-year-2023" class="tab-content">
+    <ul class="circ-list">
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/03/normativa-subvenciones-clm-2023.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 0/2023: Normativa subvenciones a jugadores de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/01/cirfgclm0123-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2023: Torneo Provincial de Toledo 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/01/cirfgclm0223.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2023: I Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/03/cirfgclm0323.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2023: V Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/02/cirfgclm0423.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2023: VI Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/02/cirfgclm0523.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2023: Campeonato de Castilla La Mancha Masculino y Femenino de 2ª Categoría 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/02/cirfgclm0623-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2023: Campeonato de Castilla La Mancha Masculino y Femenino de 3ª Categoría 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/02/cirfgclm0723.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2023: II Puntuable Zonal Juvenil de Castilla La Mancha – Madrid 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/02/cirfgclm0823.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2023: VII Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm0923.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2023: Campeonato Interclubes de Pitch & Putt de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1023.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2023: VIII Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1123-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2023: Campeonato Mid Amateur de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1223.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2023: Campeonato Senior de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1323.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2023: Campeonato Campos Cortos por Parejas de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1423.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2023: Campeonato de Castilla La Mancha Fourball por Parejas 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/04/cirfgclm1523.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2023: IX Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm1623.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2023: III Campeonato Campos Cortos Individual de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm1723.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2023: Copa Federación de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm1823.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2023: Campeonato Absoluto Masculino de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm1923.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2022: Campeonato de Castilla La Mancha de 4ª categoría 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm2023.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2022: Campeonato Femenino de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm2123.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2022: Campeonato Interclubes de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm2223.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2023: X Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/05/cirfgclm2323.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2023: Campeonato Absoluto de Pitch & Putt de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2423-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2023: Torneo Provincial de Ciudad Real 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2523.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 25/2023: Torneo Provincial de Guadalajara 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2623.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 26/2023: Torneo Provincial de Cuenca 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2723.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 27/2023: Campeonato de Castilla La Mancha por Parejas de Pitch & Putt 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2823.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 28/2023: Campeonato de Castilla La Mancha Sub 18 Masculino y Femenino 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/06/cirfgclm2923.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 29/2023: Torneo Provincial de Albacete 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/09/cirfgclm3023-3.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 30/2023: Final Autonómica Circuito Nacional de 5ª Categoría 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/09/cirfgclm3123.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 31/2023: I Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/11/cirfgclm3323.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 32/2023: Convocatoria Medalla y Placa al Mérito Deportivo de la FGCLM 2023</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2023/11/cirfgclm3323.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 33/2023: II Puntuable Ranking Juvenil de Castilla La Mancha 2024</div>
+          <div class="circ-meta">FGCLM · 2023</div>
+        </div>
+        <div class="circ-badge">2023</div>
+      </a>
+    </ul>
+  </div>
+
+  <div id="tab-year-2022" class="tab-content">
+    <ul class="circ-list">
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/09/cirfgclm0022.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 0/2022: Normativa subvenciones a jugadores de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/01/cirfgclm0122.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2022: Torneo Provincial de Toledo 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/01/cirfgclm0222.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2022: I Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/02/cirfgclm0322.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2022: I Jornada Liga Femenina por Equipos Castilla La Mancha2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/02/cirfgclm0422.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2022: I Jornada Liga Senior Masculina por Equipos Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/02/cirfgclm0522.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2022: Campeonato de Castilla La Mancha de 4ª categoría 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/02/cirfgclm0622.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2022: Campeonato de Castilla La Mancha de 5ª categoría 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/02/cirfgclm0722-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2022: II Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm0822.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2022: Campeonato de Castilla La Mancha de 2ª categoría 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm0922.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2022: Campeonato de Castilla La Mancha de 3ª categoría 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1022.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2022: III Puntuable Ranking Juvenil y I Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1122.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2022: IV Puntuable Ranking Juvenil de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1222-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2022: Campeonato de Castilla La Mancha Individual de Campos Cortos 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1322-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2022: V Puntuable Ranking Juvenil y II Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1422.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2022: VI Puntuable Ranking Juvenil de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1522.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2022: Campeonato Senior de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/03/cirfgclm1622.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2022: Campeonato Mid Amateur de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm1722.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2022: Campeonato de Castilla La Mancha por Parejas de Campos Cortos 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm1822.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2022: Campeonato Interclubes de Pitch & Putt de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm1922.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2022: Convocatoria curso y examen título de árbitro de categoría autonómica 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm2022-1.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2022: VII Puntuable Ranking Juvenil de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm2122.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2022: VII Puntuable Ranking Juvenil y III Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm2222.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2022: Torneo Provincial de Albacete 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm2322.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2022: Campeonato Absoluto Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm2422.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2022: Campeonato Femenino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/04/cirfgclm2522.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 25/2022: II Campeonato de Castilla La Mancha Individual de Campos Cortos 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm2622.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 26/2022: Copa Federación de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm2722.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 27/2022: Campeonato Interclubes de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm2822.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 28/2022: IX Puntuable Ranking Juvenil y IV Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm2922.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 29/2022: Final Liga Senior Masculina por Equipos de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/05/cirfgclm3022.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 30/2022: Campeonato Absoluto de Pitch & Putt de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgclm3122.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 31/2022: Campeonato Sub 18 de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgclm3222.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 32/2022: Torneo Provincial de Guadalajara 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgclm3322-2.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 33/2022: Campeonato de Parejas de Pitch & Putt de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgclm3422.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 34/2022: Final Liga Femenina por Equipos de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgclm3522.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 35/2022: Torneo Provincial de Cuenca 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgcyl3612.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 36/2022: Campeonato Match Play por Parejas Femenino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/06/cirfgcyl3712.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 37/2022: Campeonato Match Play por Parejas Masculino de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/07/cirfgclm3822.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 38/2022: Torneo Provincial de Ciudad Real 2022</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/09/cirfgclm3922.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 39/2022: Final Autonómica del Circuito Nacional de 5ª Categoría</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/11/cirfgclm4022.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 40/2022: I Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/11/cirfgclm4122.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 41/2022: II Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/11/cirfgclm4222.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 42/2022: III Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+      <a href="https://www.fedgolfclm.com/wp-content/uploads/2022/11/cirfgclm4322.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 43/2022: IV Puntuable Ranking Juvenil de Castilla La Mancha 2023</div>
+          <div class="circ-meta">FGCLM · 2022</div>
+        </div>
+        <div class="circ-badge">2022</div>
+      </a>
+    </ul>
+  </div>
+
+  <div id="tab-year-2021" class="tab-content">
+    <ul class="circ-list">
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0121.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 1/2021: Convocatoria Medalla y Placa al Mérito Deportivo de la FGCLM</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0221.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 2/2021: Torneo Provincial de Toledo 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0321.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 3/2021: I Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0421.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 4/2021: II Puntuable Ranking Juvenil de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0521.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 5/2021: III Puntuable Ranking Juvenil y I Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0621.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 6/2021: Torneo Campos Cortos Federación Laguna de Tito 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0721.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 7/2021: Campeonato Federación CLM Individual Golf Ciudad Real 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0821.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 8/2021: I Jornada Liga Senior Masculina por Equipos de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm0921.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 9/2021: Liga Senior por Equipos de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1021.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 10/2021: IV Puntuable Ranking Juvenil y II Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1121.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 11/2021: II Puntuable Zonal Juvenil Castilla La Mancha – Madrid 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1221.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 12/2021: V Puntuable Ranking Juvenil de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1321.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 13/2021: XXXI Campeonato Interclubes de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1421.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 14/2021: VI Puntuable Ranking Juvenil de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1521.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 15/2021: Torneo Campos Cortos por Parejas 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1621.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 16/2021: III Puntuable Ranking Absoluto Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1721.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 17/2021: Campeonato Mayores de 30 años de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1821.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 18/2021: IV Puntuable Ranking Absoluto Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm1921.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 19/2021: VII Puntuable Ranking Juvenil de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2021.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 20/2021: Campeonato Sub 18 – Sub 21 de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2121.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 21/2021: VIII Puntuable Ranking Juvenil de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2221.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 22/2021: Campeonato Absoluto de Pitch & Putt de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2321-1.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 23/2021: Campeonato Absoluto Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2421.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 24/2021: Torneo de Parejas Fourball de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2521.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 25/2021: Copa Federación de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2621.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 26/2021: Campeonato Federación de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2721.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 27/2021: Torneo Provincial de Ciudad Real 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm2821.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 28/2021: Final Ranking Juvenil y Escuelas de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm2921.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 29/2021: Campeonato Femenino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm3021.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 30/2021: Campeonato Senior de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm3121.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 31/2021: Torneo Provincial de Guadalajara 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/05/cirfgclm3221.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 32/2021: Final Ranking Absoluto Masculino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm3321.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 33/2021: Campeonato de Parejas de Pitch & Putt de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm3421.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 34/2021: Torneo Provincial de Cuenca 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm3521.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 35/2021: Torneo Provincial de Albacete 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/06/cirfgclm3621.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 36/2021: Campeonato Interclubes de Pitch & Putt de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/07/cirfgclm3721.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 37/2021: Torneo por Parejas Fourball de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/07/cirfgclm3821.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 38/2021: Final Ranking de Pitch & Putt de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/07/cirfgclm3921.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 39/2021: Final Ranking Femenino de Castilla La Mancha 2021</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/11/cirfgclm4021.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 40/2021: I Puntuable Ranking Juvenil de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+      <a href="http://www.fedgolfclm.com/wp-content/uploads/2021/11/cirfgclm4121.pdf" class="circ-item">
+        <div class="circ-icon">📄</div>
+        <div class="circ-info">
+          <div class="circ-titulo">CIRCULAR 41/2021: II Puntuable Ranking Juvenil de Castilla La Mancha 2022</div>
+          <div class="circ-meta">FGCLM · 2021</div>
+        </div>
+        <div class="circ-badge">2021</div>
+      </a>
+    </ul>
+  </div>
+
+</div>
+
+<script src="shared.js"></script>
+<script>
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

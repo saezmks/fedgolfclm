@@ -58,7 +58,7 @@
       <a href="competiciones.html">Torneos</a>
       <ul class="dropdown-menu">
         <li><a href="competiciones.html" data-page="competiciones.html">Calendario e Inscripciones</a></li>
-        <li><a href="calendario-rfeg.html" data-page="calendario-rfeg.html">Calendario RFEG</a></li>
+        <li><a href="https://rfegolf.es/CompetenciaPaginas/AllCompetitions.aspx">Calendario RFEG</a></li>
         <li><a href="seleccion.html" data-page="seleccion.html">Castilla-La Mancha en Cptos. España</a></li>
       </ul>
     </li>
@@ -254,8 +254,8 @@
       const parent = el.parentElement;
       const siblings = parent
         ? Array.from(parent.children).filter(function (c) {
-            return c.matches(SELECTORS.join(','));
-          })
+          return c.matches(SELECTORS.join(','));
+        })
         : [];
       const idx = siblings.indexOf(el);
 

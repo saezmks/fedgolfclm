@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circulares RFEG — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .content-page { padding: 64px 6rem; max-width: 900px; margin: 0 auto; min-height: 50vh; display: flex; align-items: center; justify-content: center; }
+    
+    .rfeg-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 12px;
+      padding: 48px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      width: 100%;
+    }
+    .rfeg-icon {
+      font-size: 48px;
+      margin-bottom: 24px;
+      color: var(--gold);
+    }
+    .rfeg-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .rfeg-card p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 16px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+    }
+    .btn-gold:hover {
+      background: #b5953b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
+      color: var(--white);
+    }
+    .btn-gold span { font-size: 18px; }
+
+    @media (max-width: 1100px) { .content-page { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { 
+      .content-page { padding: 32px 1.25rem; align-items: flex-start; } 
+      .rfeg-card { padding: 32px 24px; }
+      .rfeg-card h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navegación inyectada via shared.js -->
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Reglamentos</div>
+    <h1><em>Circulares RFEG</em></h1>
+    <p>Circulares y comunicados oficiales emitidos por la Real Federación Española de Golf.</p>
+  </div>
+</div>
+
+<div class="content-page">
+  <div class="rfeg-card">
+    <div class="rfeg-icon">🏛️</div>
+    <h2>Acceso a Circulares Oficiales</h2>
+    <p>La Real Federación Española de Golf gestiona de forma centralizada todas sus circulares, comunicados y normativas aplicables a nivel nacional. Puede consultar el listado completo y actualizado directamente en su plataforma oficial.</p>
+    
+    <a href="https://www.rfegolf.es/PaginasServicios/ListaDescargas.aspx?Tipo=1" class="btn-gold">
+      Acceder a las Circulares RFEG <span>→</span>
+    </a>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
