@@ -683,12 +683,20 @@ footer.footer-minimal .footer-bottom {
     padding: 10px 20px !important;
   }
 
-  .nav-hamburger {
-    display: flex;
+  .nav-logo {
+    order: 1;
   }
 
   .nav-actions {
+    order: 2;
+    margin-left: auto;
+    margin-right: 15px;
     gap: 6px;
+  }
+
+  .nav-hamburger {
+    order: 3;
+    display: flex;
   }
 
   .btn-nav {
