@@ -150,10 +150,15 @@ nav {
   list-style: none;
   min-width: 220px;
   padding: 10px 0;
-  display: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   border-top: 2px solid var(--gold);
   z-index: 1001;
+  
+  /* Animacion para desktop */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .dropdown-menu li a {
@@ -171,8 +176,18 @@ nav {
   color: var(--gold) !important;
 }
 
-.nav-links li.dropdown:hover .dropdown-menu {
-  display: block;
+@media (hover: hover) {
+  .nav-links li.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-links li.dropdown.active-dropdown .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav-links li.dropdown>a::after {
@@ -247,7 +262,6 @@ nav {
 }
 
 .dropdown-contenido-nav {
-  display: none;
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
@@ -256,6 +270,12 @@ nav {
   min-width: 130px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   z-index: 200;
+  
+  /* Animacion dropdown app torneos */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .dropdown-contenido-nav a {
@@ -273,11 +293,24 @@ nav {
   color: var(--gold);
 }
 
-.nav-app-dropdown:hover .dropdown-contenido-nav {
-  display: block;
+@media (hover: hover) {
+  .nav-app-dropdown:hover .dropdown-contenido-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-app-dropdown:hover .boton-app-nav {
+    background: #d4b36a;
+  }
 }
 
-.nav-app-dropdown:hover .boton-app-nav {
+.nav-app-dropdown.active-dropdown .dropdown-contenido-nav {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-app-dropdown.active-dropdown .boton-app-nav {
   background: #d4b36a;
 }
 
@@ -286,35 +319,50 @@ nav {
   display: none;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end; /* Alineados a la derecha */
   gap: 5px;
   width: 36px;
   height: 36px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 0 4px;
   flex-shrink: 0;
 }
 
 .nav-hamburger span {
   display: block;
-  width: 22px;
   height: 2px;
   background: var(--white);
   border-radius: 2px;
-  transition: all 0.3s;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, background 0.3s ease;
+}
+
+.nav-hamburger span:nth-child(1) { width: 26px; }
+.nav-hamburger span:nth-child(2) { width: 18px; }
+.nav-hamburger span:nth-child(3) { width: 10px; }
+
+.nav-hamburger:hover span {
+  width: 26px;
+  background: var(--gold);
+}
+
+.nav-hamburger.active span {
+  background: var(--gold);
 }
 
 .nav-hamburger.active span:nth-child(1) {
+  width: 26px;
   transform: translateY(7px) rotate(45deg);
 }
 
 .nav-hamburger.active span:nth-child(2) {
   opacity: 0;
+  width: 26px;
 }
 
 .nav-hamburger.active span:nth-child(3) {
+  width: 26px;
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -694,58 +742,94 @@ footer.keep-custom-footer .footer-bottom p {
   }
 
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: auto;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--green-dark);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Todo centrado */
+    
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    padding: 24px 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.4s;
+    overflow-y: auto;
   }
 
   .nav-links.nav-open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: var(--green-dark);
-    padding: 16px 0 24px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    overflow-y: auto;
-    max-height: calc(100vh - 70px);
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
   }
 
-  .nav-links.nav-open li a {
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links li a {
     line-height: 1;
-    padding: 14px 24px !important;
+    padding: 16px 24px !important;
   }
 
-  .nav-links.nav-open .dropdown-menu {
+  .nav-links .dropdown-menu {
     display: block;
     position: static;
     border-top: none;
-    border-left: 3px solid var(--gold);
+    border-left: none;
     box-shadow: none;
-    margin-left: 16px;
+    margin-left: 0;
     background: rgba(0, 0, 0, 0.15);
-    padding: 4px 0;
+    
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    visibility: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.4s ease, visibility 0.4s;
   }
 
-  .nav-links.nav-open .dropdown-menu li a {
+  @media (hover: hover) {
+    .nav-links li.dropdown:hover .dropdown-menu {
+      max-height: 500px;
+      opacity: 1;
+      padding: 8px 0;
+      visibility: visible;
+    }
+  }
+
+  .nav-links li.dropdown.active-mobile .dropdown-menu,
+  .nav-links li.dropdown.active-dropdown .dropdown-menu {
+    max-height: 500px;
+    opacity: 1;
+    padding: 8px 0;
+    visibility: visible;
+  }
+
+  .nav-links .dropdown-menu li a {
     font-size: 11px !important;
     padding: 10px 20px !important;
   }
 
   .nav-logo {
-    order: 1;
+    /* Mantiene su posicion a la izquierda por defecto */
   }
 
   .nav-actions {
-    order: 2;
     margin-left: auto;
-    margin-right: 15px;
+    margin-right: 0;
     gap: 6px;
   }
 
   .nav-hamburger {
-    order: 3;
     display: flex;
   }
 
@@ -754,19 +838,10 @@ footer.keep-custom-footer .footer-bottom p {
     font-size: 11px;
   }
 
-  section {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  /* ── IPAD/TABLET FIX FOR INTERIOR PAGES HERO ── */
+  section,
   .page-hero {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    padding-top: 110px;
-    padding-bottom: 2.5rem;
-    min-height: 240px;
-    align-items: flex-end;
   }
 
   .footer-top {

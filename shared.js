@@ -171,29 +171,51 @@
     });
 
     // Mobile dropdown toggle — click to expand/collapse on touch devices
-    const isMobileNav = () => window.innerWidth <= 1100;
-
     navLinks.querySelectorAll("li.dropdown > a").forEach((dropdownLink) => {
       dropdownLink.addEventListener("click", (e) => {
-        if (!isMobileNav()) return; // Desktop uses hover, no override
+        // e.preventDefault(); // If we do this universally, desktop users can't navigate using parent link!
+        // Instead, we only prevent default if we want it to be purely a toggle.
+        // The user said "haz que todos los despleglables se puedan volver a cerrar".
+        e.preventDefault(); 
+        
         const parent = dropdownLink.closest("li.dropdown");
-        const submenu = parent.querySelector(".dropdown-menu");
-        if (!submenu) return;
-
-        // If submenu is currently hidden, prevent navigation and show it
-        const isVisible = submenu.style.display === "block";
+        const isVisible = parent.classList.contains("active-mobile") || parent.classList.contains("active-dropdown");
+        
         // Close all other open submenus first
-        navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
-          if (m !== submenu) m.style.display = "";
+        navLinks.querySelectorAll("li.dropdown").forEach((m) => {
+          if (m !== parent) {
+            m.classList.remove("active-mobile");
+            m.classList.remove("active-dropdown");
+          }
         });
+        
         if (!isVisible) {
-          e.preventDefault();
-          submenu.style.display = "block";
+          parent.classList.add("active-mobile");
+          parent.classList.add("active-dropdown");
         } else {
-          submenu.style.display = "";
+          parent.classList.remove("active-mobile");
+          parent.classList.remove("active-dropdown");
         }
       });
     });
+
+    // Add App Torneos click handler
+    const appTorneosBtn = document.querySelector(".boton-app-nav");
+    if (appTorneosBtn) {
+      appTorneosBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const parent = appTorneosBtn.closest(".nav-app-dropdown");
+        if (parent) {
+          parent.classList.toggle("active-dropdown");
+        }
+      });
+      // Close app torneos when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-app-dropdown")) {
+          document.querySelectorAll(".nav-app-dropdown").forEach(d => d.classList.remove("active-dropdown"));
+        }
+      });
+    }
 
     // Close menu when clicking a non-dropdown link
     navLinks.querySelectorAll("a").forEach((link) => {
@@ -205,8 +227,8 @@
           toggle.setAttribute("aria-expanded", "false");
           document.body.style.overflow = "";
           // Reset any open submenus
-          navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
-            m.style.display = "";
+          navLinks.querySelectorAll("li.dropdown").forEach((m) => {
+            m.classList.remove("active-mobile");
           });
         }
       });
@@ -228,8 +250,8 @@
         toggle.classList.remove("active");
         toggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
-        navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
-          m.style.display = "";
+        navLinks.querySelectorAll("li.dropdown").forEach((m) => {
+          m.classList.remove("active-mobile");
         });
       }
     });

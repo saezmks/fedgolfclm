@@ -708,6 +708,9 @@ mark {
       toggle.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      navLinks.querySelectorAll("li.dropdown").forEach((m) => {
+        m.classList.remove("active-mobile");
+      });
     }
 
     toggle.addEventListener('click', () => {
@@ -720,20 +723,46 @@ mark {
     // Mobile dropdown toggle via click
     navLinks.querySelectorAll('li.dropdown > a').forEach(link => {
       link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 1100) {
-          e.preventDefault();
-          const submenu = link.nextElementSibling;
-          if (submenu && submenu.classList.contains('dropdown-menu')) {
-            const isVisible = submenu.style.display === 'block';
-            // Close all other submenus first
-            navLinks.querySelectorAll('.dropdown-menu').forEach(m => {
-              m.style.display = '';
-            });
-            submenu.style.display = isVisible ? '' : 'block';
+        e.preventDefault(); // Always prevent navigation on mobile for dropdown parents
+        
+        const parent = link.closest("li.dropdown");
+        const isVisible = parent.classList.contains("active-mobile") || parent.classList.contains("active-dropdown");
+        
+        // Close all other open submenus first
+        navLinks.querySelectorAll("li.dropdown").forEach((m) => {
+          if (m !== parent) {
+            m.classList.remove("active-mobile");
+            m.classList.remove("active-dropdown");
           }
+        });
+        
+        if (!isVisible) {
+          parent.classList.add("active-mobile");
+          parent.classList.add("active-dropdown");
+        } else {
+          parent.classList.remove("active-mobile");
+          parent.classList.remove("active-dropdown");
         }
       });
     });
+
+    // Add App Torneos click handler
+    const appTorneosBtn = document.querySelector(".boton-app-nav");
+    if (appTorneosBtn) {
+      appTorneosBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const parent = appTorneosBtn.closest(".nav-app-dropdown");
+        if (parent) {
+          parent.classList.toggle("active-dropdown");
+        }
+      });
+      // Close app torneos when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-app-dropdown")) {
+          document.querySelectorAll(".nav-app-dropdown").forEach(d => d.classList.remove("active-dropdown"));
+        }
+      });
+    }
 
     // Close menu when clicking a non-dropdown link
     navLinks.querySelectorAll('a').forEach(link => {
