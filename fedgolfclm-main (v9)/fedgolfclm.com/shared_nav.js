@@ -703,6 +703,13 @@ mark {
     const navLinks = document.getElementById('navLinks');
     if (!toggle || !navLinks) return;
 
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
     toggle.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
       toggle.classList.toggle('active', isOpen);
@@ -710,24 +717,44 @@ mark {
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
+    // Mobile dropdown toggle via click
+    navLinks.querySelectorAll('li.dropdown > a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1100) {
+          e.preventDefault();
+          const submenu = link.nextElementSibling;
+          if (submenu && submenu.classList.contains('dropdown-menu')) {
+            const isVisible = submenu.style.display === 'block';
+            // Close all other submenus first
+            navLinks.querySelectorAll('.dropdown-menu').forEach(m => {
+              m.style.display = '';
+            });
+            submenu.style.display = isVisible ? '' : 'block';
+          }
+        }
+      });
+    });
+
+    // Close menu when clicking a non-dropdown link
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         const parent = link.closest('li');
         if (!parent || !parent.classList.contains('dropdown')) {
-          navLinks.classList.remove('nav-open');
-          toggle.classList.remove('active');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+          closeMenu();
         }
+      });
+    });
+
+    // Close menu on clicking a dropdown submenu link
+    navLinks.querySelectorAll('.dropdown-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
       });
     });
 
     document.addEventListener('click', (e) => {
       if (!e.target.closest('nav') && navLinks.classList.contains('nav-open')) {
-        navLinks.classList.remove('nav-open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        closeMenu();
       }
     });
   }

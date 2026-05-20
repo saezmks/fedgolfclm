@@ -50,6 +50,15 @@ nav {
   font-weight: 700; font-size: 16px;
   color: var(--green-dark);
   flex-shrink: 0;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.nav-logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .nav-logo-text {
@@ -136,6 +145,54 @@ nav {
   font-size: 10px;
   opacity: 0.5;
 }
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  gap: 5px;
+  transition: border-color 0.3s;
+  flex-shrink: 0;
+  z-index: 110;
+}
+
+.nav-hamburger:hover {
+  border-color: var(--gold);
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--gold);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--gold);
+}
+
 .btn-nav {
   padding: 8px 20px;
   font-family: var(--font-body);
@@ -1363,17 +1420,126 @@ footer {
 @media (max-width: 1100px) {
   section, .calendario-section, .patrocinadores-section { padding-left: 2.5rem; padding-right: 2.5rem; }
   .areas-section-inner { padding: 80px 2.5rem; }
-  nav { padding: 0 2rem; }
+  nav { padding: 0 1.5rem; }
   .hero-top-bar, .hero-content { padding-left: 2.5rem; padding-right: 2.5rem; }
   .hero-stats { right: 2.5rem; }
   .quick-bar { padding: 0 2.5rem; }
   .footer-top { padding: 50px 2.5rem; grid-template-columns: 1fr 1fr; gap: 40px; }
   .footer-bottom { padding: 20px 2.5rem; }
-  .nav-links { display: none; }
   .areas-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .calendario-grid { grid-template-columns: 1fr; }
   .noticias-grid { grid-template-columns: 1fr 1fr; }
   .noticia-card-featured { grid-column: 1/-1; grid-row: auto; }
+
+  /* ── MOBILE NAV ── */
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--green-dark);
+    padding: 0;
+    overflow-y: auto;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+    z-index: 99;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links.nav-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ── MOBILE MENU ITEMS ── */
+  .nav-links li {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-links li a {
+    line-height: 1.4;
+    padding: 18px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-links li a:hover {
+    color: var(--gold);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── MOBILE DROPDOWN SUBMENUS ── */
+  .nav-links li.dropdown {
+    position: relative;
+  }
+
+  .nav-links li.dropdown > a::after {
+    content: '▾';
+    font-size: 12px;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: none;
+    background: rgba(0,0,0,0.15);
+    box-shadow: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid var(--gold);
+    margin: 0;
+    padding: 8px 0;
+    min-width: 0;
+  }
+
+  .nav-links li.dropdown:hover > .dropdown-menu,
+  .nav-links li.dropdown:focus-within > .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li {
+    border-bottom: none;
+  }
+
+  .dropdown-menu li a {
+    padding: 14px 28px 14px 32px !important;
+    font-size: 13px !important;
+    color: rgba(255,255,255,0.7) !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px;
+  }
+
+  .dropdown-menu li a:hover {
+    color: var(--gold) !important;
+    background: rgba(255,255,255,0.04) !important;
+  }
+
+  /* ── MOBILE NAV ACTIONS ── */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-actions .btn-nav-outline {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
