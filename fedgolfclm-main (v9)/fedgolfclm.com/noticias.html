@@ -11,6 +11,28 @@
   <style>
     body { padding-top: 70px; }
 
+    /* ── Autocomplete & Buscador ── */
+    .buscador-container { position: relative; flex: 1; min-width: 220px; display: flex; align-items: center; }
+    .buscador-container input { width: 100%; padding-left: 36px !important; min-width: 0 !important; }
+    .buscador-icon { position: absolute; left: 12px; color: var(--gray-300); pointer-events: none; transition: color 0.2s; }
+    .buscador-container input:focus ~ .buscador-icon { color: var(--green-accent); }
+    
+    .autocomplete-dropdown {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: var(--white); border: 1.5px solid var(--gray-100);
+      border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      z-index: 100; max-height: 320px; overflow-y: auto; display: none;
+      flex-direction: column;
+    }
+    .autocomplete-item {
+      padding: 12px 16px; font-size: 13px; color: var(--gray-600);
+      text-decoration: none; display: block; border-bottom: 1px solid var(--gray-50);
+      transition: background 0.2s; line-height: 1.4;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover { background: var(--gray-50); color: var(--green-dark); }
+    .autocomplete-item strong { color: var(--green-dark); font-weight: 900; }
+
     /* ── Filtros ── */
     .filtros-section {
       background: var(--gray-50);
@@ -211,7 +233,14 @@
 
 <div class="filtros-section">
   <div class="filtros-row">
-    <input type="text" id="buscador" placeholder="🔍  Buscar noticias..." autocomplete="off">
+    <div class="buscador-container">
+      <svg class="buscador-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="buscador" placeholder="Buscar noticias..." autocomplete="off">
+      <div id="autocompleteResultados" class="autocomplete-dropdown"></div>
+    </div>
     <select id="filtroCat">
       <option value="">Todas las categorías</option>
       <option value="Masculino">Masculino</option>
@@ -303,6 +332,29 @@
   const pagDiv      = document.getElementById('paginacion');
   const countEl     = document.getElementById('resultCount');
   const loadingEl   = document.getElementById('loadingState');
+  const autocompleteDiv = document.getElementById('autocompleteResultados');
+
+  function renderAutocomplete(q) {
+    if (!q) {
+      autocompleteDiv.style.display = 'none';
+      return;
+    }
+    const qLower = q.toLowerCase();
+    const matches = allData.filter(n => n.titulo.toLowerCase().includes(qLower)).slice(0, 8);
+
+    if (matches.length === 0) {
+      autocompleteDiv.style.display = 'none';
+      return;
+    }
+
+    autocompleteDiv.innerHTML = matches.map(n => {
+      const escapedQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${escapedQ})`, 'gi');
+      const highlightedTitle = n.titulo.replace(regex, '<strong>$1</strong>');
+      return `<a href="noticia.html?id=${n.id}" class="autocomplete-item">${highlightedTitle}</a>`;
+    }).join('');
+    autocompleteDiv.style.display = 'flex';
+  }
 
   function buildYearButtons(data) {
     const years = [...new Set(data.map(p => p.anyo))].filter(Boolean).sort((a,b) => b-a);
@@ -420,7 +472,24 @@
     });
 
   let timer;
-  buscador.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(applyFilters, 280); });
+  buscador.addEventListener('input', () => { 
+    clearTimeout(timer); 
+    timer = setTimeout(applyFilters, 280); 
+    renderAutocomplete(buscador.value.trim());
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.buscador-container')) {
+      autocompleteDiv.style.display = 'none';
+    }
+  });
+
+  buscador.addEventListener('focus', () => {
+    if (buscador.value.trim()) {
+      renderAutocomplete(buscador.value.trim());
+    }
+  });
+
   filtroCat.addEventListener('change', applyFilters);
 })();
 </script>
