@@ -754,10 +754,19 @@ footer.keep-custom-footer .footer-bottom p {
     font-size: 11px;
   }
 
-  section,
+  section {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  /* ── IPAD/TABLET FIX FOR INTERIOR PAGES HERO ── */
   .page-hero {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    padding-top: 110px;
+    padding-bottom: 2.5rem;
+    min-height: 240px;
+    align-items: flex-end;
   }
 
   .footer-top {
