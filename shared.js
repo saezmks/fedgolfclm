@@ -170,6 +170,32 @@
       document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
+    // Mobile dropdown toggle — click to expand/collapse on touch devices
+    const isMobileNav = () => window.innerWidth <= 1100;
+
+    navLinks.querySelectorAll("li.dropdown > a").forEach((dropdownLink) => {
+      dropdownLink.addEventListener("click", (e) => {
+        if (!isMobileNav()) return; // Desktop uses hover, no override
+        const parent = dropdownLink.closest("li.dropdown");
+        const submenu = parent.querySelector(".dropdown-menu");
+        if (!submenu) return;
+
+        // If submenu is currently hidden, prevent navigation and show it
+        const isVisible = submenu.style.display === "block";
+        // Close all other open submenus first
+        navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
+          if (m !== submenu) m.style.display = "";
+        });
+        if (!isVisible) {
+          e.preventDefault();
+          submenu.style.display = "block";
+        } else {
+          submenu.style.display = "";
+        }
+      });
+    });
+
+    // Close menu when clicking a non-dropdown link
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         const parent = link.closest("li");
@@ -178,7 +204,21 @@
           toggle.classList.remove("active");
           toggle.setAttribute("aria-expanded", "false");
           document.body.style.overflow = "";
+          // Reset any open submenus
+          navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
+            m.style.display = "";
+          });
         }
+      });
+    });
+
+    // Close on submenu link click (navigate away)
+    navLinks.querySelectorAll(".dropdown-menu a").forEach((subLink) => {
+      subLink.addEventListener("click", () => {
+        navLinks.classList.remove("nav-open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
       });
     });
 
@@ -188,6 +228,9 @@
         toggle.classList.remove("active");
         toggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
+        navLinks.querySelectorAll(".dropdown-menu").forEach((m) => {
+          m.style.display = "";
+        });
       }
     });
   }
