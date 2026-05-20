@@ -636,6 +636,56 @@ footer.footer-minimal .footer-bottom {
 
 
 /* ========================================================
+   CUSTOM FOOTER (competiciones.html)
+   ======================================================== */
+footer.keep-custom-footer {
+  background: var(--gray-900);
+  color: var(--white);
+}
+
+footer.keep-custom-footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+footer.keep-custom-footer .footer-section {
+  min-width: 180px;
+  flex: 1;
+}
+
+footer.keep-custom-footer .footer-section h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+footer.keep-custom-footer .footer-section p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+footer.keep-custom-footer .footer-bottom {
+  text-align: center;
+  padding: 16px 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+footer.keep-custom-footer .footer-bottom p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ========================================================
    RESPONSIVE
    ======================================================== */
 @media (max-width: 1100px) {
@@ -1340,5 +1390,571 @@ h2.section-title {
   .fecha {
     display: block;
     margin-bottom: 4px;
+  }
+}
+
+/* ========================================================
+   ENHANCED MOBILE RESPONSIVE — Small tablets & large phones
+   ======================================================== */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 90px 1.5rem 2rem;
+    min-height: 200px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .page-hero-content p {
+    font-size: 13px;
+  }
+
+  section {
+    padding: 50px 1.5rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 40px 1.5rem;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 16px 1.5rem;
+  }
+
+  footer.footer-minimal .footer-bottom {
+    padding: 10px 1.5rem 15px;
+  }
+
+  footer.footer-minimal .footer-top {
+    padding: 20px 1.5rem;
+  }
+
+  .nav-actions .btn-nav-outline {
+    display: none;
+  }
+
+  /* Competiciones calendar */
+  .competiciones-page-body .container {
+    padding: 0 1rem;
+    margin: 20px auto;
+  }
+
+  .filtros-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .filtros-container select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .mes-bloque {
+    padding: 18px 14px;
+  }
+
+  .torneo-item {
+    padding: 10px 6px;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .nombre-torneo {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .lugar {
+    display: block;
+    margin-top: 2px;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 0;
+  }
+
+  .nota-importante {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .nota-importante h3 {
+    font-size: 11pt;
+  }
+
+  .nota-importante p {
+    font-size: 10pt;
+  }
+
+  h2.section-title {
+    font-size: 13pt;
+    margin: 30px 0 18px;
+  }
+
+  .resultados-anteriores {
+    padding: 16px 12px;
+  }
+
+  .tabla-resultados th,
+  .tabla-resultados td {
+    padding: 10px 8px;
+    font-size: 9.5pt;
+  }
+
+  /* Data tables — horizontal scroll */
+  table.data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Tournament card */
+  .tournament-card {
+    padding: 28px 20px;
+  }
+
+  .tournament-card h1 {
+    font-size: 20px;
+  }
+
+  .tournament-card .info-row {
+    font-size: 15px;
+  }
+
+  /* Competiciones footer */
+  footer.keep-custom-footer .footer-content {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 1.5rem;
+  }
+
+  footer.keep-custom-footer .footer-social {
+    gap: 16px;
+  }
+
+  /* Global override for inline page sections with hardcoded 6rem padding */
+  .transp-section,
+  .subv-section,
+  .legal-section,
+  .contacto-section,
+  .comites-section,
+  .junta-section,
+  .licencia-section,
+  .reglas-section,
+  .circulares-section,
+  .circuito-section,
+  .content-page {
+    padding: 36px 1.5rem !important;
+  }
+
+  /* Subvenciones grid */
+  .subv-grid,
+  .tratamiento-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Legal nav */
+  .legal-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .legal-nav a {
+    font-size: 10px !important;
+    padding: 5px 10px !important;
+  }
+
+  /* Doc lists */
+  .doc-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .doc-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Subv cards */
+  .subv-card {
+    padding: 22px 18px;
+  }
+
+  .subv-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Reglas locales card */
+  .rfeg-card {
+    padding: 28px 20px !important;
+  }
+
+  .rfeg-card h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .rfeg-card p {
+    font-size: 0.9rem !important;
+  }
+
+  .btn-gold {
+    padding: 12px 24px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ========================================================
+   ENHANCED MOBILE RESPONSIVE — Small phones (≤ 480px)
+   ======================================================== */
+@media (max-width: 480px) {
+  /* Override all inline body padding-top: 70px to match 60px nav */
+  body {
+    padding-top: 60px !important;
+  }
+
+  .competiciones-page-body {
+    padding-top: 60px !important;
+  }
+
+  .resultados-page-body {
+    padding-top: 60px !important;
+  }
+
+  nav {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-logo-text span:first-child {
+    font-size: 11px;
+  }
+
+  .nav-logo-text span:last-child {
+    font-size: 8px;
+  }
+
+  .nav-logo {
+    gap: 10px;
+  }
+
+  .btn-nav {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .boton-app-nav {
+    padding: 5px 10px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .boton-app-nav svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-hamburger span {
+    width: 18px;
+  }
+
+  /* Adjust fixed menu top offset */
+  .nav-links.nav-open {
+    top: 60px;
+    max-height: calc(100vh - 60px);
+  }
+
+  .page-hero {
+    padding: 80px 1rem 1.5rem;
+    min-height: 180px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+  }
+
+  .page-hero-content p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .page-hero-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  section {
+    padding: 36px 1rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .btn-primary {
+    padding: 11px 22px;
+    font-size: 12px;
+  }
+
+  .btn-secondary {
+    padding: 11px 22px;
+    font-size: 12px;
+  }
+
+  /* Footer small phones */
+  .footer-top {
+    padding: 30px 1rem;
+    gap: 24px;
+  }
+
+  .footer-bottom {
+    padding: 14px 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 10px;
+  }
+
+  .footer-col-title {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .footer-desc {
+    font-size: 12px;
+    max-width: none;
+  }
+
+  .footer-social a {
+    width: 32px;
+    height: 32px;
+  }
+
+  footer.footer-minimal .footer-top {
+    padding: 16px 1rem;
+  }
+
+  footer.footer-minimal .footer-bottom {
+    padding: 10px 1rem 14px;
+  }
+
+  /* Competiciones small phones */
+  .competiciones-page-body .container {
+    padding: 0 0.75rem;
+    margin: 12px auto;
+  }
+
+  .filtros-container {
+    padding: 10px 12px;
+  }
+
+  .mes-bloque {
+    padding: 14px 10px;
+    margin-bottom: 16px;
+  }
+
+  .mes-title {
+    font-size: 11.5pt;
+  }
+
+  .torneo-item {
+    padding: 8px 4px;
+    font-size: 9.5pt;
+  }
+
+  .fecha {
+    min-width: 0;
+    font-size: 10pt;
+  }
+
+  h2.section-title {
+    font-size: 12pt;
+    margin: 24px 0 14px;
+  }
+
+  .rankings-container {
+    gap: 12px;
+  }
+
+  .ranking-card {
+    padding: 16px 12px;
+  }
+
+  .ranking-card h4 {
+    font-size: 10.5pt;
+    min-height: 36px;
+  }
+
+  .resultados-anteriores {
+    padding: 12px 8px;
+  }
+
+  .tabla-resultados th,
+  .tabla-resultados td {
+    padding: 8px 6px;
+    font-size: 9pt;
+  }
+
+  .btn-tabla {
+    padding: 4px 10px;
+    font-size: 9pt;
+  }
+
+  /* Tournament card small phones */
+  .tournament-card {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .tournament-card h1 {
+    font-size: 18px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .tournament-card .info-row {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .tournament-card .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .tournament-card .badge {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* Resultados pages */
+  .resultados-container {
+    padding: 0 10px 30px;
+  }
+
+  .resultados-container h2 {
+    font-size: 12pt;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  .header-banner {
+    padding: 24px 10px;
+    margin: 0 0 20px;
+  }
+
+  .header-title {
+    font-size: 15pt;
+  }
+
+  .header-subtitle {
+    font-size: 10pt;
+  }
+
+  .highlight-box {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+  }
+
+  .highlight-box p {
+    font-size: 10pt;
+  }
+
+  /* Mes resaltado on mobile */
+  .mes-resaltado::after {
+    position: static;
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-size: 7.5pt;
+  }
+}
+
+/* ========================================================
+   ENHANCED MOBILE RESPONSIVE — Very small phones (≤ 360px)
+   ======================================================== */
+@media (max-width: 360px) {
+  nav {
+    padding: 0 0.75rem;
+  }
+
+  .nav-logo-text {
+    display: none;
+  }
+
+  .btn-nav {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .boton-app-nav {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .page-hero {
+    padding: 72px 0.75rem 1.2rem;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.3rem;
+  }
+
+  section {
+    padding: 28px 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .footer-top {
+    padding: 24px 0.75rem;
+  }
+
+  .footer-bottom {
+    padding: 12px 0.75rem;
+  }
+
+  .torneo-item {
+    font-size: 9pt;
+  }
+
+  .mes-title {
+    font-size: 11pt;
+  }
+
+  h2.section-title {
+    font-size: 11pt;
   }
 }
