@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticia — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+
+    /* ══ HERO — mismo fondo que el index ══ */
+    .noticia-hero {
+      position: relative; overflow: hidden;
+      min-height: 460px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      background:
+        linear-gradient(135deg, rgba(10,61,46,0.97) 0%, rgba(26,102,69,0.85) 50%, rgba(45,158,107,0.6) 100%),
+        url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover no-repeat;
+    }
+    .noticia-hero-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(45,158,107,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .noticia-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,61,46,0.05) 0%, rgba(10,61,46,0.25) 55%, rgba(10,61,46,0.82) 100%);
+    }
+    .noticia-hero-content { position: relative; z-index: 2; padding: 60px 6rem 50px; max-width: 960px; }
+    .noticia-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; color: rgba(255,255,255,0.5);
+      margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .noticia-breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .noticia-breadcrumb a:hover { color: var(--gold); }
+    .noticia-breadcrumb span { color: rgba(255,255,255,0.3); }
+    .noticia-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .noticia-cat-badge {
+      display: inline-block; padding: 4px 12px;
+      background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px; border-radius: 2px;
+    }
+    .noticia-hero-line { width: 60px; height: 3px; background: var(--gold); margin-bottom: 18px; }
+    .noticia-hero-titulo {
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3.2vw, 2.6rem); font-weight: 900;
+      color: var(--white); line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.5px;
+    }
+    .noticia-hero-fecha { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 6px; }
+    .noticia-hero-fecha::before { content: '📅'; font-size: 12px; }
+
+    /* ══ LAYOUT BODY ══ */
+    .noticia-body-wrap {
+      background: var(--white); padding: 56px 6rem;
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start;
+    }
+
+    /* ══ IMAGEN dentro del artículo (debajo del hero) ══ */
+    .noticia-img-wrap {
+      width: 100%; border-radius: 6px; overflow: hidden;
+      margin-bottom: 32px;
+      box-shadow: 0 6px 28px rgba(10,61,46,0.11);
+    }
+    .noticia-img-wrap img {
+      width: 100%; max-height: 440px;
+      object-fit: cover; display: block;
+      opacity: 0; transition: opacity 0.6s ease;
+    }
+    .noticia-img-wrap img.loaded { opacity: 1; }
+    .noticia-img-placeholder {
+      width: 100%; height: 220px;
+      display: flex; align-items: center; justify-content: center; font-size: 60px;
+    }
+    .noticia-img-caption {
+      padding: 9px 16px; font-size: 11px; color: var(--gray-300);
+      background: var(--gray-50); border-top: 1px solid var(--gray-100); font-style: italic;
+    }
+
+    /* ══ EXCERPT destacado ══ */
+    .noticia-excerpt-pull {
+      font-size: 17px; color: var(--gray-600); line-height: 1.8;
+      border-left: 4px solid var(--gold);
+      padding: 4px 0 4px 22px;
+      margin-bottom: 30px; font-style: italic;
+    }
+
+    /* ══ CONTENIDO COMPLETO del WordPress ══ */
+    .noticia-wp-content {
+      font-size: 15.5px; line-height: 1.9; color: var(--gray-900);
+    }
+    .noticia-wp-content * { font-family: inherit !important; }
+    .noticia-wp-content p { margin-bottom: 18px; font-size: 15.5px !important; line-height: 1.9 !important; }
+    .noticia-wp-content strong, .noticia-wp-content b { font-weight: 700; color: var(--green-dark); }
+    .noticia-wp-content .entry-top { display: none; }
+    .noticia-wp-content article, .noticia-wp-content .entry, .noticia-wp-content .post {
+      border: none !important; padding: 0 !important; margin: 0 !important;
+      background: transparent !important; box-shadow: none !important;
+    }
+    .noticia-wp-content h1 { display: none; }
+    .noticia-wp-content h2 {
+      font-family: var(--font-display) !important; font-size: 1.3rem !important; font-weight: 700;
+      color: var(--green-dark) !important; margin: 30px 0 12px !important;
+      padding-bottom: 8px; border-bottom: 2px solid var(--green-light);
+    }
+    .noticia-wp-content h3 {
+      font-family: var(--font-display) !important; font-size: 1.05rem !important; font-weight: 700;
+      color: var(--green-mid) !important; margin: 22px 0 8px !important;
+    }
+    .noticia-wp-content ul, .noticia-wp-content ol { margin: 10px 0 18px 22px !important; }
+    .noticia-wp-content li { margin-bottom: 6px !important; }
+    .noticia-wp-content img { max-width: 100%; height: auto !important; border-radius: 4px; margin: 8px 0; }
+    .noticia-wp-content a { color: inherit !important; text-decoration: none !important; pointer-events: none; cursor: default; }
+    .noticia-wp-content table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+    .noticia-wp-content td, .noticia-wp-content th { padding: 8px 12px; border: 1px solid var(--gray-100); }
+    .noticia-wp-content th { background: var(--green-dark); color: var(--white); font-weight: 700; }
+    .noticia-wp-content tr:nth-child(even) td { background: var(--gray-50); }
+    /* Remapea los colores WP */
+    .noticia-wp-content span[style*="color: #b22222"],
+    .noticia-wp-content span[style*="color:#b22222"] { color: var(--green-dark) !important; }
+    .noticia-wp-content span[style*="color: #ff9900"],
+    .noticia-wp-content span[style*="color:#ff9900"] { color: var(--gold) !important; }
+    .noticia-wp-content .post-thumbnail, .noticia-wp-content .post-header,
+    .noticia-wp-content .post-footer, .noticia-wp-content .entry-meta,
+    .noticia-wp-content .comments-area, .noticia-wp-content #respond,
+    .noticia-wp-content .share-buttons, .noticia-wp-content [id^="comment"] { display: none !important; }
+
+    .noticia-footer-note {
+      margin-top: 32px; padding: 13px 18px;
+      background: var(--green-light); border-radius: 4px;
+      font-size: 11px; color: var(--green-mid);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .noticia-footer-note::before { content: '🏌️'; font-size: 14px; }
+
+    /* Skeleton */
+    .content-loading { padding: 20px 0; }
+    .content-loading-bar { height: 15px; border-radius: 3px; background: var(--gray-100); margin-bottom: 13px; animation: shimmer 1.3s ease-in-out infinite; }
+    @keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .content-spinner { width: 16px; height: 16px; border: 2px solid var(--gray-100); border-top-color: var(--green-accent); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .content-loading-label { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--gray-300); margin-bottom: 20px; }
+
+    /* ══ SIDEBAR ══ */
+    .noticia-sidebar { position: sticky; top: 90px; }
+    .sidebar-card { background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+    .sidebar-card-title { background: var(--green-dark); padding: 12px 18px; font-size: 10px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar-card-body { padding: 16px 18px; }
+    .sidebar-info-row { display: flex; flex-direction: column; gap: 12px; }
+    .sidebar-info-item { display: flex; flex-direction: column; gap: 2px; }
+    .sidebar-info-label { font-size: 9px; font-weight: 700; color: var(--gray-300); text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar-info-value { font-size: 13px; font-weight: 600; color: var(--green-dark); }
+
+    /* Patrocinadores sidebar */
+    .patroc-main-s {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 14px 10px; background: var(--white);
+      border: 1px solid var(--gray-100); border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .patroc-main-s img { max-width: 130px; max-height: 44px; object-fit: contain; }
+    .patroc-main-s-label { font-size: 8px; font-weight: 700; color: var(--green-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .patroc-main-s-name { font-size: 10px; color: var(--gray-300); margin-top: 6px; text-align: center; }
+    .patroc-grid-s { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .patroc-item-s {
+      display: flex; align-items: center; justify-content: center;
+      padding: 9px 6px; background: var(--white);
+      border: 1px solid var(--gray-100); border-radius: 4px; min-height: 48px;
+    }
+    .patroc-item-s img { max-width: 72px; max-height: 32px; object-fit: contain; filter: grayscale(15%); opacity: 0.85; transition: all 0.2s; }
+    .patroc-item-s:hover img { filter: grayscale(0%); opacity: 1; }
+    .patroc-colab-s {
+      display: flex; align-items: center; gap: 9px;
+      padding: 9px 0; border-bottom: 1px solid var(--gray-100);
+    }
+    .patroc-colab-s:last-child { border-bottom: none; }
+    .patroc-colab-s img { max-width: 58px; max-height: 26px; object-fit: contain; flex-shrink: 0; }
+    .patroc-colab-s-name { font-size: 11px; color: var(--gray-600); font-weight: 500; }
+
+    /* Relacionadas */
+    .relacionadas-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); text-decoration: none; color: inherit; transition: all 0.2s; }
+    .relacionadas-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .relacionadas-item:hover .relacionadas-titulo { color: var(--green-accent); }
+    .relacionadas-thumb { width: 56px; height: 46px; border-radius: 4px; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .relacionadas-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .relacionadas-body { flex: 1; min-width: 0; }
+    .relacionadas-titulo { font-family: var(--font-display); font-size: 11.5px; font-weight: 700; color: var(--green-dark); line-height: 1.3; transition: color 0.2s; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .relacionadas-fecha { font-size: 10px; color: var(--gray-300); margin-top: 3px; }
+
+    /* ══ NAV PREV/NEXT ══ */
+    .noticia-nav-wrap { background: var(--gray-50); border-top: 1px solid var(--gray-100); padding: 28px 6rem; display: flex; gap: 16px; justify-content: space-between; flex-wrap: wrap; }
+    .noticia-nav-btn { display: flex; flex-direction: column; gap: 4px; text-decoration: none; padding: 14px 22px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 6px; max-width: 48%; transition: all 0.2s; }
+    .noticia-nav-btn:hover { border-color: var(--gold); box-shadow: 0 4px 14px rgba(10,61,46,0.08); }
+    .noticia-nav-label { font-size: 10px; font-weight: 700; color: var(--gray-300); text-transform: uppercase; letter-spacing: 1px; }
+    .noticia-nav-titulo { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--green-dark); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ══ LOADING / ERROR ══ */
+    .noticia-loading { min-height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: var(--gray-300); }
+    .noticia-loading-spinner { width: 40px; height: 40px; border: 3px solid var(--gray-100); border-top-color: var(--green-accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    .noticia-error { min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; padding: 40px; text-align: center; color: var(--gray-600); }
+
+    @media (max-width: 960px) { .noticia-hero-content { padding: 40px 2.5rem 36px; } .noticia-body-wrap { padding: 40px 2.5rem; grid-template-columns: 1fr; } .noticia-sidebar { position: static; } .noticia-nav-wrap { padding: 22px 2.5rem; } }
+    @media (max-width: 640px) { .noticia-hero { min-height: 340px; } .noticia-hero-content { padding: 30px 1.25rem 26px; } .noticia-body-wrap { padding: 24px 1.25rem; gap: 32px; } .noticia-nav-wrap { padding: 18px 1.25rem; } .noticia-nav-btn { max-width: 100%; } }
+  </style>
+</head>
+<body>
+
+<div id="noticiaApp">
+  <div class="noticia-loading">
+    <div class="noticia-loading-spinner"></div>
+    <span>Cargando noticia…</span>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var PATROS = [
+    { nombre:'Junta de Castilla-La Mancha', img:'img/logo_castilla_la_mancha.png', tipo:'principal' },
+    { nombre:'Automaor Renault', img:'https://www.fedgolfclm.com/wp-content/uploads/2025/04/Automaor-RENAULT-Golf-CLM-banners-05-1.jpg', tipo:'grid' },
+    { nombre:'Joma Sport', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/joma-1.jpg', tipo:'grid' },
+    { nombre:'RFEG', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg/200px-Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg.png', tipo:'grid' },
+    { nombre:'Golf Estudio', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/Golf-Estudio-1.jpg', tipo:'grid' }
+  ];
+
+  var CAT_GRADIENT = {
+    'Masculino':'linear-gradient(135deg,#0a3d2e,#2d9e6b)','Femenino':'linear-gradient(135deg,#3d0a1a,#9e2d5a)',
+    'Masculino y Femenino':'linear-gradient(135deg,#0a2a3d,#2d7a9e)','Senior':'linear-gradient(135deg,#3d2a0a,#9e7a2d)',
+    'Juvenil':'linear-gradient(135deg,#1a3d0a,#5a9e2d)','Profesional':'linear-gradient(135deg,#1a0a3d,#5a2d9e)',
+    'Pitch & Putt':'linear-gradient(135deg,#2a1a0a,#7a5a2d)','Federativas':'linear-gradient(135deg,#0a1a3d,#2d4a9e)',
+    'Golf Adaptado':'linear-gradient(135deg,#0a3d3d,#2d9e9e)','Reglas y Campos':'linear-gradient(135deg,#2a2a0a,#7a7a2d)',
+    'default':'linear-gradient(135deg,#0a3d2e,#1a6645)'
+  };
+  var CAT_EMOJI = {
+    'Masculino':'🏌️','Femenino':'⛳','Masculino y Femenino':'🏆','Senior':'🎖️','Juvenil':'👶',
+    'Profesional':'🏅','Pitch & Putt':'🏌️','Federativas':'📋','Golf Adaptado':'♿','Reglas y Campos':'📖','default':'⛳'
+  };
+
+  function getBg(n) { return CAT_GRADIENT[n.categorias&&n.categorias[0]||'default'] || CAT_GRADIENT.default; }
+  function getEm(n) { return CAT_EMOJI[n.categorias&&n.categorias[0]||'default'] || '⛳'; }
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  /* ── Limpia el HTML de WordPress ── */
+  function sanitizeWP(html) {
+    if (!html) return '';
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    // Eliminar elementos WP que no aplican
+    tmp.querySelectorAll('h1, script, style, .post-thumbnail, .entry-meta, .post-header, .post-footer, .share-buttons, .comments-area, #respond, [class*="comment"], .entry-top, form, input, button, [class*="wp-block-button"]').forEach(function(el){ el.remove(); });
+    // Eliminar links (sin destino externo)
+    tmp.querySelectorAll('a').forEach(function(a){
+      var sp = document.createElement('span');
+      sp.innerHTML = a.innerHTML;
+      a.parentNode.replaceChild(sp, a);
+    });
+    // Quitar style de elementos de bloque (conservar color en spans)
+    tmp.querySelectorAll('[style]').forEach(function(el){
+      if (el.tagName !== 'SPAN') el.removeAttribute('style');
+    });
+    // Limpiar clases WP de contenedores
+    tmp.querySelectorAll('article, .entry, .post, [class*="entry-"]').forEach(function(el){ el.removeAttribute('class'); });
+    // Limpiar atributos de imágenes
+    tmp.querySelectorAll('img').forEach(function(img){
+      img.removeAttribute('style'); img.removeAttribute('align');
+      img.removeAttribute('width'); img.removeAttribute('height');
+      img.setAttribute('loading', 'lazy'); img.className = '';
+    });
+    return tmp.innerHTML.trim();
+  }
+
+  /* ── Sidebar patrocinadores ── */
+  function buildPatroc(rel) {
+    var principal = PATROS.find(function(p){ return p.tipo==='principal'; });
+    var colabs    = PATROS.filter(function(p){ return p.tipo==='colab'; });
+    var grid      = PATROS.filter(function(p){ return p.tipo==='grid'; });
+
+    var relHtml = rel.length
+      ? rel.map(function(r){
+          var t = r.imagen ? '<img src="'+esc(r.imagen)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+                           : getEm(r);
+          return '<a href="noticia.html?id='+r.id+'" class="relacionadas-item">'
+            +'<div class="relacionadas-thumb" style="background:'+getBg(r)+';">'+t+'</div>'
+            +'<div class="relacionadas-body">'
+            +'<div class="relacionadas-titulo">'+esc(r.titulo)+'</div>'
+            +'<div class="relacionadas-fecha">'+esc(r.fecha||'')+'</div>'
+            +'</div></a>';
+        }).join('')
+      : '<p style="font-size:13px;color:var(--gray-300);">No hay noticias relacionadas.</p>';
+
+    return ''
+      // Datos
+      +'<div class="sidebar-card"><div class="sidebar-card-title">Datos</div><div class="sidebar-card-body" id="sidebarDatos"></div></div>'
+      // Patrocinadores
+      +'<div class="sidebar-card"><div class="sidebar-card-title">Patrocinadores</div><div class="sidebar-card-body">'
+        +'<div class="patroc-main-s"><div class="patroc-main-s-label">Patrocinador oficial</div>'
+          +'<img src="'+esc(principal.img)+'" alt="'+esc(principal.nombre)+'" onerror="this.outerHTML=\'<span style=\\\"font-size:11px;font-weight:700;color:var(--green-dark)\\\">Junta CLM</span>\'">'
+          +'<div class="patroc-main-s-name">'+esc(principal.nombre)+'</div>'
+        +'</div>'
+        + colabs.map(function(c){
+            return '<div class="patroc-colab-s">'
+              +'<img src="'+esc(c.img)+'" alt="'+esc(c.nombre)+'" onerror="this.style.display=\'none\'">'
+              +'<span class="patroc-colab-s-name">'+esc(c.nombre)+'</span>'
+              +'</div>';
+          }).join('')
+        +'<div style="height:10px"></div>'
+        +'<div class="patroc-grid-s">'
+          + grid.map(function(g){
+              return '<div class="patroc-item-s">'
+                +'<img src="'+esc(g.img)+'" alt="'+esc(g.nombre)+'" onerror="this.outerHTML=\'<span style=\\\"font-size:9px;font-weight:700;color:var(--gray-600)\\\">'+esc(g.nombre)+'</span>\'">'
+                +'</div>';
+            }).join('')
+        +'</div>'
+      +'</div></div>'
+      // Relacionadas
+      +'<div class="sidebar-card"><div class="sidebar-card-title">Noticias relacionadas</div><div class="sidebar-card-body">'+relHtml+'</div></div>';
+  }
+
+  /* ── Init ── */
+  var params    = new URLSearchParams(window.location.search);
+  var noticiaId = parseInt(params.get('id'), 10);
+  if (!noticiaId) { showError('No se ha especificado ninguna noticia. <a href="noticias.html">Volver al archivo</a>'); return; }
+
+  fetch('noticias_data.json')
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(data){
+      var idx = data.findIndex(function(n){ return n.id === noticiaId; });
+      if (idx === -1) { showError('Noticia no encontrada. <a href="noticias.html">Volver al archivo</a>'); return; }
+      var n    = data[idx];
+      var prev = idx > 0               ? data[idx-1] : null;
+      var next = idx < data.length - 1 ? data[idx+1] : null;
+      var cat0 = (n.categorias&&n.categorias[0]) || '';
+      var rel  = data.filter(function(x){ return x.id!==n.id && x.categorias && x.categorias.includes(cat0); }).slice(0,4);
+      document.title = (n.titulo||'Noticia') + ' — FGCLM';
+      renderPage(n, prev, next, rel);
+    })
+    .catch(function(err){ showError('Error al cargar: '+err.message); });
+
+  function renderPage(n, prev, next, rel) {
+    var catsHtml = (n.categorias||[]).map(function(c){ return '<span class="noticia-cat-badge">'+esc(c)+'</span>'; }).join('');
+
+    /* Imagen */
+    var imgHtml = n.imagen
+      ? '<div class="noticia-img-wrap"><img src="'+esc(n.imagen)+'" alt="'+esc(n.titulo)+'" onload="this.classList.add(\'loaded\')" onerror="this.parentNode.style.display=\'none\'"><div class="noticia-img-caption">'+esc((n.categorias||['Golf']).join(' · '))+' · '+esc(n.fecha||'')+'</div></div>'
+      : '<div class="noticia-img-wrap"><div class="noticia-img-placeholder" style="background:'+getBg(n)+';">'+getEm(n)+'</div></div>';
+
+    /* Contenido completo, limpio */
+    var content = sanitizeWP(n.contenido_html || '');
+
+    /* Nav */
+    var prevHtml = prev ? '<a href="noticia.html?id='+prev.id+'" class="noticia-nav-btn"><span class="noticia-nav-label">← Más reciente</span><span class="noticia-nav-titulo">'+esc(prev.titulo)+'</span></a>' : '<div></div>';
+    var nextHtml = next ? '<a href="noticia.html?id='+next.id+'" class="noticia-nav-btn" style="text-align:right;margin-left:auto;"><span class="noticia-nav-label">Más antigua →</span><span class="noticia-nav-titulo">'+esc(next.titulo)+'</span></a>' : '<div></div>';
+
+    document.getElementById('noticiaApp').innerHTML =
+      /* HERO */
+      '<div class="noticia-hero">'
+        +'<div class="noticia-hero-pattern"></div><div class="noticia-hero-overlay"></div>'
+        +'<div class="noticia-hero-content">'
+          +'<div class="noticia-breadcrumb"><a href="index.html">Inicio</a><span>›</span><a href="noticias.html">Noticias</a><span>›</span><span>'+esc((n.categorias&&n.categorias[0])||'Noticia')+'</span></div>'
+          +'<div class="noticia-cats">'+catsHtml+'</div>'
+          +'<div class="noticia-hero-line"></div>'
+          +'<h1 class="noticia-hero-titulo">'+esc(n.titulo)+'</h1>'
+          +'<div class="noticia-hero-fecha">'+esc(n.fecha||'')+'</div>'
+        +'</div>'
+      +'</div>'
+      /* CUERPO */
+      +'<div class="noticia-body-wrap">'
+        +'<article>'
+          + imgHtml
+          + (n.excerpt ? '<p class="noticia-excerpt-pull">'+esc(n.excerpt)+'</p>' : '')
+          +'<div class="noticia-wp-content">'+(content||'<p>'+esc(n.excerpt||'Contenido no disponible.')+'</p>')+'</div>'
+          +'<div class="noticia-footer-note">Noticias de la Federación de Golf de Castilla-La Mancha</div>'
+        +'</article>'
+        +'<aside class="noticia-sidebar">'+buildPatroc(rel)+'</aside>'
+      +'</div>'
+      +'<div class="noticia-nav-wrap">'+prevHtml+nextHtml+'</div>';
+
+    /* Datos sidebar */
+    var datos = document.getElementById('sidebarDatos');
+    if (datos) datos.innerHTML =
+      '<div class="sidebar-info-row">'
+      +'<div class="sidebar-info-item"><span class="sidebar-info-label">Publicado</span><span class="sidebar-info-value">'+esc(n.fecha||'—')+'</span></div>'
+      +'<div class="sidebar-info-item"><span class="sidebar-info-label">Categorías</span><span class="sidebar-info-value">'+esc((n.categorias||[]).join(', ')||'—')+'</span></div>'
+      +(n.anyo?'<div class="sidebar-info-item"><span class="sidebar-info-label">Temporada</span><span class="sidebar-info-value">'+n.anyo+'</span></div>':'')
+      +'</div>';
+  }
+
+  function showError(msg) {
+    document.getElementById('noticiaApp').innerHTML =
+      '<div class="noticia-error"><div style="font-size:48px;">⛳</div>'
+      +'<p style="font-size:16px;font-weight:700;color:var(--green-dark);">Noticia no disponible</p>'
+      +'<p>'+msg+'</p></div>';
+  }
+})();
+</script>
+</body>
+</html>

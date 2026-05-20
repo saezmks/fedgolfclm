@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenida del Presidente — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .presidente-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 2rem;
+    }
+    .presidente-header {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .presidente-avatar {
+      width: 180px;
+      height: 220px;
+      background: var(--green-light);
+      border: 3px solid var(--gold);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .presidente-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .presidente-meta { flex: 1; min-width: 240px; }
+    .presidente-cargo {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .presidente-nombre {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .presidente-bio {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .carta-titulo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .carta-texto {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.9;
+    }
+    .carta-texto p {
+      margin-bottom: 20px;
+    }
+    .carta-firma {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .carta-firma-nombre {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .carta-firma-cargo {
+      font-size: 12px;
+      color: var(--gray-300);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">La Federación</div>
+    <h1>Bienvenida del <em>Presidente</em></h1>
+    <p>Mensaje institucional del presidente de la Federación de Golf de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="presidente-section">
+  <div class="presidente-header">
+    <div class="presidente-avatar">
+      <!-- Cambia la ruta en 'src' por la foto real del presidente -->
+      <img src="img/2019-Carlos-Gutiérrez.jpg" alt="Foto del Presidente">
+    </div>
+    <div class="presidente-meta">
+      <div class="presidente-cargo">Presidente</div>
+      <div class="presidente-nombre">Federación de Golf<br>de Castilla-La Mancha</div>
+      <p class="presidente-bio">
+        La Federación de Golf de Castilla-La Mancha es el organismo rector del golf en nuestra región, integrada en la Real Federación Española de Golf (RFEG) y reconocida por el Consejo Superior de Deportes.
+        Agrupa a todos los clubes y jugadores federados de las cinco provincias: Albacete, Ciudad Real, Cuenca, Guadalajara y Toledo.
+      </p>
+    </div>
+  </div>
+
+  <div class="carta-titulo">Carta de Bienvenida</div>
+  <div class="carta-texto">
+    <p>
+      Estimados amigos y aficionados al golf:
+    </p>
+    <p>
+      Es para mí un honor y una satisfacción dirigirme a vosotros como presidente de la Federación de Golf de Castilla-La Mancha. Nuestra región cuenta con una tradición golfística que crece año tras año, y desde esta institución trabajamos cada día para que ese crecimiento sea sólido, inclusivo y sostenible.
+    </p>
+    <p>
+      Castilla-La Mancha es tierra de grandes paisajes, y sus más de 40 clubes federados ofrecen una experiencia única tanto para el jugador experimentado como para quien se acerca por primera vez a este deporte. Nuestro compromiso es garantizar la igualdad de oportunidades, el rigor competitivo y la promoción del golf en todas las categorías: masculino, femenino, juvenil, senior, pitch & putt, golf adaptado y todas las modalidades que enriquecen nuestra actividad federativa.
+    </p>
+    <p>
+      Durante esta temporada 2026 hemos ampliado el calendario de torneos, reforzado los programas de tecnificación para jóvenes promesas y establecido nuevos acuerdos de colaboración con instituciones y patrocinadores que hacen posible que el golf siga creciendo en nuestra comunidad. La Escuela de Golf FGCLM es un ejemplo de ese esfuerzo: un espacio abierto a todos, donde cualquier persona puede iniciarse en este deporte con el apoyo de profesionales titulados.
+    </p>
+    <p>
+      Os invito a participar activamente en la vida federativa, a federaros si aún no lo habéis hecho, y a disfrutar de todo lo que el golf de Castilla-La Mancha tiene para ofreceros. Juntos, seguiremos haciendo grande este deporte en nuestra tierra.
+    </p>
+    <p>
+      Un cordial saludo.
+    </p>
+  </div>
+  <div class="carta-firma">
+    <div class="carta-firma-nombre">Presidente</div>
+    <div class="carta-firma-cargo">Federación de Golf de Castilla-La Mancha</div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

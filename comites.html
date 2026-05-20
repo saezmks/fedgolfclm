@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comités y Delegaciones — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .comites-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .comites-intro { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .comites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .comite-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      padding: 32px 26px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .comite-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: var(--gold);
+    }
+    .comite-card:hover { box-shadow: 0 8px 28px rgba(10,61,46,0.09); transform: translateY(-2px); }
+    .comite-icon { font-size: 32px; margin-bottom: 14px; }
+    .comite-title {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 700;
+      color: var(--green-dark); margin-bottom: 10px;
+    }
+    .comite-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+    .comite-miembros {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-100);
+      font-size: 11px;
+      color: var(--gray-300);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    @media (max-width: 1100px) { .comites-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .comites-section { padding: 32px 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">La Federación</div>
+    <h1>Comités y <em>Delegaciones</em></h1>
+    <p>Órganos técnicos y representativos de la Federación de Golf de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="comites-section">
+  <p class="comites-intro">
+    La Federación de Golf de Castilla-La Mancha estructura su actividad técnica y territorial a través de comités especializados y delegaciones provinciales. Cada comité tiene atribuidas funciones específicas para garantizar el correcto desarrollo del golf en todos sus ámbitos: deportivo, técnico, reglamentario y social.
+  </p>
+
+  <div class="block-title">Comités Técnicos y Deportivos</div>
+  <div class="comites-grid">
+    <div class="comite-card">
+      <div class="comite-icon">🏆</div>
+      <div class="comite-title">Comité de Competiciones</div>
+      <div class="comite-desc">
+        Organiza, supervisa y regula todos los torneos y campeonatos autonómicos. Establece el calendario anual de competiciones, las condiciones de participación y la normativa de cada prueba.
+      </div>
+      <div class="comite-miembros">Dependiente de Junta Directiva</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📋</div>
+      <div class="comite-title">Comité de Reglas</div>
+      <div class="comite-desc">
+        Vela por la correcta aplicación de las Reglas de Golf en las competiciones de la federación. Sus miembros actúan como árbitros y asesores en los campeonatos autonómicos.
+      </div>
+      <div class="comite-miembros">Árbitros titulados RFEG</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📊</div>
+      <div class="comite-title">Comité de Hándicap</div>
+      <div class="comite-desc">
+        Gestiona la asignación y revisión de los índices de hándicap de los jugadores federados, en coordinación con el sistema WHS (World Handicap System) de la RFEG.
+      </div>
+      <div class="comite-miembros">Sistema WHS — RFEG</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">🎓</div>
+      <div class="comite-title">Comité de Formación y Escuela</div>
+      <div class="comite-desc">
+        Supervisa la Escuela de Golf FGCLM y los programas de iniciación al golf. Coordina a los profesionales titulados y los programas de captación de nuevos jugadores.
+      </div>
+      <div class="comite-miembros">Profesores titulados PGA España</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">🏌️</div>
+      <div class="comite-title">Comité Deportivo / Selección</div>
+      <div class="comite-desc">
+        Selecciona y gestiona a los deportistas que representan a Castilla-La Mancha en los Campeonatos de España. Coordina los rankings autonómicos y los criterios de selección.
+      </div>
+      <div class="comite-miembros">Selección Autonómica CLM</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">♿</div>
+      <div class="comite-title">Comité de Golf Adaptado</div>
+      <div class="comite-desc">
+        Promueve y organiza la práctica del golf entre personas con diversidad funcional. Desarrolla programas específicos y coordina la participación en competiciones adaptadas.
+      </div>
+      <div class="comite-miembros">Inclusión y deporte adaptado</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">👧</div>
+      <div class="comite-title">Comité de Golf Infantil y Juvenil</div>
+      <div class="comite-desc">
+        Gestiona los programas de tecnificación y las competiciones de las categorías Sub-8, Sub-10, Sub-12, Sub-14, Sub-16 y Sub-18 en el ámbito autonómico.
+      </div>
+      <div class="comite-miembros">Circuito Juvenil CLM</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📱</div>
+      <div class="comite-title">Comité de Comunicación</div>
+      <div class="comite-desc">
+        Gestiona la imagen y la comunicación institucional de la federación: web, redes sociales, app FGCLM, notas de prensa y relación con los medios de comunicación.
+      </div>
+      <div class="comite-miembros">Comunicación e imagen corporativa</div>
+    </div>
+  </div>
+
+  <div class="block-title">Delegaciones Provinciales</div>
+  <div class="comites-grid">
+    <div class="comite-card">
+      <div class="comite-icon">📍</div>
+      <div class="comite-title">Delegación de Albacete</div>
+      <div class="comite-desc">Representa a los clubes y federados de la provincia de Albacete. Coordina las competiciones provinciales y actúa como interlocutora con la federación autonómica.</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📍</div>
+      <div class="comite-title">Delegación de Ciudad Real</div>
+      <div class="comite-desc">Representa a los clubes y federados de la provincia de Ciudad Real. Coordina las competiciones provinciales y actúa como interlocutora con la federación autonómica.</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📍</div>
+      <div class="comite-title">Delegación de Cuenca</div>
+      <div class="comite-desc">Representa a los clubes y federados de la provincia de Cuenca. Coordina las competiciones provinciales y actúa como interlocutora con la federación autonómica.</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📍</div>
+      <div class="comite-title">Delegación de Guadalajara</div>
+      <div class="comite-desc">Representa a los clubes y federados de la provincia de Guadalajara. Coordina las competiciones provinciales y actúa como interlocutora con la federación autonómica.</div>
+    </div>
+    <div class="comite-card">
+      <div class="comite-icon">📍</div>
+      <div class="comite-title">Delegación de Toledo</div>
+      <div class="comite-desc">Representa a los clubes y federados de la provincia de Toledo. Coordina las competiciones provinciales y actúa como interlocutora con la federación autonómica.</div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

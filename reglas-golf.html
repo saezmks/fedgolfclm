@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reglas de Golf — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .reglas-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .reglas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .regla-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      padding: 28px 22px;
+      transition: all 0.2s;
+    }
+    .regla-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(10,61,46,0.07); }
+    .regla-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gray-100);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .regla-titulo { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .regla-desc { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+    .info-box {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+    }
+    .info-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 1100px) { .reglas-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .reglas-section { padding: 32px 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">Reglamentos</div>
+    <h1>Reglas de <em>Golf</em></h1>
+    <p>El código oficial de las Reglas de Golf vigente, aplicable en todas las competiciones de la FGCLM.</p>
+  </div>
+</div>
+
+<div class="reglas-section">
+  <p class="intro-text">
+    Las Reglas de Golf constituyen el código oficial que rige la práctica del golf en todo el mundo. Son elaboradas conjuntamente por el R&A (Royal and Ancient Golf Club of St Andrews) y la USGA (United States Golf Association) y entran en vigor el 1 de enero de 2019, con revisiones periódicas. Todas las competiciones de la Federación de Golf de Castilla-La Mancha se disputan conforme a estas reglas.
+  </p>
+
+  <div class="block-title">Las 24 Reglas de Golf</div>
+  <div class="reglas-grid">
+    <div class="regla-card"><div class="regla-num">01</div><div class="regla-titulo">El juego, el código de conducta del jugador y las Reglas</div><div class="regla-desc">Fundamentos del juego, espíritu del golf y estructura del código de reglas.</div></div>
+    <div class="regla-card"><div class="regla-num">02</div><div class="regla-titulo">El campo</div><div class="regla-desc">Zonas del campo, límites, marcas e instalaciones fijas.</div></div>
+    <div class="regla-card"><div class="regla-num">03</div><div class="regla-titulo">La competición</div><div class="regla-desc">Formatos de juego, tipos de golpe y puntuación.</div></div>
+    <div class="regla-card"><div class="regla-num">04</div><div class="regla-titulo">El equipo del jugador</div><div class="regla-desc">Palos conformes, límite de palos, bolas y otros equipos.</div></div>
+    <div class="regla-card"><div class="regla-num">05</div><div class="regla-titulo">Jugar el hoyo</div><div class="regla-desc">Inicio del hoyo, orden de juego, área de salida y finalización del hoyo.</div></div>
+    <div class="regla-card"><div class="regla-num">06</div><div class="regla-titulo">Jugar un hoyo; marcador</div><div class="regla-desc">Responsabilidades del jugador, tarjeta de puntuación y marcador.</div></div>
+    <div class="regla-card"><div class="regla-num">07</div><div class="regla-titulo">Golpe de práctica</div><div class="regla-desc">Cuándo está permitido practicar golpes en la vuelta.</div></div>
+    <div class="regla-card"><div class="regla-num">08</div><div class="regla-titulo">Consejo e instrucción</div><div class="regla-desc">Normas sobre solicitar y dar consejos durante la competición.</div></div>
+    <div class="regla-card"><div class="regla-num">09</div><div class="regla-titulo">Bola en juego, bola levantada o perdida; bola en movimiento</div><div class="regla-desc">Estado de la bola y situaciones especiales.</div></div>
+    <div class="regla-card"><div class="regla-num">10</div><div class="regla-titulo">Preparar y realizar el golpe</div><div class="regla-desc">Posición, agarre, stance, área de golpe e intención.</div></div>
+    <div class="regla-card"><div class="regla-num">11</div><div class="regla-titulo">Bola en movimiento que golpea a alguien o algo</div><div class="regla-desc">Qué ocurre cuando la bola en movimiento impacta personas, equipo u objetos.</div></div>
+    <div class="regla-card"><div class="regla-num">12</div><div class="regla-titulo">Bunkers</div><div class="regla-desc">Reglas específicas para jugar desde los bunkers.</div></div>
+    <div class="regla-card"><div class="regla-num">13</div><div class="regla-titulo">Zonas de penalización</div><div class="regla-desc">Agua y otras zonas de penalización: opciones disponibles.</div></div>
+    <div class="regla-card"><div class="regla-num">14</div><div class="regla-titulo">Procedimientos para levantar, colocar y soltar la bola</div><div class="regla-desc">Cómo levantar, limpiar, soltar y colocar correctamente la bola.</div></div>
+    <div class="regla-card"><div class="regla-num">15</div><div class="regla-titulo">Alivio del obstáculo removible y de la condición anormal del campo</div><div class="regla-desc">Objetos sueltos, suelo en reparación, agua temporal y madrigueras.</div></div>
+    <div class="regla-card"><div class="regla-num">16</div><div class="regla-titulo">Alivio de condiciones anormales del campo</div><div class="regla-desc">Alivio gratuito de obstrucciones inmovibles y daño por animales.</div></div>
+    <div class="regla-card"><div class="regla-num">17</div><div class="regla-titulo">Situaciones de obstáculo</div><div class="regla-desc">Alivio de obstrucciones movibles e inmovibles.</div></div>
+    <div class="regla-card"><div class="regla-num">18</div><div class="regla-titulo">Bola en el putting green</div><div class="regla-desc">Reglas específicas del green: marcado, limpieza y golpeo.</div></div>
+    <div class="regla-card"><div class="regla-num">19</div><div class="regla-titulo">Bola no encontrada o fuera de límites; bola provisional</div><div class="regla-desc">Procedimientos para bola perdida, OB y bola provisional.</div></div>
+    <div class="regla-card"><div class="regla-num">20</div><div class="regla-titulo">Resolución de situaciones no cubiertas por las reglas</div><div class="regla-desc">Uso más razonable y situaciones excepcionales.</div></div>
+    <div class="regla-card"><div class="regla-num">21</div><div class="regla-titulo">Otros formatos de juego en el stroke play</div><div class="regla-desc">Stableford, Máxima puntuación y Par/Bogey.</div></div>
+    <div class="regla-card"><div class="regla-num">22</div><div class="regla-titulo">Mejor bola y cuatro bolas en el stroke play</div><div class="regla-desc">Reglas para formatos de parejas: mejor bola y cuatro bolas.</div></div>
+    <div class="regla-card"><div class="regla-num">23</div><div class="regla-titulo">Greensomes</div><div class="regla-desc">Formato alternativo por parejas: drive alternativo y juego.</div></div>
+    <div class="regla-card"><div class="regla-num">24</div><div class="regla-titulo">Equipos</div><div class="regla-desc">Reglas aplicables a competiciones por equipos.</div></div>
+  </div>
+
+  <div class="block-title">Recursos y Materiales</div>
+  <div class="info-box">
+    <p>
+      El texto completo de las Reglas de Golf, las Definiciones, las Notas al Comité, la Guía Oficial de las Reglas y el Diccionario de Penalizaciones están disponibles en el portal oficial del R&A y la RFEG. La Federación de Golf de Castilla-La Mancha recomienda a todos sus federados familiarizarse con ellas.
+    </p>
+    <p>
+      Las <strong>Reglas Locales</strong> específicas de cada campo y competición se publican en la hoja de salida de cada torneo. Siempre prevalecen sobre las condiciones generales cuando así lo establezca el Comité.
+    </p>
+    <p>
+      Si tienes dudas sobre la aplicación de una regla durante una competición de la FGCLM, puedes consultar con el árbitro designado en la prueba. Para consultas previas, contacta con el Comité de Reglas de la federación en <strong>federacion@fedgolfclm.com</strong>.
+    </p>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

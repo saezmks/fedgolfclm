@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subvenciones — Federación de Golf de Castilla-La Mancha</title>
+  <link rel="icon" type="image/png" href="img/favicon_pagina.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { padding-top: 70px; }
+    .subv-section { padding: 64px 6rem; max-width: 1100px; margin: 0 auto; }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .subv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .subv-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      padding: 30px 26px;
+      transition: all 0.2s;
+    }
+    .subv-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(10,61,46,0.07); }
+    .subv-icon { font-size: 28px; margin-bottom: 12px; }
+    .subv-titulo { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .subv-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+    .subv-estado {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .estado-abierto { background: var(--green-light); color: var(--green-mid); }
+    .estado-cerrado { background: var(--gray-100); color: var(--gray-300); }
+    .estado-previsto { background: var(--gold-light); color: #856404; }
+    .info-box {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+    }
+    .info-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 1100px) { .subv-section { padding: 48px 2.5rem; } }
+    @media (max-width: 640px) { .subv-section { padding: 32px 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-label">La Federación</div>
+    <h1><em>Subvenciones</em> y Ayudas</h1>
+    <p>Información sobre las subvenciones y ayudas disponibles para federados, clubes y deportistas de Castilla-La Mancha.</p>
+  </div>
+</div>
+
+<div class="subv-section">
+  <p class="intro-text">
+    La Federación de Golf de Castilla-La Mancha gestiona y difunde las convocatorias de subvenciones y ayudas dirigidas a deportistas, clubes y entidades relacionadas con el golf en la región. Estas ayudas provienen principalmente de la Junta de Castilla-La Mancha, el Consejo Superior de Deportes y otras entidades colaboradoras.
+  </p>
+
+  <div class="block-title">Subvenciones Vigentes y Convocatorias 2026</div>
+  <div class="subv-grid">
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><circle cx="12" cy="8" r="7"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
+      </div>
+      <div class="subv-titulo">Ayudas a Deportistas de Alto Nivel</div>
+      <div class="subv-desc">
+        Subvenciones de la Junta de Castilla-La Mancha para deportistas de élite inscritos en las listas de Alto Nivel o Alto Rendimiento del Consejo Superior de Deportes. Incluyen ayudas directas y beneficios académicos y laborales.
+      </div>
+      <span class="subv-estado estado-abierto">Convocatoria abierta</span>
+    </div>
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+      </div>
+      <div class="subv-titulo">Programa de Tecnificación Deportiva</div>
+      <div class="subv-desc">
+        Ayudas para jóvenes golfistas incluidos en los programas de tecnificación autonómica. Cubren parte de los gastos de entrenamiento, competición y desplazamiento para los jugadores Sub-18 seleccionados por la FGCLM.
+      </div>
+      <span class="subv-estado estado-abierto">Convocatoria abierta</span>
+    </div>
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><path d="M4 22h16c-1-2-3-4-8-4s-7 2-8 4Z"></path><path d="M12 2v16"></path><path d="M12 2h6l-3 4-3 4"></path></svg>
+      </div>
+      <div class="subv-titulo">Ayudas para Participación en Cptos. de España</div>
+      <div class="subv-desc">
+        La federación costea o subvenciona parte de los gastos de desplazamiento y alojamiento de los seleccionados castellanomanchegos que participan en campeonatos nacionales federativos.
+      </div>
+      <span class="subv-estado estado-abierto">Por temporada</span>
+    </div>
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="16"></line><line x1="15" y1="22" x2="15" y2="16"></line><line x1="9" y1="16" x2="15" y2="16"></line><path d="M8 6h2v2H8zm6 0h2v2h-2zm-6 5h2v2H8zm6 0h2v2h-2z"></path></svg>
+      </div>
+      <div class="subv-titulo">Subvenciones a Clubes Federados</div>
+      <div class="subv-desc">
+        Líneas de ayuda de la Junta de Castilla-La Mancha destinadas a clubes deportivos para mejora de instalaciones, organización de competiciones y programas de captación de nuevos practicantes.
+      </div>
+      <span class="subv-estado estado-previsto">Prevista 2º semestre</span>
+    </div>
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><circle cx="12" cy="5" r="2"></circle><path d="M6.5 9h5.5l2.5 5h3.5"></path><path d="M9 13a5 5 0 1 0 5 5"></path></svg>
+      </div>
+      <div class="subv-titulo">Programa de Golf Adaptado</div>
+      <div class="subv-desc">
+        Ayudas específicas para el fomento del golf entre personas con diversidad funcional. Incluyen subvenciones para equipamiento adaptado y participación en competiciones de golf adaptado.
+      </div>
+      <span class="subv-estado estado-abierto">Programa permanente</span>
+    </div>
+    <div class="subv-card">
+      <div class="subv-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; color:var(--gold);"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+      </div>
+      <div class="subv-titulo">Plan Estatal de Impulso del Deporte</div>
+      <div class="subv-desc">
+        Convocatorias del Consejo Superior de Deportes para federaciones deportivas. Financian proyectos de desarrollo deportivo, formación de técnicos y organización de competiciones oficiales.
+      </div>
+      <span class="subv-estado estado-cerrado">Cerrada — próxima convocatoria 2027</span>
+    </div>
+  </div>
+
+  <div class="block-title">Cómo Solicitar una Subvención</div>
+  <div class="info-box">
+    <p>
+      Para solicitar cualquiera de las ayudas gestionadas por la Federación de Golf de Castilla-La Mancha, es necesario ponerse en contacto con la Secretaría General antes del plazo de presentación de cada convocatoria.
+    </p>
+    <p>
+      La documentación requerida varía según el tipo de subvención, pero habitualmente incluye: formulario oficial de solicitud, DNI/NIE del solicitante, licencia federativa en vigor, memoria justificativa del proyecto o actividad, y presupuesto detallado de gastos.
+    </p>
+    <p>
+      Para clubes: también se solicita el NIF de la entidad, estatutos vigentes, acta de junta directiva y certificado de estar al corriente de obligaciones fiscales y de la Seguridad Social.
+    </p>
+    <p>
+      <strong>Contacto:</strong> federacion@fedgolfclm.com · Teléfono: 949-262300<br>
+      Plaza de España 1, Primera Planta, Local 8 · 19200 Azuqueca de Henares (Guadalajara)
+    </p>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
