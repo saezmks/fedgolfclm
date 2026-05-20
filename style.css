@@ -1554,6 +1554,130 @@ footer {
   .rankings-col { padding: 60px 2.5rem; }
   .footer-top { grid-template-columns: 1fr; }
   .pat-logos { gap: 30px; }
+  .pat-featured { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .patrocinadores-section { padding: 50px 1.5rem; }
+  .calendario-section { padding: 60px 1.5rem; }
+  .calendario-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+  /* Carousel small tablets */
+  .carousel-arrow { width: 40px; height: 40px; }
+  .noticias-carousel-wrapper { gap: 0.5rem; padding: 0; }
+}
+
+/* ========================================================
+   INDEX PAGE — Small phones (≤ 480px)
+   ======================================================== */
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; height: 60px; }
+
+  .nav-hamburger { display: flex; }
+
+  .nav-links li a { line-height: 60px; }
+
+  .hero { min-height: auto; }
+  .hero-top-bar { padding: 76px 1rem 0; }
+  .hero-content { padding: 1rem 1rem 1.5rem; }
+  .hero-title { font-size: 1.8rem; letter-spacing: -0.5px; }
+  .hero-sub { font-size: 13px; max-width: none; margin-bottom: 1rem; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 2px; }
+  .hero-tag { font-size: 9px; padding: 5px 12px; }
+  .hero-stats {
+    margin: 0 1rem 1rem;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat { padding: 10px 16px; flex: 1; min-width: 0; }
+  .hero-stat-num { font-size: 1.4rem; }
+  .hero-stat-label { font-size: 8px; letter-spacing: 1px; }
+  .hero-ctas { gap: 10px; }
+  .hero-ctas .btn-primary { padding: 11px 22px; font-size: 12px; }
+  .hero-ctas .btn-secondary { padding: 11px 22px; font-size: 12px; }
+
+  /* Areas */
+  .areas-section-inner { padding: 48px 1rem; }
+  .areas-header { margin-bottom: 2.5rem; }
+  .areas-subtitle { font-size: 13px; }
+  .area-card { padding: 24px 20px 20px; }
+  .area-icon-wrap { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px; }
+  .area-svg-icon { width: 24px; height: 24px; }
+  .area-title { font-size: 16px; }
+  .area-desc { font-size: 12px; }
+  .area-tag { font-size: 9px; }
+  .area-link { font-size: 11px; padding-top: 12px; }
+
+  /* Calendario */
+  .calendario-section { padding: 48px 1rem; }
+  .evento-card { padding: 20px 16px; gap: 8px; }
+  .evento-dia { font-size: 2rem; }
+  .evento-nombre { font-size: 13px; }
+  .evento-lugar { font-size: 11px; }
+  .evento-cat { font-size: 9px; padding: 2px 8px; }
+
+  /* Rankings index */
+  .rankings-col { padding: 40px 1rem; }
+
+  /* Patrocinadores */
+  .patrocinadores-section { padding: 36px 1rem; }
+  .pat-label { font-size: 9px; letter-spacing: 2px; margin-bottom: 2rem; }
+  .pat-featured { gap: 14px; }
+  .pat-featured-card { padding: 24px 20px 20px; gap: 10px; }
+  .pat-featured-badge { font-size: 8px; padding: 3px 10px; top: -9px; }
+  .pat-featured-img { max-height: 48px; }
+  .pat-featured-name { font-size: 10px; }
+  .pat-divider { margin-bottom: 2rem; }
+  .pat-logos { gap: 20px; }
+  .pat-logo { height: 28px; }
+  .pat-logo img { max-height: 28px; }
+
+  /* Noticias carousel */
+  .carousel-arrow { width: 32px; height: 32px; }
+  .carousel-arrow svg { width: 18px; height: 18px; }
+  .noticias-carousel-wrapper { gap: 0.25rem; padding: 0; }
+  .noticias-carousel-track .noticia-card { height: auto; flex: 0 0 95%; }
+  .noticias-carousel-track .noticia-titulo { font-size: 17px; }
+  .noticias-carousel-track .noticia-excerpt { font-size: 13px; }
+  .noticias-carousel-track .noticia-body { padding: 20px 16px; }
+  .noticias-carousel-track .noticia-thumb { height: 200px; }
+
+  .ver-mas { margin-top: 2rem; }
+  .ver-mas .btn-primary { width: 100%; justify-content: center; }
+
+  /* Footer index */
+  .footer-top { padding: 30px 1rem; gap: 24px; }
+  .footer-bottom { padding: 14px 1rem; }
+}
+
+/* ========================================================
+   INDEX PAGE — Very small phones (≤ 360px)
+   ======================================================== */
+@media (max-width: 360px) {
+  .hero-title { font-size: 1.5rem; }
+  .hero-sub { font-size: 12px; }
+  .hero-stat { padding: 8px 10px; }
+  .hero-stat-num { font-size: 1.2rem; }
+  .hero-stat-label { font-size: 7px; }
+  .hero-top-bar { padding: 68px 0.75rem 0; }
+  .hero-content { padding: 0.75rem 0.75rem 1rem; }
+
+  .areas-section-inner { padding: 36px 0.75rem; }
+  .area-card { padding: 20px 16px 16px; }
+  .area-title { font-size: 15px; }
+  .area-desc { font-size: 11px; }
+
+  .calendario-section { padding: 36px 0.75rem; }
+  .evento-card { padding: 16px 12px; }
+  .evento-dia { font-size: 1.6rem; }
+  .evento-nombre { font-size: 12px; }
+
+  .patrocinadores-section { padding: 28px 0.75rem; }
+  .pat-featured-card { padding: 20px 14px 16px; }
+
+  .noticias-carousel-track .noticia-titulo { font-size: 15px; }
+  .noticias-carousel-track .noticia-body { padding: 16px 12px; }
+  .noticias-carousel-track .noticia-thumb { height: 170px; }
+
+  .carousel-arrow { display: none; }
 }
 
 /* ── Reduced Motion: disable hero entrance animations ── */
