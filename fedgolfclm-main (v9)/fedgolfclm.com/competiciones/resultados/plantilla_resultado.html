@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Competición — Federación de Golf de Castilla-La Mancha</title>
+    <link rel="icon" type="image/png" href="../../img/favicon_pagina.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../shared.css">
+</head>
+
+<body class="resultados-page-body">
+    <div class="resultados-container">
+
+        <div class="header-banner">
+            <table>
+                <tr>
+                    <td>
+                        <div class="header-title" id="torneo-nombre">Plantilla de Resultados de Competición</div>
+                        <div class="header-subtitle" id="torneo-fecha-lugar">Fecha y Lugar por confirmar</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Nota:</strong> Esta es una plantilla genérica para los resultados de la competición. Al subir al Workspace, esta página será alimentada con los datos reales del torneo.</p>
+        </div>
+
+        <h2>Clasificación Final</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Posición</th>
+                    <th style="width: 50%;">Jugador/a</th>
+                    <th style="width: 20%;">Licencia</th>
+                    <th style="width: 15%;">Golpes (Total)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Jugador Ejemplo 1</td>
+                    <td>CM00000001</td>
+                    <td class="math">68</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>Jugador Ejemplo 2</td>
+                    <td>CM00000002</td>
+                    <td class="math">70</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>Jugador Ejemplo 3</td>
+                    <td>CM00000003</td>
+                    <td class="math">72</td>
+                </tr>
+                <!-- Filas de ejemplo a rellenar -->
+            </tbody>
+        </table>
+
+        <h2>Crónica del Torneo</h2>
+        <p>Aquí se incluirá un resumen de lo acontecido durante la jornada de competición, destacando los momentos más importantes y el rendimiento de los ganadores en sus respectivas categorías.</p>
+        
+        <h2>Documentos Adjuntos</h2>
+        <table class="data-table" style="max-width: 600px;">
+            <tbody>
+                <tr>
+                    <td><a href="#" class="link-text">Clasificación Scratch Absoluta (PDF)</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="link-text">Clasificación Handicap (PDF)</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="link-text">Galería de Imágenes</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="javascript:history.back()" class="btn-secondary">Volver al Calendario</a>
+        </div>
+
+    </div>
+
+    <script src="../../shared.js"></script>
+    <script>
+        // Opcional: leer parámetros de la URL para rellenar dinámicamente el título si se desea (ej: ?torneo=Nombre)
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const nombreTorneo = params.get('torneo');
+            if(nombreTorneo) {
+                document.getElementById('torneo-nombre').textContent = decodeURIComponent(nombreTorneo);
+            }
+        });
+    </script>
+</body>
+
+</html>
