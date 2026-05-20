@@ -1431,6 +1431,37 @@ footer {
   .noticias-grid { grid-template-columns: 1fr 1fr; }
   .noticia-card-featured { grid-column: 1/-1; grid-row: auto; }
 
+  /* ── HERO FIX FOR TABLETS/IPAD ── */
+  .hero {
+    height: auto;
+    max-height: none;
+    min-height: 0;
+  }
+
+  .hero-content {
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-top-bar {
+    padding-top: 90px;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .hero-stat {
+    flex: 1;
+    max-width: 200px;
+  }
+
   /* ── MOBILE NAV ── */
   .nav-hamburger {
     display: flex;
